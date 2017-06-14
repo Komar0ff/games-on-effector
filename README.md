@@ -1,8 +1,8 @@
-#Game
-  ##Single
+# Game
+  ## Single
     2048
     TicTacToe(vs bot)
-  ##Multiplayer
+  ## Multiplayer
     Battleships(vs players or bot)
     
   
