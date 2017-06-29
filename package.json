@@ -1,7 +1,29 @@
 {
-  "name": "my-app",
+  "name": "games-on-2re",
   "version": "0.1.0",
   "private": true,
+  "description": "Isomorhic app on react/redux",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/zhaoda/spa.git"
+  },
+
+   "keywords": [
+    "game",
+    "webapp",
+    "javascript",
+  ],
+  
+    "author": {
+      "name": "Komar0ff",
+      "email": "binary.reptile@gmail.com",
+      "url": "https://twitter.com/ilya_komar0ff"
+  },
+
+    "bugs": {
+    "url": "https://github.com/Komar0ff/games-on-2re/issues"
+  },
+
   "dependencies": {
     "eslint": "^4.1.1",
     "eslint-config-airbnb": "^15.0.1",
@@ -11,9 +33,11 @@
     "react-router": "^4.1.1",
     "redux": "^3.7.1"
   },
+  
   "devDependencies": {
     "react-scripts": "1.0.7"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
