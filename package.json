@@ -1,8 +1,9 @@
 {
-  "name": "my-app",
+  "name": "games-on-2re",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel": "^6.23.0",
     "eslint": "^4.1.1",
     "eslint-config-airbnb": "^15.0.1",
     "react": "^15.6.1",
