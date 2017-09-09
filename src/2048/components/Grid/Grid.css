@@ -1,0 +1,7 @@
+.Grid{
+  box-sizing: content-box;
+  border-radius: 5px;
+  /*width: 450px;*/
+  margin: 10px auto;
+  position: relative;
+}

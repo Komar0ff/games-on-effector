@@ -5,9 +5,9 @@ class App extends Component {
 	render() {
 		return ( 
 		<div className='container'>
-			<div className='numbers element'>one</div>
-			<div className='ships element'>two</div>
-			<div className='tictactoe element'>three</div>
+			<div Link to='/one' className='numbers element'>one</div>
+			<div Link to='/two' className='ships element'>two</div>
+			<div Link to='/three' className='tictactoe element'>three</div>
 		</div>
 		);	
 	}

@@ -1,11 +1,10 @@
 {
   "name": "games-on-2re",
   "version": "0.1.0",
-  "private": true,
   "description": "Isomorhic app on react/redux",
     "repository": {
     "type": "git",
-    "url": "https://github.com/zhaoda/spa.git"
+    "url": "https://github.com/Komar0ff/games-on-2re"
   },
 
    "keywords": [
