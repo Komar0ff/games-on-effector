@@ -2,42 +2,38 @@
   "name": "games-on-2re",
   "version": "0.1.0",
   "description": "Isomorhic app on react/redux",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/Komar0ff/games-on-2re"
   },
-
-   "keywords": [
+  "keywords": [
     "game",
     "webapp",
     "javascript"
   ],
-  
-    "author": {
-      "name": "Komar0ff",
-      "email": "binary.reptile@gmail.com",
-      "url": "https://twitter.com/ilya_komar0ff"
+  "author": {
+    "name": "Komar0ff",
+    "email": "binary.reptile@gmail.com",
+    "url": "https://twitter.com/ilya_komar0ff"
   },
-
-    "bugs": {
+  "bugs": {
     "url": "https://github.com/Komar0ff/games-on-2re/issues"
   },
-
   "dependencies": {
     "babel": "^6.23.0",
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb": "^15.0.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.5",
-    "react-router": "^2.1.1", 
-    "redux": "^3.7.1"
+    "boardgame.io": "^0.22.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "prettier": "^1.12.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "redux": "^4.0.0"
   },
-  
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.1.4"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
