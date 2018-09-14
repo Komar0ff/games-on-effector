@@ -1,3 +1,3 @@
-- [ ] 2048
+- [x] 2048
 - [ ] TicTacToe
 - [ ] Battleship
