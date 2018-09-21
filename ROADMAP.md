@@ -1,3 +1,2 @@
-- [x] 2048
-- [ ] TicTacToe
+- [ ] Refactoring 2048
 - [ ] Battleship
