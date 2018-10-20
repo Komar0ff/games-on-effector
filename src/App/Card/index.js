@@ -44,20 +44,18 @@ const Lock = styled('div')`
   background-repeat: no-repeat;
 `;
 
-export default class Card extends React.Component {
-  render() {
-    return (
-      <Wrapper>
-        {this.props.block ? (
-          <Lock />
-        ) : (
-          <>
-            <CardName> {this.props.CardName} </CardName>
-            <Description>{this.props.Description}</Description>
-            <Button>Play now</Button>
-          </>
-        )}
-      </Wrapper>
-    );
-  }
+export default function Card (props) {
+  return (
+    <Wrapper>
+    {props.block ? (
+      <Lock />
+    ) : (
+      <>
+        <CardName> {props.CardName} </CardName>
+        <Description>{props.Description}</Description>
+        <Button>Play now</Button>
+      </>
+    )}
+  </Wrapper>
+  )
 }
