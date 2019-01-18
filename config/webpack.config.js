@@ -73,6 +73,22 @@ module.exports = {
             }  
           }
         ]
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { 
+              limit: 8000,
+              name: 'fonts/[hash]-[name].[ext]'
+            }  
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   },

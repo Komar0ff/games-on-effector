@@ -7,11 +7,12 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 module.exports = 
   merge(config, {
     mode: 'production',
-    plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'server'
-      })
-    ],
+    // IF YOU NEED TO ANALYZE YOUR BUNDLE
+    // plugins: [
+    //   new BundleAnalyzerPlugin({
+    //     analyzerMode: 'server'
+    //   })
+    // ],
 
     output: {
       filename: 'bundle.[name].js',
