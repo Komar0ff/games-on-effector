@@ -23,10 +23,9 @@
     "effector": "^0.18.0",
     "effector-react": "^0.18.0",
     "emotion": "^10.0.6",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.0-alpha.0",
+    "react-dom": "^16.8.0-alpha.0",
     "react-emotion": "^10.0.0",
-    "react-helmet": "^5.2.0",
     "react-router": "^4.3.1"
   },
   "devDependencies": {
@@ -52,7 +51,7 @@
     "prettier": "^1.15.3",
     "progress-bar-webpack-plugin": "^1.11.0",
     "url-loader": "^1.1.2",
-    "webpack": "4.28.2",
+    "webpack": "4.28.4",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "3.1.14",
