@@ -25,7 +25,7 @@ const Wrapper = styled('div')`
   position: fixed;
   width: 100%;
   height: 100%;
-  
+
   color: white;
   background-color: #3c1f5f;
 `;
@@ -63,7 +63,12 @@ export default class App extends React.Component {
         <Header>Games on React</Header>
         <Games>
           {Cards.map((obj, id) => (
-            <Card key={id} CardName={obj.CardName} Description={obj.Description} block={obj.block} />
+            <Card
+              key={id}
+              CardName={obj.CardName}
+              Description={obj.Description}
+              block={obj.block}
+            />
           ))}
         </Games>
       </Wrapper>

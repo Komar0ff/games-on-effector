@@ -44,18 +44,18 @@ const Lock = styled('div')`
   background-repeat: no-repeat;
 `;
 
-export default function Card (props) {
+export default function Card(props) {
   return (
     <Wrapper>
-    {props.block ? (
-      <Lock />
-    ) : (
-      <>
-        <CardName> {props.CardName} </CardName>
-        <Description>{props.Description}</Description>
-        <Button>Play now</Button>
-      </>
-    )}
-  </Wrapper>
-  )
+      {props.block ? (
+        <Lock />
+      ) : (
+        <>
+          <CardName> {props.CardName} </CardName>
+          <Description>{props.Description}</Description>
+          <Button>Play now</Button>
+        </>
+      )}
+    </Wrapper>
+  );
 }
