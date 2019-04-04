@@ -5,7 +5,8 @@
   ],
   
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import", 
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties", 
     "@babel/plugin-transform-runtime", 
     ["module:fast-async", { "spec": true }]
   ]
