@@ -1,11 +1,13 @@
 import { JSDOM } from 'jsdom';
+import { Response, Request, Headers, fetch } from 'whatwg-fetch';
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;
 global.document = document;
-global.window = document.defaultView;
-global.HTMLElement = window.HTMLElement;
-global.HTMLAnchorElement = window.HTMLAnchorElement;
+global.Response = Response;
+global.Request = Request;
+global.Headers = Headers;
+global.fetch = fetch;
 
 Object.keys(document.defaultView).forEach(property => {
   if (typeof global[property] === 'undefined') {

@@ -68,7 +68,15 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setupTests.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/jest/setupTests.js"
+    ],
+
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/config/jest/__mocks__/styleMock.js"
+    },
+
     "moduleDirectories": [
       "src",
       "node_modules"
@@ -78,6 +86,7 @@
       "json",
       "jsx"
     ],
+    
     "transform": {
       "^.+\\.(js|jsx)$": "babel-jest"
     }
