@@ -3,13 +3,11 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-
   entry: './index.js',
   context: resolve(__dirname, '../src'),
-  
+
   module: {
     rules: [
-
 //GENERAL
       { 
         test: /\.jsx?$/,
@@ -22,8 +20,6 @@ module.exports = {
         },
         exclude: /node_modules/
       },
-
-      
 //ASSETS
       {
         test: /\.(?:ico|png|jpg|jpeg|gif)$/,
@@ -51,19 +47,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: { 
-              limit: 8000,
-              name: 'fonts/[hash]-[name].[ext]'
-            }  
-          }
-        ]
-      },
-      {
-        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.woff(2)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: 'url-loader',
@@ -98,13 +82,24 @@ module.exports = {
     maxAssetSize: 20000000,
     maxEntrypointSize: 100000000
   },
-
   
   plugins: [
     new HtmlWebpackPlugin({
       template: `assets/index.html`,
       filename: 'index.html',
-      inject: true
-    })
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true,
+    }),
   ],
 }
