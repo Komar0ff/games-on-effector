@@ -20,13 +20,14 @@
     "url": "https://github.com/Komar0ff/games-on-2re/issues"
   },
   "dependencies": {
-    "effector": "^0.18.4",
-    "effector-react": "^0.18.7",
+    "effector": "0.18.4",
+    "effector-react": "0.18.7",
     "emotion": "^10.0.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-emotion": "^10.0.0",
-    "react-router": "^5.0.0"
+    "react-router": "^5.0.0",
+    "router5": "7.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

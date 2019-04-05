@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.block {
+	width: 25%;
+	margin: 20px;
+	text-align: center;
+	color: white;
+	background-color: grey;
+	cursor: pointer;
+}
+
+.blocked {
+	width: 25%;
+	margin: 20px;
+	text-align: center;
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}
