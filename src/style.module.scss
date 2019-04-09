@@ -2,22 +2,36 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100vh;
 }
 
 .block {
 	width: 25%;
+	height: 50vh;
 	margin: 20px;
 	text-align: center;
 	color: white;
 	background-color: grey;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
 .blocked {
+	position: relative;
 	width: 25%;
+	height: 50vh;
 	margin: 20px;
 	text-align: center;
 	color: white;
 	background-color: black;
+	border-radius: 5px;
 	cursor: pointer;
+
+	::after {
+		position: absolute;
+		content: '123';
+		width: 10px;
+		height: 10px;
+		background-color: red;
+	} 
 }
