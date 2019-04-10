@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import locked from './assets/images/locked.svg';
-import { wrapper, block, blocked } from './style.module.scss';
+import { wrapper, block, blocked } from './style.module.css';
 
 const App = () => {
 	return (

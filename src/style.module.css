@@ -26,12 +26,11 @@
 	background-color: black;
 	border-radius: 5px;
 	cursor: pointer;
-
-	::after {
-		position: absolute;
-		content: '123';
-		width: 10px;
-		height: 10px;
-		background-color: red;
-	} 
 }
+
+.blocked::after {
+	position: absolute;
+	content: '';
+	width: 10px;
+	height: 10px;
+} 
