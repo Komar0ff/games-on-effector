@@ -9,6 +9,7 @@ const Wrapper = styled('div')`
 `;
 
 const Logo = styled('h1')`
+	font-family: sans-serif;
 `
 
 const Navigation = styled('div')`
