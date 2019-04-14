@@ -1,4 +1,4 @@
-import keymirror from 'key-mirror';
+import keymirror from './node_modules/key-mirror';
 
 export const actionTypes = keymirror({
 	PRESS_KEY: null,

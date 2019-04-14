@@ -1,9 +1,6 @@
 import React from 'react';
+import Header from './components/Header';
 
-import Header from '../Header';
-
-export default class TwoThousand extends React.Component {
-	render() {
-		return <Header />;
-	}
-}
+export const TwoThousand = () => (
+	<Header />
+)
