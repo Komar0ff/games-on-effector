@@ -10,7 +10,7 @@ const Wrapper = styled('div')`
 
 const Logo = styled('h1')`
 	font-family: sans-serif;
-`
+`;
 
 const Navigation = styled('div')`
 	display: flex;
@@ -23,7 +23,7 @@ const Navigation = styled('div')`
 
 		font-family: sans-serif;
 	}
-`
+`;
 
 export const NavMenu = () => (
 	<Wrapper>
@@ -34,4 +34,4 @@ export const NavMenu = () => (
 			<a>Settings</a>
 		</Navigation>
 	</Wrapper>
-)
+);
