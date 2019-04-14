@@ -5,7 +5,7 @@ const Wrapper = styled('div')``;
 const Logo = styled('div')``;
 
 export default class Header extends React.Component {
-  render() {
-    return <div />;
-  }
+	render() {
+		return <div />;
+	}
 }
