@@ -29,7 +29,7 @@ export const NavMenu = () => (
 	<Wrapper>
 		<Logo>2048</Logo>
 		<Navigation>
-			<a>Games</a>
+			<a>Game</a>
 			<a>Saved games</a>
 			<a>Settings</a>
 		</Navigation>
