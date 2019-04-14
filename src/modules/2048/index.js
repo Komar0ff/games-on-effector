@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './components/Header';
+import { NavMenu } from './components/NavMenu';
 
 export const TwoThousand = () => (
-	<Header />
+	<NavMenu />
 )
