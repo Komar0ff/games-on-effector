@@ -1,5 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { Response, Request, Headers, fetch } from 'whatwg-fetch';
+import { render, cleanup, fireEvent } from 'react-testing-library'
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;
@@ -8,6 +9,10 @@ global.Response = Response;
 global.Request = Request;
 global.Headers = Headers;
 global.fetch = fetch;
+global.render = render;
+global.fireEvent = fireEvent
+
+afterEach(cleanup)
 
 Object.keys(document.defaultView).forEach(property => {
   if (typeof global[property] === 'undefined') {
