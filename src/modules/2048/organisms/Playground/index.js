@@ -1,6 +1,4 @@
-import React from 'react'
-import styled from '@emotion/styled'
+import React from 'react';
+import styled from '@emotion/styled';
 
-export const Playground = () => (
-  <div>123</div>
-)
+export const Playground = () => <div>123</div>;

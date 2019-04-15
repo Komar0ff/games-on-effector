@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { Control } from '../../molecules/Control';
 import { Score } from '../../molecules/Score';
-import { Playground } from '../../organisms/Playground'
+import { Playground } from '../../organisms/Playground';
 
 const Wrapper = styled('div')`
 	min-width: 80%;
