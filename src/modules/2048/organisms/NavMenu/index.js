@@ -3,8 +3,9 @@ import styled from '@emotion/styled';
 
 const Wrapper = styled('div')`
 	display: flex;
-	justify-content: space-around;
 	align-items: center;
+	justify-content: space-between;
+	
 	border-bottom: 1px solid grey;
 `;
 
