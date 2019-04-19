@@ -9,7 +9,7 @@ const Wrapper = styled('div')``;
 export const Control = (props) => (
 	<Wrapper>
 		{data.map((value, id) => (
-			<Button key={id} text={value.text} onClick={() => props.handleClick} />
+			<Button key={id} text={value.text} onClick={() => console.log('asd')} />
 		))}
 	</Wrapper>
 );

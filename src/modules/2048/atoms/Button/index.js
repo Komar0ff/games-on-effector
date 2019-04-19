@@ -1,6 +1,6 @@
 import React from 'react';
 export const Button = (props) => (
-	<button style={{ cursor: 'pointer' }} onClick={() => props.onClick}>
+	<button data-testid="btn" style={{ cursor: 'pointer' }} onClick={() => props.onClick()}>
 		{props.text}
 	</button>
 );
