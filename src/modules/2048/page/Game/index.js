@@ -17,7 +17,7 @@ const Panel = styled('div')`
 export const Game = () => (
 	<Wrapper>
 		<Panel>
-			<Control />
+			<Control onClick={() => null} />
 			<Score />
 		</Panel>
 		<Playground />
