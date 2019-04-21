@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Panel } from '../../organisms/Panel'
+import { Panel } from '../../organisms/Panel';
 import { Playground } from '../../organisms/Playground';
 
 const Wrapper = styled('div')`

@@ -1,10 +1,10 @@
 {
   "name": "games-on-react",
   "version": "0.1.0",
-  "description": "Isomorhic app on react/redux",
+  "description": "games on react-effector",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Komar0ff/games-on-2re"
+    "url": "https://github.com/Komar0ff/games-on-react"
   },
   "keywords": [],
   "author": {
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Komar0ff/games-on-2re/issues"
+    "url": "https://github.com/Komar0ff/games-on-react/issues"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",

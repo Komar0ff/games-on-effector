@@ -16,7 +16,11 @@ const ScoreArea = styled('div')`
 `;
 
 export const Score = (props) => (
-	<Wrapper data-testid='scorePanel' >
-		{props.data.map((value, id) => <ScoreArea key={id}>{value.name}: {value.count}</ScoreArea>)}
+	<Wrapper data-testid="scorePanel">
+		{props.data.map((value, id) => (
+			<ScoreArea key={id}>
+				{value.name}: {value.count}
+			</ScoreArea>
+		))}
 	</Wrapper>
 );
