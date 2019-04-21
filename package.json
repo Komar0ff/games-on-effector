@@ -66,7 +66,7 @@
     "dev": "webpack-dev-server --hot --progress --color --config config/webpack.dev.config.js",
     "build": "yarn format && webpack --mode production --progress --color --config config/webpack.prod.config.js",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "jest",
+    "test": "jest --watch --watchAll",
     "deploy": "yarn build && now ./build"
   },
   "husky": {

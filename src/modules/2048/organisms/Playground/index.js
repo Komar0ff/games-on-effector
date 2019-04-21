@@ -1,4 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-export const Playground = () => <div>123</div>;
+import { Block } from '../../molecules/Block'
+
+const Wrapper = styled('div')``
+
+export const Playground = () => (
+  <Wrapper>
+    <Block value='1024'/>
+  </Wrapper>
+);
