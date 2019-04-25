@@ -9,9 +9,11 @@ const Wrapper = styled('div')`
 	margin: auto;
 `;
 
+const fakeData = [{ name: 'Score', count: 0 }, { name: 'Best score', count: 20 }];
+
 export const Game = () => (
 	<Wrapper>
-		<Panel />
+		<Panel data={fakeData}/>
 		<Playground />
 	</Wrapper>
 );
