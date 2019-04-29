@@ -19,6 +19,8 @@ const Wrapper = styled('div')`
 
 export const Grid = props => {
   const emptyBlocks = []
+  const activeBlocks = []
+  
   for (let y = 0; y < props.height; ++y) { 
     for (let x = 0; x < props.width; ++x) {
       emptyBlocks.push(

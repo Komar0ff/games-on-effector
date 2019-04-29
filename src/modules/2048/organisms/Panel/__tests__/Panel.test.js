@@ -14,12 +14,12 @@ describe('Panel tests', () => {
 		expect(scorePanel.children[1].textContent).toBe(`Best score: ${fakeData[1].count}`);
 	});
 
-	it('Events lifting up', () => {
-		const handleClick = jest.fn();
-		const { getByTestId, debug } = render(<Panel data={fakeData} onClick={handleClick} />);
-		const control = getByTestId('control');
+	// it('Events lifting up', () => {
+	// 	const handleClick = jest.fn();
+	// 	const { getByTestId, debug } = render(<Panel data={fakeData} onClick={handleClick} />);
+	// 	const control = getByTestId('control');
 
-		fireEvent.click(control.children[0]);
-		expect(handleClick).toHaveBeenCalledTimes(1);
-	});
+	// 	fireEvent.click(control.children[0]);
+	// 	expect(handleClick).toHaveBeenCalledTimes(1);
+	// });
 });

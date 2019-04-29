@@ -10,14 +10,14 @@ import { Grid } from '../index.js'
  * показ активных блоков [done]
  */
 
-describe('Grid tests', () => {
+describe('> Grid tests', () => {
   it('Building a playing field of inactive blocks', () => {
     const {getByTestId, getAllByTestId,  debug} = render(<Grid width={4} height={4} active={[]}/>)
-    const grid = getByTestId('grid')
-    const countBlocks = getAllByTestId('block')
+    const gridBlocks = getByTestId('grid').children.length
+    const countBlocks = getAllByTestId('block').length
 
-    expect(countBlocks.length).toBe(16)
-    expect(grid.children.length).toBe(16)
+    expect(countBlocks).toBe(16)
+    expect(gridBlocks).toBe(16)
   })
 
   it('Display of active blocks', () => {

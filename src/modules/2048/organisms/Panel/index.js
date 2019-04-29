@@ -11,7 +11,7 @@ const Wrapper = styled('div')`
 
 export const Panel = (props) => (
 	<Wrapper>
-		<Control onClick={(id) => props.onClick(id)} />
+		<Control onClick={(id) => null} />
 		<Score data={props.data} />
 	</Wrapper>
 );
