@@ -1,30 +1,32 @@
-import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import React from 'react';
+import { render, fireEvent } from 'react-testing-library';
 
-import { Grid } from '../index.js'
+import { Grid } from '../index.js';
 
 /**
- * Отрисовка игрового поля из блоков по нужным размерам 
+ * Отрисовка игрового поля из блоков по нужным размерам
  * постороение игрового поля из неактивных блоков [done]
  * случайное отображение активных блоков поверх неактивных
  * показ активных блоков [done]
  */
 
 describe('> Grid tests', () => {
-  it('Building a playing field of inactive blocks', () => {
-    const {getByTestId, getAllByTestId,  debug} = render(<Grid width={4} height={4} active={[]}/>)
-    const gridBlocks = getByTestId('grid').children.length
-    const countBlocks = getAllByTestId('block').length
+	it('Building a playing field of inactive blocks', () => {
+		const { getByTestId, getAllByTestId, debug } = render(
+			<Grid width={4} height={4} active={[]} />
+		);
+		const gridBlocks = getByTestId('grid').children.length;
+		const countBlocks = getAllByTestId('block').length;
 
-    expect(countBlocks).toBe(16)
-    expect(gridBlocks).toBe(16)
-  })
+		expect(countBlocks).toBe(16);
+		expect(gridBlocks).toBe(16);
+	});
 
-  it('Display of active blocks', () => {
-    const activeData = [{count: 1024}, {count: 16}]
-    const {getAllByTestId,  debug} = render(<Grid width={4} height={4} active={activeData}/>)
-    const countActiveBlocks = getAllByTestId('active-block')
+	it('Display of active blocks', () => {
+		const activeData = [{ count: 1024 }, { count: 16 }];
+		const { getAllByTestId, debug } = render(<Grid width={4} height={4} active={activeData} />);
+		const countActiveBlocks = getAllByTestId('active-block');
 
-    expect(countActiveBlocks.length).toBe(2)
-  })
-})
+		expect(countActiveBlocks.length).toBe(2);
+	});
+});

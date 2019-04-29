@@ -13,7 +13,7 @@ const fakeData = [{ name: 'Score', count: 0 }, { name: 'Best score', count: 20 }
 
 export const Game = () => (
 	<Wrapper>
-		<Panel data={fakeData}/>
+		<Panel data={fakeData} />
 		<Playground />
 	</Wrapper>
 );

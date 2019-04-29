@@ -1,4 +1,4 @@
-import {buttonClick} from '../index.js'
+import { buttonClick } from '../index.js';
 
 /**
  * Обработать нажатия на кнопки в панели (3 эвента)
@@ -8,10 +8,9 @@ import {buttonClick} from '../index.js'
  * по нажатию на ньюгейм перерендериваетс окружение с рандомными данными
  */
 
-
 describe('Services tests', () => {
-  it('button events', () => {
-    const newGameResult = buttonClick(0)
-    expect(newGameResult)
-  })
-})
+	it('button events', () => {
+		const newGameResult = buttonClick(0);
+		expect(newGameResult);
+	});
+});
