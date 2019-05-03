@@ -1,22 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Wrapper = styled('div')`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100px;
-	height: 100px;
-	border-radius: 5px;
-	margin: 5px;
-
-	color: white;
-	background-color: ${(props) => props.active || '#737373'};
-
-	font-size: 40px;
-	font-family: sans-serif;
-`;
-
 const colorScheme = {
 	backgroundColor: '#ccc',
 	2: '#f44336',
@@ -35,8 +19,24 @@ const colorScheme = {
 	16384: '#4CAF50'
 };
 
+const Wrapper = styled('div')`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	margin: 5px;
+
+	color: white;
+	background-color: ${(props) => colorScheme[`${props.block}`]};
+
+	font-size: 40px;
+	font-family: sans-serif;
+`;
+
 export const Block = (props) => (
-	<Wrapper data-testid="block">
+	<Wrapper block={props.number ? `${props.number}` : 'backgroundColor'} data-testid="block">
 		<span>{props.number}</span>
 	</Wrapper>
 );

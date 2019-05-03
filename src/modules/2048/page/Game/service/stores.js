@@ -40,7 +40,7 @@ export const generation = (count, width, height) => {
 		for (let j = 0; j < width; j++) {
 			result[i].push(0);
 			for (let k = 0; k < activeBlocks.length; k++) {
-				if (activeBlocks[k][1] === i && activeBlocks[k][0] === j) result[i][j] = 8;
+				if (activeBlocks[k][1] === i && activeBlocks[k][0] === j) result[i][j] = 2;
 			}
 		}
 	}
