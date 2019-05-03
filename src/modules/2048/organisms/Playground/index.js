@@ -4,11 +4,10 @@ import { Row } from '../../molecules/Row';
 
 const Wrapper = styled('div')`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	border-radius: 5px;
 	margin-top: 50px;
-	padding: 10px;
-	background-color: #9e9e9e;
 `;
 
 export const Playground = (props) => (

@@ -17,7 +17,7 @@ const fakeData = [{ name: 'Score', count: 0 }, { name: 'Best score', count: 20 }
 export const Game = () => {
 	const playgroundStore = useStore($playground);
 	useEffect(() => {
-		mountEvent({ playground: [], count: 3, width: 10, height: 10 });
+		mountEvent({ playground: [], count: 3, width: 5, height: 5 });
 	}, []);
 
 	return (

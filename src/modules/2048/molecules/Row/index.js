@@ -3,7 +3,12 @@ import styled from '@emotion/styled';
 
 import { Block } from '../../atoms/Block';
 
-const Wrapper = styled('div')``;
+const Wrapper = styled('div')`
+	display: flex;
+	background-color: #9e9e9e;
+	justify-content: center;
+	padding-top: 10px;
+`;
 
 export const Row = (props) => (
 	<Wrapper data-testid="row">
