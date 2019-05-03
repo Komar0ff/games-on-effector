@@ -21,12 +21,12 @@ export const Game = () => {
 	}, []);
 
 	const handleClick = (id) => {
-		if(id === 0) newGameEvent({ playground: [], count: 3, width: 5, height: 5 })
-	}
+		if (id === 0) newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
+	};
 
 	return (
 		<Wrapper>
-			<Panel data={fakeData} onClick={(id) => handleClick(id)}/>
+			<Panel data={fakeData} onClick={(id) => handleClick(id)} />
 			<Playground data={playgroundStore} />
 		</Wrapper>
 	);

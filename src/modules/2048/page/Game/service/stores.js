@@ -5,15 +5,17 @@ export const $playground = gameDomain.store([]);
 export const $score = gameDomain.store({ score: 0, bestScore: 0 });
 
 $playground
-	.on(mountEvent.map(({ playground, count, width, height }) =>
+	.on(
+		mountEvent.map(({ playground, count, width, height }) =>
 			playground.length ? playground : generation(count, width, height)
 		),
 		(_, payload) => payload
 	)
 
-	.on(newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
+	.on(
+		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
 		(_, payload) => payload
-	)
+	);
 
 export const random = (count, width, height) => {
 	let output = [];
