@@ -5,7 +5,7 @@ import { useStore } from 'effector-react';
 import { Panel } from '../../organisms/Panel';
 import { Playground } from '../../organisms/Playground';
 import { $playground } from './service/stores';
-import { mountEvent } from './service/events';
+import { mountEvent, newGameEvent } from './service/events';
 
 const Wrapper = styled('div')`
 	min-width: 80%;
@@ -20,9 +20,13 @@ export const Game = () => {
 		mountEvent({ playground: [], count: 3, width: 5, height: 5 });
 	}, []);
 
+	const handleClick = (id) => {
+		if(id === 0) newGameEvent({ playground: [], count: 3, width: 5, height: 5 })
+	}
+
 	return (
 		<Wrapper>
-			<Panel data={fakeData} />
+			<Panel data={fakeData} onClick={(id) => handleClick(id)}/>
 			<Playground data={playgroundStore} />
 		</Wrapper>
 	);

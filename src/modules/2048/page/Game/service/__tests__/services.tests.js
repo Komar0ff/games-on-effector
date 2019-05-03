@@ -1,13 +1,12 @@
-import { mountEvent } from '../events.js';
+import { mountEvent, newGameEvent } from '../events.js';
 import { $playground, generation, random } from '../stores';
-import { cleanup } from 'react-testing-library';
 
 /**
  * Обработать нажатия на кнопки в панели (3 эвента)
  * обработка нажатий кнопок на клавиатуре
  * логика хранения для плэйграунд хранилища
  * логика хранения для скора
- * по нажатию на ньюгейм перерендеривается окружение с рандомными данными [!]
+ * по нажатию на ньюгейм перерендеривается окружение с рандомными данными [done]
  * первая отрисовка плэйграунда [done]
  * первая отрисовка если есть данные в локалсторадж [done]
  * первая отрисовка если в локалсторадж данных нет [done]
@@ -15,30 +14,9 @@ import { cleanup } from 'react-testing-library';
  * отрисовка поля исходя из значений высоты и ширины [done]
  */
 
-describe('Services tests', () => {
-	it('Playground mounting with empty playground', () => {
-		let playgroundStore = $playground.getState();
-		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
 
-		expect(playgroundStore).toEqual([]);
-		mountEvent(localStorage);
-
-		playgroundStore = $playground.getState(); // storage state after mounting
-		expect(playgroundStore.length).toBe(4);
-		expect(playgroundStore[0].length).toBe(3);
-	});
-
-	it('Playground mounting with playground', () => {
-		let playgroundStore = $playground.getState();
-		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 4 }; //localStorage imitation
-
-		mountEvent(localStorage);
-
-		playgroundStore = $playground.getState(); // storage state after mounting
-		expect(playgroundStore.length).toBe(2);
-		expect(playgroundStore[0].length).toBe(3);
-	});
-
+	// there's a problem with isolation.
+	
 	it('Drawing a playground based on height and width and random generation of active blocks', () => {
 		let countActiveBlocks = 3; // No more than three
 		let playgroundWidth = 3;
@@ -63,4 +41,37 @@ describe('Services tests', () => {
 
 		expect(counterActiveBlock).toBe(countActiveBlocks);
 	});
-});
+
+	it('Playground mounting with empty playground', () => {
+		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
+
+		expect($playground.getState()).toEqual([]);
+		mountEvent(localStorage);
+
+		let playgroundStore = $playground.getState(); // storage state after mounting
+		expect(playgroundStore.length).toBe(4);
+		expect(playgroundStore[0].length).toBe(3);
+	});
+
+	it('Playground mounting with playground', () => {
+		let playgroundStore = $playground.getState();
+		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 4 }; //localStorage imitation
+
+		mountEvent(localStorage);
+
+		playgroundStore = $playground.getState(); // storage state after mounting
+		expect(playgroundStore.length).toBe(2);
+		expect(playgroundStore[0].length).toBe(3);
+	});
+
+	it('newGame event', () => {
+    let localStorage = { playground: [], count: 2, width: 3, height: 4 };
+    
+    newGameEvent(localStorage);
+    let playgroundStore = $playground.getState();
+    
+    expect(playgroundStore.length).toBe(4);
+    expect(playgroundStore[0].length).toBe(3);
+  })
+
+

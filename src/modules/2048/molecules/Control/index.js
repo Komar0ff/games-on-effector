@@ -13,7 +13,7 @@ const Wrapper = styled('div')``;
 export const Control = (props) => (
 	<Wrapper data-testid="control">
 		{data.map((value, id) => (
-			<Button key={id} id={value.id} text={value.text} onClick={(id) => props.onClick(id)} />
+			<Button key={id} id={value.id} text={value.text} onClick={() => props.onClick(id)} />
 		))}
 	</Wrapper>
 );
