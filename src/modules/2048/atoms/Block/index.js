@@ -36,7 +36,7 @@ const colorScheme = {
 };
 
 export const Block = (props) => (
-	<Wrapper data-testid={props.active ? 'active-block' : 'block'}>
-		<span>{props.count}</span>
+	<Wrapper data-testid="block">
+		<span>{props.number}</span>
 	</Wrapper>
 );

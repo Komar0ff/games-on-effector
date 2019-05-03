@@ -1,5 +1,5 @@
-import {mountEvent} from '../events.js'
-import {$playground, generation, random} from '../stores'
+import { mountEvent } from '../events.js';
+import { $playground, generation, random } from '../stores';
 import { cleanup } from 'react-testing-library';
 
 /**
@@ -17,27 +17,27 @@ import { cleanup } from 'react-testing-library';
 
 describe('Services tests', () => {
 	it('Playground mounting with empty playground', () => {
-		let playgroundStore = $playground.getState()
-		let localStorage = {playground: [], count: 2, width: 3, height: 4} //localStorage imitation
+		let playgroundStore = $playground.getState();
+		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
 
-		expect(playgroundStore).toEqual([])
-		mountEvent(localStorage)
+		expect(playgroundStore).toEqual([]);
+		mountEvent(localStorage);
 
-		playgroundStore = $playground.getState() // storage state after mounting
-		expect(playgroundStore.length).toBe(4)
-		expect(playgroundStore[0].length).toBe(3)
-	})
+		playgroundStore = $playground.getState(); // storage state after mounting
+		expect(playgroundStore.length).toBe(4);
+		expect(playgroundStore[0].length).toBe(3);
+	});
 
 	it('Playground mounting with playground', () => {
-		let playgroundStore = $playground.getState()
-		let localStorage = {playground: [[0,0,8], [0,1024, 0]], count: 2, width: 3, height: 4} //localStorage imitation
+		let playgroundStore = $playground.getState();
+		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 4 }; //localStorage imitation
 
-		mountEvent(localStorage)
+		mountEvent(localStorage);
 
-		playgroundStore = $playground.getState() // storage state after mounting
-		expect(playgroundStore.length).toBe(2)
-		expect(playgroundStore[0].length).toBe(3)
-	})
+		playgroundStore = $playground.getState(); // storage state after mounting
+		expect(playgroundStore.length).toBe(2);
+		expect(playgroundStore[0].length).toBe(3);
+	});
 
 	it('Drawing a playground based on height and width and random generation of active blocks', () => {
 		let countActiveBlocks = 3; // No more than three

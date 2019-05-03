@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
-
-import { Block } from '../../atoms/Block';
-import { Grid } from '../../molecules/Grid';
+import { Row } from '../../molecules/Row';
 
 const Wrapper = styled('div')`
 	display: flex;
 	justify-content: center;
+	border-radius: 5px;
 	margin-top: 50px;
+	padding: 10px;
+	background-color: #9e9e9e;
 `;
 
-const activeData = [{ count: 1024 }, { count: 16 }];
-
-export const Playground = () => (
+export const Playground = (props) => (
 	<Wrapper>
-		<Grid width={4} height={4} active={activeData} />
+		{props.data.map((value, id) => (
+			<Row key={id} data={value} />
+		))}
 	</Wrapper>
 );

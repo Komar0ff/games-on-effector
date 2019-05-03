@@ -1,12 +1,15 @@
-import { gameDomain } from './domain'
-import { mountEvent } from './events'
+import { gameDomain } from './domain';
+import { mountEvent } from './events';
 
 export const $playground = gameDomain.store([]);
 export const $score = gameDomain.store({ score: 0, bestScore: 0 });
 
-$playground
-  .on(mountEvent.map(({playground, count, width, height}) => playground.length ? playground : generation(count, width, height)), 
-     (_, payload) => payload)
+$playground.on(
+	mountEvent.map(({ playground, count, width, height }) =>
+		playground.length ? playground : generation(count, width, height)
+	),
+	(_, payload) => payload
+);
 
 export const random = (count, width, height) => {
 	let output = [];
@@ -44,6 +47,3 @@ export const generation = (count, width, height) => {
 
 	return result;
 };
-
-
-
