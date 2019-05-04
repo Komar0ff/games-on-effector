@@ -1,18 +1,5 @@
 import { mountEvent, newGameEvent } from '../events.js';
-import { $playground, generation, random } from '../stores';
-
-/**
- * Обработать нажатия на кнопки в панели (3 эвента)
- * обработка нажатий кнопок на клавиатуре
- * логика хранения для плэйграунд хранилища
- * логика хранения для скора
- * по нажатию на ньюгейм перерендеривается окружение с рандомными данными [done]
- * первая отрисовка плэйграунда [done]
- * первая отрисовка если есть данные в локалсторадж [done]
- * первая отрисовка если в локалсторадж данных нет [done]
- * рандомная генерация активных блоков [done]
- * отрисовка поля исходя из значений высоты и ширины [done]
- */
+import { $playground, generation, random, moving } from '../stores';
 
 // TODO: fix problem with isolation.
 it('Drawing a playground based on height and width and random generation of active blocks', () => {
@@ -71,3 +58,68 @@ it('newGame event', () => {
 	expect(playgroundStore.length).toBe(4);
 	expect(playgroundStore[0].length).toBe(3);
 });
+
+it('Arrow left move event', () => {
+	const oldState = [[0,0,8,0], 
+										[8,16,8,0], 
+										[0,8,8,8]]
+										
+	const newState = [[8,0,0,0], 
+										[8,16,8,0], 
+										[16,8,0,0]]
+
+	const keyCode = 37
+
+	let $ = moving(oldState, keyCode)
+	// console.log($)
+	expect($).toEqual(newState)
+})
+
+it.only('Arrow right move event', () => {
+	const oldState = [[2,0,0,0], 
+										[8,0,0,0], 
+										[0,8,8,8]]
+										
+	const newState = [[0,0,0,2], 
+										[0,0,0,8], 
+										[0,0,8,16]]
+
+	const keyCode = 39
+	
+	let $ = moving(oldState, keyCode)
+	console.log('right', $)
+	expect($).toEqual(newState)
+})
+
+it('Arrow up move event', () => {
+	const oldState = [[8,0,8,8], 
+										[0,0,2,0], 
+										[0,8,8,8]]
+										
+	const newState = [[8,8,8,16], 
+										[0,0,2,0], 
+										[0,0,8,0]]
+
+	const keyCode = 38
+
+	let $ = moving(oldState, keyCode)
+	console.log('top', $)
+	expect($).toEqual(newState)
+})
+
+it('Arrow down move event', () => {
+	const oldState = [[0,0,8,8], 
+										[0,0,2,0], 
+										[0,8,8,8]]
+										
+	const newState = [[0,0,8,0], 
+										[0,0,2,0], 
+										[0,8,8,16]]
+
+	const keyCode = 40
+
+	let $ = moving(oldState, keyCode)
+	console.log('bottom', $)
+	expect($).toEqual(newState)
+})
+

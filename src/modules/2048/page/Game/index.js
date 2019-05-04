@@ -5,7 +5,7 @@ import { useStore } from 'effector-react';
 import { Panel } from '../../organisms/Panel';
 import { Playground } from '../../organisms/Playground';
 import { $playground } from './service/stores';
-import { mountEvent, newGameEvent } from './service/events';
+import { mountEvent, newGameEvent, moveEvent } from './service/events';
 
 const Wrapper = styled('div')`
 	min-width: 80%;
@@ -17,9 +17,11 @@ const fakeData = [{ name: 'Score', count: 0 }, { name: 'Best score', count: 20 }
 export const Game = () => {
 	const playgroundStore = useStore($playground);
 	useEffect(() => {
-		mountEvent({ playground: [], count: 3, width: 5, height: 5 });
+		mountEvent({ playground: [], count: 5, width: 5, height: 5 });
+		document.addEventListener('keydown', handleMove);
 	}, []);
 
+	const handleMove = (data) => {moveEvent(data.keyCode)}
 	const handleClick = (id) => {
 		if (id === 0) newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
 	};

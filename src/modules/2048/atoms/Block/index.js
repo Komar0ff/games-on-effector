@@ -37,6 +37,6 @@ const Wrapper = styled('div')`
 
 export const Block = (props) => (
 	<Wrapper block={props.number ? `${props.number}` : 'backgroundColor'} data-testid="block">
-		<span>{props.number}</span>
+		<span>{props.number || ''}</span>
 	</Wrapper>
 );

@@ -9,7 +9,7 @@ module.exports = merge(config, {
 
   devServer: {
     hot: true,
-    port: 3000,
+    port: 3001,
     open: true,
     compress: true,
     https: false
