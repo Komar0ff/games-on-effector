@@ -60,66 +60,46 @@ it('newGame event', () => {
 });
 
 it('Arrow left move event', () => {
-	const oldState = [[0,0,8,0], 
-										[8,16,8,0], 
-										[0,8,8,8]]
-										
-	const newState = [[8,0,0,0], 
-										[8,16,8,0], 
-										[16,8,0,0]]
+	const oldState = [[0, 0, 8, 0], [8, 16, 8, 0], [0, 8, 8, 8]];
+	const newState = [[8, 0, 0, 0], [8, 16, 8, 0], [16, 8, 0, 0]];
 
-	const keyCode = 37
+	const keyCode = 37;
 
-	let $ = moving(oldState, keyCode)
+	let $ = moving(oldState, keyCode);
 	// console.log($)
-	expect($).toEqual(newState)
-})
+	expect($).toEqual(newState);
+});
 
-it.only('Arrow right move event', () => {
-	const oldState = [[2,0,0,0], 
-										[8,0,0,0], 
-										[0,8,8,8]]
-										
-	const newState = [[0,0,0,2], 
-										[0,0,0,8], 
-										[0,0,8,16]]
+it('Arrow right move event', () => {
+	const oldState = [[2, 0, 0, 0], [8, 0, 0, 0], [0, 8, 8, 8]];
+	const newState = [[0, 0, 0, 2], [0, 0, 0, 8], [0, 0, 8, 16]];
 
-	const keyCode = 39
-	
-	let $ = moving(oldState, keyCode)
-	console.log('right', $)
-	expect($).toEqual(newState)
-})
+	const keyCode = 39;
+
+	let $ = moving(oldState, keyCode);
+	expect($).toEqual(newState);
+});
 
 it('Arrow up move event', () => {
-	const oldState = [[8,0,8,8], 
-										[0,0,2,0], 
-										[0,8,8,8]]
-										
-	const newState = [[8,8,8,16], 
-										[0,0,2,0], 
-										[0,0,8,0]]
+	const oldState = [[8, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
 
-	const keyCode = 38
+	const newState = [[8, 8, 8, 16], [0, 0, 2, 0], [0, 0, 8, 0]];
 
-	let $ = moving(oldState, keyCode)
-	console.log('top', $)
-	expect($).toEqual(newState)
-})
+	const keyCode = 38;
 
-it('Arrow down move event', () => {
-	const oldState = [[0,0,8,8], 
-										[0,0,2,0], 
-										[0,8,8,8]]
-										
-	const newState = [[0,0,8,0], 
-										[0,0,2,0], 
-										[0,8,8,16]]
+	let $ = moving(oldState, keyCode);
+	console.log('top', $);
+	expect($).toEqual(newState);
+});
 
-	const keyCode = 40
+it.only('Arrow down move event', () => {
+	const oldState = [[0, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
 
-	let $ = moving(oldState, keyCode)
-	console.log('bottom', $)
-	expect($).toEqual(newState)
-})
+	const newState = [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]];
 
+	const keyCode = 40;
+
+	let $ = moving(oldState, keyCode);
+	console.log('bottom', $);
+	expect($).toEqual(newState);
+});

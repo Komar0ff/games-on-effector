@@ -18,68 +18,121 @@ $playground
 	)
 
 	.on(moveEvent, (state, payload) => {
-		let newState = [...state]
-		if(payload === 37) {
-			for (let i = 0; i < state.length; i++) {
-				for (let j = 0; j < state[i].length; j++) {
-					if(newState[i][j]) {
-						for(let k = 0; k < j; k++) {
-							if(!newState[i][k]) {
-								newState[i][k] = newState[i][j]
-								newState[i][j] = 0
-							} else if(newState[i][k] == newState[i][j]) newState[i][k] += newState[i][j], newState[i][j] = 0
+		let newState = [...state];
+		if (payload === 37) {
+			for (let i = 0; i < newState.length; i++) {
+				let _ = [];
+				for (let j = 0; j < newState[i].length; j++) {
+					if (newState[i][j]) _.push(newState[i][j]);
+				}
+
+				if (_ || _.length > 1) {
+					for (let k = 0; k < _.length; k++) {
+						if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+					}
+				}
+				_ = _.filter(Boolean);
+
+				newState[i] = _;
+				while (newState[i].length != state[i].length) newState[i].push(0);
+			}
+		}
+
+		if (payload === 39) {
+			for (let i = 0; i < newState.length; i++) {
+				let _ = [];
+				for (let j = 0; j < newState[i].length; j++) {
+					if (newState[i][j]) _.push(newState[i][j]);
+				}
+
+				if (_ || _.length > 1) {
+					for (let k = _.length - 1; k > 0; k--) {
+						if (_[k] == _[k - 1]) (_[k] += _[k - 1]), delete _[k - 1];
+					}
+				}
+				_ = _.filter(Boolean);
+
+				newState[i] = _;
+				while (newState[i].length != state[i].length) newState[i].unshift(0);
+			}
+		}
+
+		if (payload === 38) {
+			let checked = [];
+
+			for (let i = 0; i < newState.length; i++) {
+				for (let j = 0; j < newState[i].length; j++) {
+					let _ = [];
+					let flag = checked.filter((value) => value === j);
+
+					if (!flag.length) {
+						if (newState[i][j]) {
+							checked.push(j);
+							_.push(newState[i][j]);
+							for (let k = i + 1; k < newState.length; k++) {
+								if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
+							}
+
+							if (_ || _.length > 1) {
+								for (let k = 0; k < _.length; k++) {
+									if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+								}
+							}
+
+							_ = _.filter(Boolean);
+
+							for (let f = 0; f < newState.length; f++) {
+								if (!_[f]) _[f] = 0;
+								newState[f][j] = _[f];
+							}
 						}
 					}
 				}
 			}
 		}
-	
-		if(payload === 39) {
-			for (let i = 0; i < state.length; i++) {
-				for (let j = state[i].length-1; j > 0; j--) {
-					if(newState[i][j]) {
-						for(let k = state[i].length-1; k > j; k--) {
-							if(!newState[i][k]) {
-								newState[i][k] = newState[i][j]
-								newState[i][j] = 0
-							} else if(newState[i][k] == newState[i][j]) newState[i][k] += newState[i][j], newState[i][j] = 0
-						}
-					}
-				}
-			}
-		}
-	
-		if(payload === 38) {
-			for (let i = 0; i < state.length; i++) {
-				for (let j = 0; j < state[i].length; j++) {
-					if(newState[i][j]) {
-						for(let k = 0; k < i; k++) {
-							if(!newState[k][j]) {
-								newState[k][j] = newState[i][j]
-								newState[i][j] = 0
-							} else if(newState[k][j] == newState[i][j]) newState[k][j] += newState[i][j], newState[i][j] = 0
-						}
-					}
-				}
-			}
-		}
-		
-		if(payload === 40) {
-			for (let i = 0; i < state.length; i++) {
-				for (let j = 0; j < state[i].length; j++) {
-					if(newState[i][j]) {
-						for(let k = i+1; k < state.length; k++)
-							if(!newState[k][j]) {
-								newState[k][j] = newState[i][j]
-								newState[i][j] = 0
-							} else if(newState[k][j] == newState[i][j]) newState[k][j] += newState[i][j], newState[i][j] = 0
-					}
-				}
-			}
-		}
-	
-		return newState
-	})
+
+		if (payload === 40) {
+      let checked = [];
+  
+      for (let i = newState.length - 1; i >= 0; i--) {
+        for (let j = newState[i].length - 1; j >= 0; j--) {
+          let _ = [];
+          let flag = checked.filter((value) => value === j);
+  
+          if (!flag.length) {
+            if (newState[i][j]) {
+              checked.push(j);
+              _.push(newState[i][j]);
+  
+              for (let k = i - 1; k >= 0; k--) {
+                if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
+              }
+  
+              if (_ || _.length > 1) {
+                for (let k = 0; k < _.length; k++) {
+                  if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+                }
+              }
+  
+              _ = _.filter(Boolean);
+  
+              for (let f = newState.length - 1; f >= 0; f--) {
+                if (!_[f]) _[f] = 0;
+              }
+  
+              _ = _.reverse();
+  
+              for (let f = newState.length - 1; f >= 0; f--) {
+                newState[f][j] = _[f];
+              }
+            }
+          }
+        }
+      }
+    }
+
+		return newState;
+	});
 
 export const random = (count, width, height) => {
 	let output = [];
@@ -119,74 +172,119 @@ export const generation = (count, width, height) => {
 };
 
 export const moving = (oldState, moveKey) => {
-	let newState = [...oldState]
-	if(moveKey === 37) {
-		for (let i = 0; i < oldState.length; i++) {
-			for (let j = 0; j < oldState[i].length; j++) {
-				if(newState[i][j]) {
-					for(let k = 0; k < j; k++) {
-						if(!newState[i][k]) {
-							newState[i][k] = newState[i][j]
-							newState[i][j] = 0
-						} else if(newState[i][k] == newState[i][j]) newState[i][k] += newState[i][j], newState[i][j] = 0
+	let newState = [...oldState];
+
+	if (moveKey === 37) {
+		for (let i = 0; i < newState.length; i++) {
+			let _ = [];
+			for (let j = 0; j < newState[i].length; j++) {
+				if (newState[i][j]) _.push(newState[i][j]);
+			}
+
+			if (_ || _.length > 1) {
+				for (let k = 0; k < _.length; k++) {
+					if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+				}
+			}
+			_ = _.filter(Boolean);
+
+			newState[i] = _;
+			while (newState[i].length != oldState[i].length) newState[i].push(0);
+		}
+	}
+
+	if (moveKey === 39) {
+		for (let i = 0; i < newState.length; i++) {
+			let _ = [];
+			for (let j = 0; j < newState[i].length; j++) {
+				if (newState[i][j]) _.push(newState[i][j]);
+			}
+
+			if (_ || _.length > 1) {
+				for (let k = _.length - 1; k > 0; k--) {
+					if (_[k] == _[k - 1]) (_[k] += _[k - 1]), delete _[k - 1];
+				}
+			}
+			_ = _.filter(Boolean);
+
+			newState[i] = _;
+			while (newState[i].length != oldState[i].length) newState[i].unshift(0);
+		}
+	}
+
+	if (moveKey === 38) {
+		let checked = [];
+
+		for (let i = 0; i < newState.length; i++) {
+			for (let j = 0; j < newState[i].length; j++) {
+				let _ = [];
+				let flag = checked.filter((value) => value === j);
+
+				if (!flag.length) {
+					if (newState[i][j]) {
+						checked.push(j);
+						_.push(newState[i][j]);
+						for (let k = i + 1; k < newState.length; k++) {
+							if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
+						}
+
+						if (_ || _.length > 1) {
+							for (let k = 0; k < _.length; k++) {
+								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+							}
+						}
+
+						_ = _.filter(Boolean);
+
+						for (let f = 0; f < newState.length; f++) {
+							if (!_[f]) _[f] = 0;
+							newState[f][j] = _[f];
+						}
 					}
 				}
 			}
 		}
 	}
 
-	// [[2,0,0,0], 
-	// 	[8,0,0,0], 
-	// 	[0,8,8,8]]
+	if (moveKey === 40) {
+		let checked = [];
 
-	if(moveKey === 39) {
-		for (let i = 0; i < oldState.length; i++) {
-			for (let j = oldState[i].length-1; j > 0 ; j--) {
-				console.log(i, j)
-				if(newState[i][j-1]) {
-					if(!newState[i][j]){
-						newState[i][j] = newState[i][j-1]
-						newState[i][j-1] = 0
-					}
-					if(newState[i][j] === newState[i][j-1]){
-						newState[i][j] += newState[i][j-1], newState[i][j-1] = 0
-					}
-				}
-			}
-		}
-	}
+		for (let i = newState.length - 1; i >= 0; i--) {
+			for (let j = newState[i].length - 1; j >= 0; j--) {
+				let _ = [];
+				let flag = checked.filter((value) => value === j);
 
-	// if(moveKey === 38) {
-	// 	for (let i = oldState.length-1; i > 0; i++) {
-	// 		for (let j = oldState[i].length-1; j > 0; j++) {
-	// 			if(newState[i][j]) {
-	// 				if(!newState[i-1][j]){
-	// 					newState[i-1][j] = newState[i][j]
-	// 					newState[i][j] = 0
-	// 				}
-	// 				if(newState[i-1][j] === newState[i][j]){
-	// 					newState[i-1][j] += newState[i][j], newState[i][j] = 0
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
+				if (!flag.length) {
+					if (newState[i][j]) {
+						checked.push(j);
+						_.push(newState[i][j]);
 
-	if(moveKey === 40) {
-		for (let i = 0; i < oldState.length-1; i++) {
-			for (let j = 0; j < oldState[i].length; j++) {
-				if(newState[i][j]) {
-					if(!newState[i+1][j]){
-						newState[i+1][j] = newState[i][j]
-						newState[i][j] = 0
-					}
-					if(newState[i+1][j] === newState[i][j]){
-						newState[i+1][j] += newState[i][j], newState[i][j] = 0
+						for (let k = i - 1; k >= 0; k--) {
+							if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
+						}
+
+						if (_ || _.length > 1) {
+							for (let k = 0; k < _.length; k++) {
+								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+							}
+						}
+
+						_ = _.filter(Boolean);
+
+						for (let f = newState.length - 1; f >= 0; f--) {
+							if (!_[f]) _[f] = 0;
+						}
+
+						_ = _.reverse();
+
+						for (let f = newState.length - 1; f >= 0; f--) {
+							newState[f][j] = _[f];
+						}
 					}
 				}
 			}
 		}
 	}
 
-	return newState
-}
+	return newState;
+};
