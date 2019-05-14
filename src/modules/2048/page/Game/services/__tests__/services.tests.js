@@ -1,5 +1,5 @@
-import { mountEvent, newGameEvent } from '../events.js';
-import { $playground, generation, random, moving } from '../stores';
+import { mountEvent, newGameEvent } from '../events';
+import { $playground, generation, random, moving } from '../stores/playground';
 
 // TODO: fix problem with isolation.
 it('Drawing a playground based on height and width and random generation of active blocks', () => {
@@ -86,7 +86,7 @@ it('Arrow up move event', () => {
 	expect($).toEqual(newState);
 });
 
-it.only('Arrow down move event', () => {
+it('Arrow down move event', () => {
 	const oldState = [[0, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
 	const newState = [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]];
 	const keyCode = 40;

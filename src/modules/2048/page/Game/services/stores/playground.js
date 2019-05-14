@@ -1,8 +1,7 @@
-import { gameDomain } from './domain';
-import { mountEvent, newGameEvent, moveEvent } from './events';
+import { gameDomain } from '../domain';
+import { mountEvent, newGameEvent, moveEvent } from '../events';
 
 export const $playground = gameDomain.store([]);
-export const $score = gameDomain.store({ score: 0, bestScore: 0 });
 
 $playground
 	.on(

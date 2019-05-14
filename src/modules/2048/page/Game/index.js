@@ -4,8 +4,8 @@ import { useStore } from 'effector-react';
 
 import { Panel } from '../../organisms/Panel';
 import { Playground } from '../../organisms/Playground';
-import { $playground } from './service/stores';
-import { mountEvent, newGameEvent, moveEvent } from './service/events';
+import { $playground } from './services/stores/playground';
+import { mountEvent, newGameEvent, moveEvent } from './services/events';
 
 const Wrapper = styled('div')`
 	min-width: 80%;

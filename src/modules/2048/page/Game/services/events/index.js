@@ -1,4 +1,4 @@
-import { gameDomain } from './domain';
+import { gameDomain } from '../domain';
 
 export const mountEvent = gameDomain.event('mount event');
 export const newGameEvent = gameDomain.event('new game event');
