@@ -92,44 +92,44 @@ $playground
 		}
 
 		if (payload === 40) {
-      let checked = [];
-  
-      for (let i = newState.length - 1; i >= 0; i--) {
-        for (let j = newState[i].length - 1; j >= 0; j--) {
-          let _ = [];
-          let flag = checked.filter((value) => value === j);
-  
-          if (!flag.length) {
-            if (newState[i][j]) {
-              checked.push(j);
-              _.push(newState[i][j]);
-  
-              for (let k = i - 1; k >= 0; k--) {
-                if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
-              }
-  
-              if (_ || _.length > 1) {
-                for (let k = 0; k < _.length; k++) {
-                  if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
-                }
-              }
-  
-              _ = _.filter(Boolean);
-  
-              for (let f = newState.length - 1; f >= 0; f--) {
-                if (!_[f]) _[f] = 0;
-              }
-  
-              _ = _.reverse();
-  
-              for (let f = newState.length - 1; f >= 0; f--) {
-                newState[f][j] = _[f];
-              }
-            }
-          }
-        }
-      }
-    }
+			let checked = [];
+
+			for (let i = newState.length - 1; i >= 0; i--) {
+				for (let j = newState[i].length - 1; j >= 0; j--) {
+					let _ = [];
+					let flag = checked.filter((value) => value === j);
+
+					if (!flag.length) {
+						if (newState[i][j]) {
+							checked.push(j);
+							_.push(newState[i][j]);
+
+							for (let k = i - 1; k >= 0; k--) {
+								if (newState[k][j]) _.push(newState[k][j]), (newState[k][j] = 0);
+							}
+
+							if (_ || _.length > 1) {
+								for (let k = 0; k < _.length; k++) {
+									if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+								}
+							}
+
+							_ = _.filter(Boolean);
+
+							for (let f = newState.length - 1; f >= 0; f--) {
+								if (!_[f]) _[f] = 0;
+							}
+
+							_ = _.reverse();
+
+							for (let f = newState.length - 1; f >= 0; f--) {
+								newState[f][j] = _[f];
+							}
+						}
+					}
+				}
+			}
+		}
 
 		return newState;
 	});
