@@ -116,10 +116,12 @@ describe('Move events', () => {
 		let counterActiveBlock = 0;
 		for (let i = 0; i < playgroundHeight; i++) {
 			for (let j = 0; j < playgroundWidth; j++) {
-				if (playgroundStore[i][j] > 0) ++counterActiveBlock;
+				if (playgroundStore[i][j]) ++counterActiveBlock;
 			}
 		}
-
+	
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
+
+	it.todo('Floating bug with incorrect number of active blocks')
 });

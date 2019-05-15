@@ -18,11 +18,17 @@ $playground
 
 	.on(moveEvent, (state, payload) => {
 		let newState = moving(state, payload);
+		let flag = true
 
-		let newActiveBlock = random(1, newState.length, newState[0].length);
-		newState[0][(newActiveBlock[0][0], newActiveBlock[0][1])] = 2;
+		// TODO: equal
 
-		console.log('newActiveBlock', newActiveBlock, newState);
+		while(flag){
+			let newActiveBlock = random(1, newState.length, newState[0].length);
+			
+			!newState[newActiveBlock[0][0]][newActiveBlock[0][1]] 
+			? (newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2, flag = false)
+			: null
+		}
 
 		return newState;
 	});
