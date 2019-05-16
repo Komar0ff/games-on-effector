@@ -119,9 +119,9 @@ describe('Move events', () => {
 				if (playgroundStore[i][j]) ++counterActiveBlock;
 			}
 		}
-	
+
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
-	it.todo('Floating bug with incorrect number of active blocks')
+	it.todo('Floating bug with incorrect number of active blocks');
 });
