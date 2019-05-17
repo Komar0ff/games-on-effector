@@ -20,8 +20,6 @@ $playground
 		let newState = moving(state, payload);
 		let flag = true;
 
-		// TODO: equal
-
 		while (flag) {
 			let newActiveBlock = random(1, newState.length, newState[0].length);
 
@@ -30,10 +28,21 @@ $playground
 				: null;
 		}
 
+		// TODO: equal
+
 		return newState;
-	})
+	});
 
+export const equal = (first, second) => {
+	let firstState = [...first];
+	let secondState = [...second];
+	let equal = true;
 
+	for (let i = 0; i < firstState.length; i++)
+		firstState[i].every((value) => secondState[i].includes(value)) ? null : (equal = false);
+
+	return equal;
+};
 
 export const random = (count, width, height) => {
 	let output = [];
@@ -179,6 +188,6 @@ export const moving = (oldState, moveKey) => {
 			}
 		}
 	}
-
+	
 	return newState;
 };

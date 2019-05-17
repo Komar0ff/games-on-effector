@@ -1,7 +1,7 @@
 import { mountEvent, newGameEvent, moveEvent } from '../events';
-import { $playground, generation, random, moving } from '../stores/playground';
+import { $playground, generation, random, moving, equal } from '../stores/playground';
 
-describe('Random and generation', () => {
+describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
 	let playgroundWidth = 3;
 	let playgroundHeight = 4;
@@ -29,6 +29,14 @@ describe('Random and generation', () => {
 
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
+
+	it('Array equal', () => {
+		const firstState = [[1, 4, 3], [3, 4, 5]];
+		const secondState = [[1, 2, 3], [3, 4, 5]];
+
+		let result = equal(firstState, secondState);
+		expect(result).toBe(false);
+	});
 });
 
 describe('With localStorage tests', () => {
@@ -55,13 +63,18 @@ describe('With localStorage tests', () => {
 	});
 });
 
-it('New game event', () => {
-	let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
-	newGameEvent(localStorage);
+describe('Game status', () => {
+	it('New game event', () => {
+		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
+		newGameEvent(localStorage);
 
-	let playgroundStore = $playground.getState();
-	expect(playgroundStore.length).toBe(4);
-	expect(playgroundStore[0].length).toBe(3);
+		let playgroundStore = $playground.getState();
+		expect(playgroundStore.length).toBe(4);
+		expect(playgroundStore[0].length).toBe(3);
+	});
+	it.todo('End game');
+	it.todo('Load game');
+	it.todo('Revert step');
 });
 
 describe('Move events', () => {
