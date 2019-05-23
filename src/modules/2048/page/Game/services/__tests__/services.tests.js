@@ -1,5 +1,5 @@
 import { mountEvent, newGameEvent, moveEvent } from '../events';
-import { $playground, generation, random, moving, equal } from '../stores/playground';
+import { $playground, generation, random, moving, equal, full } from '../stores/playground';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -32,11 +32,18 @@ describe('Helpers', () => {
 
 	it('Array equal', () => {
 		const firstState = [[1, 4, 3], [3, 4, 5]];
-		const secondState = [[1, 2, 3], [3, 4, 5]];
+		const secondState = [[1, 4, 3], [3, 4, 5]];
 
 		let result = equal(firstState, secondState);
-		expect(result).toBe(false);
+		expect(result).toBe(true);
 	});
+
+	it.only('Array full', () => {
+		const state = [[1, 4, 4], [3, 4, 5]];
+
+		let result = full(state);
+		expect(result).toBe(true);
+	})
 });
 
 describe('With localStorage tests', () => {

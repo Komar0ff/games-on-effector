@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
 import { useStore } from 'effector-react';
 
@@ -16,17 +16,13 @@ const fakeData = [{ name: 'Score', count: 0 }, { name: 'Best score', count: 20 }
 
 export const Game = () => {
 	const playgroundStore = useStore($playground);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		mountEvent({ playground: [], count: 8, width: 5, height: 5 });
 		document.addEventListener('keydown', handleMove);
 	}, []);
 
-	const handleMove = (data) => {
-		moveEvent(data.keyCode);
-	};
-	const handleClick = (id) => {
-		if (id === 0) newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
-	};
+	const handleMove = (data) => {moveEvent(data.keyCode)};
+	const handleClick = (id) => {if(!id) newGameEvent({ playground: [], count: 3, width: 5, height: 5 })};
 
 	return (
 		<Wrapper>

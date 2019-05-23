@@ -33,6 +33,7 @@ $playground
 		return newState;
 	});
 
+export const full = (state) => state.every(rows => rows.every(Boolean))
 export const equal = (first, second) => {
 	let firstState = [...first];
 	let secondState = [...second];
@@ -188,6 +189,6 @@ export const moving = (oldState, moveKey) => {
 			}
 		}
 	}
-	
+
 	return newState;
 };
