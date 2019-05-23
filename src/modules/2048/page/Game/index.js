@@ -21,8 +21,12 @@ export const Game = () => {
 		document.addEventListener('keydown', handleMove);
 	}, []);
 
-	const handleMove = (data) => {moveEvent(data.keyCode)};
-	const handleClick = (id) => {if(!id) newGameEvent({ playground: [], count: 3, width: 5, height: 5 })};
+	const handleMove = (data) => {
+		moveEvent(data.keyCode);
+	};
+	const handleClick = (id) => {
+		if (!id) newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
+	};
 
 	return (
 		<Wrapper>

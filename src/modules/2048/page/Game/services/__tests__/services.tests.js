@@ -30,7 +30,7 @@ describe('Helpers', () => {
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
-	it('Array equal', () => {
+	it.only('Array equal', () => {
 		const firstState = [[1, 4, 3], [3, 4, 5]];
 		const secondState = [[1, 4, 3], [3, 4, 5]];
 
@@ -38,12 +38,12 @@ describe('Helpers', () => {
 		expect(result).toBe(true);
 	});
 
-	it.only('Array full', () => {
+	it('Array full', () => {
 		const state = [[1, 4, 4], [3, 4, 5]];
 
 		let result = full(state);
 		expect(result).toBe(true);
-	})
+	});
 });
 
 describe('With localStorage tests', () => {

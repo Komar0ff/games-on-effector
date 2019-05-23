@@ -33,16 +33,14 @@ $playground
 		return newState;
 	});
 
-export const full = (state) => state.every(rows => rows.every(Boolean))
-export const equal = (first, second) => {
-	let firstState = [...first];
-	let secondState = [...second];
+export const full = (state) => state.every((rows) => rows.every(Boolean));
+export const equal = (firstState, secondState) => {
 	let equal = true;
 
 	for (let i = 0; i < firstState.length; i++)
-		firstState[i].every((value) => secondState[i].includes(value)) ? null : (equal = false);
+		if(!firstState[i].every((value) => secondState[i].includes(value))) equal = false;
 
-	return equal;
+	return equal
 };
 
 export const random = (count, width, height) => {
