@@ -38,9 +38,9 @@ export const equal = (firstState, secondState) => {
 	let equal = true;
 
 	for (let i = 0; i < firstState.length; i++)
-		if(!firstState[i].every((value) => secondState[i].includes(value))) equal = false;
+		if (!firstState[i].every((value) => secondState[i].includes(value))) equal = false;
 
-	return equal
+	return equal;
 };
 
 export const random = (count, width, height) => {
