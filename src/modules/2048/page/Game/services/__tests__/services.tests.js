@@ -88,8 +88,8 @@ describe('Game status', () => {
 		moveEvent(keyCode);
 
 		let playgroundStore = $playground.getState();
-		expect(playgroundStore).toEqual(localStorage.playground)
-	})
+		expect(playgroundStore).toEqual(localStorage.playground);
+	});
 
 	it.todo('Load game');
 	it.todo('Revert step');
@@ -162,18 +162,18 @@ describe('Move events', () => {
 		moveEvent(keyCode);
 
 		let playgroundStore = $playground.getState();
-		expect(playgroundStore).toEqual(localStorage.playground)
-	})
+		expect(playgroundStore).toEqual(localStorage.playground);
+	});
 
 	// it('', () => {
-		// let keyCode = 37;
-		// let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+	// let keyCode = 37;
+	// let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
 
-		// mountEvent(localStorage);
-		// moveEvent(keyCode);
+	// mountEvent(localStorage);
+	// moveEvent(keyCode);
 
-		// let playgroundStore = $playground.getState();
-		// expect(playgroundStore).toEqual(localStorage.playground)
+	// let playgroundStore = $playground.getState();
+	// expect(playgroundStore).toEqual(localStorage.playground)
 	// })
 
 	it.todo('Floating bug with incorrect number of active blocks');

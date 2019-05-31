@@ -21,20 +21,20 @@ $playground
 		let newState = moving(state, payload);
 		let flag = true;
 
-		let fullFlag = full(newState)
-		let equalFlag = equal(state, newState)
+		let fullFlag = full(newState);
+		let equalFlag = equal(state, newState);
 
-		if(!equalFlag) {
+		if (!equalFlag) {
 			while (flag) {
 				let newActiveBlock = random(1, newState.length, newState[0].length);
-	
+
 				!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
 					? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
 					: null;
 			}
 		}
 
-		equalFlag && fullFlag ? console.log('You lose') : null
+		equalFlag && fullFlag ? console.log('You lose') : null;
 		return newState;
 	});
 
@@ -42,9 +42,9 @@ export const full = (state) => state.every((rows) => rows.every(Boolean));
 export const equal = (firstState, secondState) => {
 	let equal = true;
 
-	for(let i = 0; i<=firstState.length-1; i++){
-		for(let j = 0; j<=firstState[i].length-1; j++){
-			if(firstState[i][j] != secondState[i][j]) equal = false
+	for (let i = 0; i <= firstState.length - 1; i++) {
+		for (let j = 0; j <= firstState[i].length - 1; j++) {
+			if (firstState[i][j] != secondState[i][j]) equal = false;
 		}
 	}
 
