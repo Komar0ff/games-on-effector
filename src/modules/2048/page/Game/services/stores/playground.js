@@ -1,5 +1,6 @@
 import { gameDomain } from '../domain';
 import { mountEvent, newGameEvent, moveEvent } from '../events';
+import { join } from 'upath';
 
 export const $playground = gameDomain.store([]);
 
@@ -20,16 +21,20 @@ $playground
 		let newState = moving(state, payload);
 		let flag = true;
 
-		while (flag) {
-			let newActiveBlock = random(1, newState.length, newState[0].length);
+		let fullFlag = full(newState)
+		let equalFlag = equal(state, newState)
 
-			!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
-				? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
-				: null;
+		if(!equalFlag) {
+			while (flag) {
+				let newActiveBlock = random(1, newState.length, newState[0].length);
+	
+				!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
+					? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
+					: null;
+			}
 		}
 
-		// TODO: equal
-
+		equalFlag && fullFlag ? console.log('You lose') : null
 		return newState;
 	});
 
@@ -37,8 +42,11 @@ export const full = (state) => state.every((rows) => rows.every(Boolean));
 export const equal = (firstState, secondState) => {
 	let equal = true;
 
-	for (let i = 0; i < firstState.length; i++)
-		if (!firstState[i].every((value) => secondState[i].includes(value))) equal = false;
+	for(let i = 0; i<=firstState.length-1; i++){
+		for(let j = 0; j<=firstState[i].length-1; j++){
+			if(firstState[i][j] != secondState[i][j]) equal = false
+		}
+	}
 
 	return equal;
 };

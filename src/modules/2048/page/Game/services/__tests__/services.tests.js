@@ -30,12 +30,12 @@ describe('Helpers', () => {
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
-	it.only('Array equal', () => {
-		const firstState = [[1, 4, 3], [3, 4, 5]];
-		const secondState = [[1, 4, 3], [3, 4, 5]];
+	it('Array equal', () => {
+		const firstState = [[0, 0, 8], [0, 1024, 0]];
+		const secondState = [[0, 0, 8], [0, 1024, 2]];
 
 		let result = equal(firstState, secondState);
-		expect(result).toBe(true);
+		expect(result).toBe(false);
 	});
 
 	it('Array full', () => {
@@ -79,7 +79,18 @@ describe('Game status', () => {
 		expect(playgroundStore.length).toBe(4);
 		expect(playgroundStore[0].length).toBe(3);
 	});
-	it.todo('End game');
+
+	it('Game over', () => {
+		let keyCode = 37;
+		let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+		mountEvent(localStorage);
+		moveEvent(keyCode);
+
+		let playgroundStore = $playground.getState();
+		expect(playgroundStore).toEqual(localStorage.playground)
+	})
+
 	it.todo('Load game');
 	it.todo('Revert step');
 });
@@ -121,7 +132,7 @@ describe('Move events', () => {
 		expect($).toEqual(newState);
 	});
 
-	it('After move event', () => {
+	it('New block has been added', () => {
 		let keyCode = 37;
 		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
 
@@ -142,6 +153,28 @@ describe('Move events', () => {
 
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
+
+	it('Do not added the active block If the states is equal after moving', () => {
+		let keyCode = 37;
+		let localStorage = { playground: [[8, 16, 0], [1024, 0, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+		mountEvent(localStorage);
+		moveEvent(keyCode);
+
+		let playgroundStore = $playground.getState();
+		expect(playgroundStore).toEqual(localStorage.playground)
+	})
+
+	// it('', () => {
+		// let keyCode = 37;
+		// let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+		// mountEvent(localStorage);
+		// moveEvent(keyCode);
+
+		// let playgroundStore = $playground.getState();
+		// expect(playgroundStore).toEqual(localStorage.playground)
+	// })
 
 	it.todo('Floating bug with incorrect number of active blocks');
 });
