@@ -1,4 +1,3 @@
-
 import { $score } from '../stores/score';
 import { scoreUpdateEvent } from '../events';
 

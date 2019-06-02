@@ -1,10 +1,4 @@
-import {
-	generation,
-	random,
-	equal,
-	full,
-	scoring
-} from '../helpers';
+import { generation, random, equal, full, scoring } from '../helpers';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;

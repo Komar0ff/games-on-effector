@@ -1,7 +1,6 @@
 import { mountEvent, moveEvent } from '../events';
 import { $playground, moving } from '../stores/playground';
 
-
 describe('With localStorage tests', () => {
 	it('Playground mounting with empty playground', () => {
 		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
@@ -25,7 +24,6 @@ describe('With localStorage tests', () => {
 		expect(playgroundStore[0].length).toBe(3);
 	});
 });
-
 
 describe('Move events', () => {
 	it('Arrow left move event', () => {
@@ -96,6 +94,6 @@ describe('Move events', () => {
 		let playgroundStore = $playground.getState();
 		expect(playgroundStore).toEqual(localStorage.playground);
 	});
-	
+
 	it.todo('Floating bug with incorrect number of active blocks');
 });
