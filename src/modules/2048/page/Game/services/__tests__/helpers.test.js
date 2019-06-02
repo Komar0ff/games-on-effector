@@ -88,5 +88,4 @@ describe('Move tests', () => {
 		let $ = moving(oldState, keyCode);
 		expect($).toEqual(newState);
 	});
-})
-
+});

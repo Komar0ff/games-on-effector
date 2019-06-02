@@ -26,7 +26,6 @@ describe('With localStorage tests', () => {
 });
 
 describe('Move events', () => {
-
 	it('New block has been added', () => {
 		let keyCode = 37;
 		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation

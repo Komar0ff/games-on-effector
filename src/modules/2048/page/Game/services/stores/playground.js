@@ -34,10 +34,7 @@ $playground
 			}
 		}
 
-
 		scoreUpdateEvent(scoring(newState));
 		equalFlag && fullFlag ? console.log('You lose') : null;
 		return newState;
 	});
-
-
