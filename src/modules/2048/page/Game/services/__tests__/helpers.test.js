@@ -1,4 +1,4 @@
-import { generation, random, equal, full, scoring } from '../helpers';
+import { generation, random, equal, full, scoring, moving } from '../helpers';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -51,3 +51,42 @@ describe('Helpers', () => {
 		expect(result).toBe(2066);
 	});
 });
+
+describe('Move tests', () => {
+	it('Arrow left move event', () => {
+		const oldState = [[0, 0, 8, 0], [8, 16, 8, 0], [0, 8, 8, 8]];
+		const newState = [[8, 0, 0, 0], [8, 16, 8, 0], [16, 8, 0, 0]];
+		const keyCode = 37;
+
+		let $ = moving(oldState, keyCode);
+		expect($).toEqual(newState);
+	});
+
+	it('Arrow right move event', () => {
+		const oldState = [[2, 0, 0, 0], [8, 0, 0, 0], [0, 8, 8, 8]];
+		const newState = [[0, 0, 0, 2], [0, 0, 0, 8], [0, 0, 8, 16]];
+		const keyCode = 39;
+
+		let $ = moving(oldState, keyCode);
+		expect($).toEqual(newState);
+	});
+
+	it('Arrow up move event', () => {
+		const oldState = [[8, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
+		const newState = [[8, 8, 8, 16], [0, 0, 2, 0], [0, 0, 8, 0]];
+		const keyCode = 38;
+
+		let $ = moving(oldState, keyCode);
+		expect($).toEqual(newState);
+	});
+
+	it('Arrow down move event', () => {
+		const oldState = [[0, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
+		const newState = [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]];
+		const keyCode = 40;
+
+		let $ = moving(oldState, keyCode);
+		expect($).toEqual(newState);
+	});
+})
+
