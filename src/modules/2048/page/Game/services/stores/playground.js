@@ -1,6 +1,5 @@
 import { gameDomain } from '../domain';
-import { mountEvent, newGameEvent, moveEvent } from '../events';
-import { join } from 'upath';
+import { mountEvent, newGameEvent, moveEvent, scoreUpdateEvent } from '../events';
 
 export const $playground = gameDomain.store([]);
 
@@ -50,6 +49,15 @@ export const equal = (firstState, secondState) => {
 
 	return equal;
 };
+export const scoring = (state) => {
+	let result = 0
+
+  for(let i = 0; i<state.length; i++) {
+    result += state[i].reduce((acc, value) => acc + value)
+	}
+	
+	return result
+}
 
 export const random = (count, width, height) => {
 	let output = [];
@@ -196,5 +204,6 @@ export const moving = (oldState, moveKey) => {
 		}
 	}
 
+	scoreUpdateEvent(scoring(newState))
 	return newState;
 };
