@@ -1,6 +1,6 @@
 import React from 'react';
 import { Playground } from '../index.js';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 
 describe('Playground tests', () => {
 	it('render playground', () => {

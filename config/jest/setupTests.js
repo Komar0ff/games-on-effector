@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { Response, Request, Headers, fetch } from 'whatwg-fetch';
-import { render, cleanup, fireEvent } from 'react-testing-library'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;
