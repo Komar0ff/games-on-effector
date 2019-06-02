@@ -15,7 +15,7 @@ const Wrapper = styled('div')`
 
 export const Game = () => {
 	const playgroundStore = useStore($playground);
-	const score = useStore($score)
+	const score = useStore($score);
 
 	useLayoutEffect(() => {
 		mountEvent({ playground: [], count: 8, width: 5, height: 5 });

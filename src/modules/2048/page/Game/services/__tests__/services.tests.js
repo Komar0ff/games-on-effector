@@ -1,6 +1,14 @@
 import { mountEvent, newGameEvent, moveEvent, scoreUpdateEvent } from '../events';
-import { $playground, generation, random, moving, equal, full, scoring } from '../stores/playground';
-import {$score} from '../stores/score'
+import {
+	$playground,
+	generation,
+	random,
+	moving,
+	equal,
+	full,
+	scoring
+} from '../stores/playground';
+import { $score } from '../stores/score';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -47,34 +55,33 @@ describe('Helpers', () => {
 	});
 
 	it('Scoring', () => {
-		const state = [[1024, 0, 0], [16, 1024, 2]]
-		const result = scoring(state)
+		const state = [[1024, 0, 0], [16, 1024, 2]];
+		const result = scoring(state);
 
-		expect(result).toBe(2066)
-	})
+		expect(result).toBe(2066);
+	});
 });
 
 describe('Scoring tests', () => {
-	it('scoreUpdate',  () => {
-		let score = 1024
-		scoreUpdateEvent(score)
+	it('scoreUpdate', () => {
+		let score = 1024;
+		scoreUpdateEvent(score);
 
-		let store = $score.getState()
-		expect(store).toEqual({score: 1024, bestScore: 1024})
-	})
+		let store = $score.getState();
+		expect(store).toEqual({ score: 1024, bestScore: 1024 });
+	});
 
 	it('Best score update', () => {
-		let scoreFirst = 1024
-		scoreUpdateEvent(scoreFirst)
+		let scoreFirst = 1024;
+		scoreUpdateEvent(scoreFirst);
 
-		let scoreSecond = 16
-		scoreUpdateEvent(scoreSecond)
+		let scoreSecond = 16;
+		scoreUpdateEvent(scoreSecond);
 
-		let store = $score.getState()
-		expect(store).toEqual({score: 16, bestScore: 1024})
-	})
-})
-
+		let store = $score.getState();
+		expect(store).toEqual({ score: 16, bestScore: 1024 });
+	});
+});
 
 describe('With localStorage tests', () => {
 	it('Playground mounting with empty playground', () => {

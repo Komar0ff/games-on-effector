@@ -17,11 +17,7 @@ const ScoreArea = styled('div')`
 
 export const Score = (props) => (
 	<Wrapper data-testid="scorePanel">
-		<ScoreArea>
-			Score: {props.data['score']}
-		</ScoreArea>
-		<ScoreArea>
-			Best score: {props.data['bestScore']}
-		</ScoreArea>
+		<ScoreArea>Score: {props.data['score']}</ScoreArea>
+		<ScoreArea>Best score: {props.data['bestScore']}</ScoreArea>
 	</Wrapper>
 );

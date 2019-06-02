@@ -50,14 +50,14 @@ export const equal = (firstState, secondState) => {
 	return equal;
 };
 export const scoring = (state) => {
-	let result = 0
+	let result = 0;
 
-  for(let i = 0; i<state.length; i++) {
-    result += state[i].reduce((acc, value) => acc + value)
+	for (let i = 0; i < state.length; i++) {
+		result += state[i].reduce((acc, value) => acc + value);
 	}
-	
-	return result
-}
+
+	return result;
+};
 
 export const random = (count, width, height) => {
 	let output = [];
@@ -204,6 +204,6 @@ export const moving = (oldState, moveKey) => {
 		}
 	}
 
-	scoreUpdateEvent(scoring(newState))
+	scoreUpdateEvent(scoring(newState));
 	return newState;
 };
