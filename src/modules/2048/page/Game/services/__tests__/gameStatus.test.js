@@ -9,10 +9,10 @@ describe('Game status tests', () => {
 
 		let playgroundStore = $playground.getState();
 		let gameStatus = $gameStatus.getState();
-		
+
 		expect(playgroundStore.length).toBe(4);
 		expect(playgroundStore[0].length).toBe(3);
-		expect(gameStatus).toBe('IN_PROGRESS')
+		expect(gameStatus).toBe('IN_PROGRESS');
 	});
 
 	it('Game over', () => {
@@ -26,6 +26,6 @@ describe('Game status tests', () => {
 		let gameStatus = $gameStatus.getState();
 
 		expect(playgroundStore).toEqual(localStorage.playground);
-		expect(gameStatus).toBe('LOSE')
+		expect(gameStatus).toBe('LOSE');
 	});
 });

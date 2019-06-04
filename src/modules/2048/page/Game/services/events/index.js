@@ -13,4 +13,4 @@ export const scoreUpdateEvent = gameDomain.event('update score and best score');
 export const gameStartEvent = gameDomain.event('game in progress');
 export const gameLoseEvent = gameDomain.event('game lose');
 export const gameWinEvent = gameDomain.event('game win');
-export const gamePauseEvent = gameDomain.event('game pause') //only in speed mode
+export const gamePauseEvent = gameDomain.event('game pause'); //only in speed mode

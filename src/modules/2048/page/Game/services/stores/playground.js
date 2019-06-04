@@ -1,5 +1,12 @@
 import { gameDomain } from '../domain';
-import { mountEvent, newGameEvent, moveEvent, scoreUpdateEvent, gameStartEvent, gameLoseEvent } from '../events';
+import {
+	mountEvent,
+	newGameEvent,
+	moveEvent,
+	scoreUpdateEvent,
+	gameStartEvent,
+	gameLoseEvent
+} from '../events';
 import { generation, random, equal, full, scoring, moving } from '../helpers';
 
 export const $playground = gameDomain.store([]);
@@ -36,6 +43,6 @@ $playground
 
 		scoreUpdateEvent(scoring(newState));
 		equalFlag && fullFlag ? gameLoseEvent() : null;
-		
+
 		return newState;
 	});
