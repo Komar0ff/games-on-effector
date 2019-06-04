@@ -1,4 +1,4 @@
-import { generation, random, equal, full, scoring, moving } from '../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -49,6 +49,13 @@ describe('Helpers', () => {
 		const result = scoring(state);
 
 		expect(result).toBe(2066);
+	});
+
+	it('is there a 2048?', () => {
+		const state = [[16, 0, 0], [16, 2048, 2]];
+
+		const result = winning(state);
+		expect(result).toBe(true);
 	});
 });
 

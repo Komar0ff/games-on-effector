@@ -5,9 +5,10 @@ import {
 	moveEvent,
 	scoreUpdateEvent,
 	gameStartEvent,
+	gameWinEvent,
 	gameLoseEvent
 } from '../events';
-import { generation, random, equal, full, scoring, moving } from '../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
 
 export const $playground = gameDomain.store([]);
 
@@ -26,23 +27,26 @@ $playground
 
 	.on(moveEvent, (state, payload) => {
 		let newState = moving(state, payload);
-		let flag = true;
+		let win = winning(newState);
 
-		let fullFlag = full(newState);
-		let equalFlag = equal(state, newState);
+		if (!win) {
+			let flag = true;
+			let fullFlag = full(newState);
+			let equalFlag = equal(state, newState);
 
-		if (!equalFlag) {
-			while (flag) {
-				let newActiveBlock = random(1, newState.length, newState[0].length);
+			if (!equalFlag) {
+				while (flag) {
+					let newActiveBlock = random(1, newState.length, newState[0].length);
 
-				!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
-					? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
-					: null;
+					!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
+						? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
+						: null;
+				}
 			}
-		}
 
-		scoreUpdateEvent(scoring(newState));
-		equalFlag && fullFlag ? gameLoseEvent() : null;
+			scoreUpdateEvent(scoring(newState));
+			equalFlag && fullFlag ? gameLoseEvent() : null;
 
-		return newState;
+			return newState;
+		} else gameWinEvent();
 	});

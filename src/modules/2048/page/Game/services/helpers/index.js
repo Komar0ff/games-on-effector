@@ -50,6 +50,8 @@ export const generation = (count, width, height) => {
 	return result;
 };
 
+export const winning = (state) =>
+	state.find((value) => value.find((subValue) => subValue === 2048)) ? true : false;
 export const moving = (oldState, moveKey) => {
 	let newState = [...oldState];
 

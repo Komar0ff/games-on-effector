@@ -1,6 +1,7 @@
 import { mountEvent, newGameEvent, moveEvent } from '../events';
 import { $playground } from '../stores/playground';
 import { $gameStatus } from '../stores/gameStatus';
+import '../__mocks__/gameStatus';
 
 describe('Game status tests', () => {
 	it('New game event', () => {
@@ -27,5 +28,16 @@ describe('Game status tests', () => {
 
 		expect(playgroundStore).toEqual(localStorage.playground);
 		expect(gameStatus).toBe('LOSE');
+	});
+
+	it('Game win', () => {
+		let keyCode = 37;
+		let localStorage = { playground: [[2, 4, 8], [1024, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+		mountEvent(localStorage);
+		moveEvent(keyCode);
+
+		let gameStatus = $gameStatus.getState();
+		expect(gameStatus).toBe('WIN');
 	});
 });
