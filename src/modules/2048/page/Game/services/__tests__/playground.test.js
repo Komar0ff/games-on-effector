@@ -1,19 +1,18 @@
 import { mountEvent, moveEvent } from '../events';
 import { $playground } from '../stores/playground';
+import '../__mocks__/playground'
 
 describe('With localStorage tests', () => {
 	it('Playground mounting with empty playground', () => {
 		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
-		expect($playground.getState()).toEqual([]);
 
 		mountEvent(localStorage);
 
 		let playgroundStore = $playground.getState(); // storage state after mounting
+
 		expect(playgroundStore.length).toBe(4);
 		expect(playgroundStore[0].length).toBe(3);
 	});
-
-	it.todo('TODO: fix problem with isolation.');
 
 	it('Playground mounting with playground', () => {
 		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
@@ -72,5 +71,4 @@ describe('Move events', () => {
 
 	it.todo('Load game');
 	it.todo('Revert step');
-	it.todo('Floating bug with incorrect number of active blocks');
 });
