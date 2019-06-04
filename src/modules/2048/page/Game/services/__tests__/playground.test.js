@@ -59,5 +59,18 @@ describe('Move events', () => {
 		expect(playgroundStore).toEqual(localStorage.playground);
 	});
 
+	it('Game over', () => {
+		let keyCode = 37;
+		let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+		mountEvent(localStorage);
+		moveEvent(keyCode);
+
+		let playgroundStore = $playground.getState();
+		expect(playgroundStore).toEqual(localStorage.playground);
+	});
+
+	it.todo('Load game');
+	it.todo('Revert step');
 	it.todo('Floating bug with incorrect number of active blocks');
 });

@@ -1,5 +1,6 @@
 import { mountEvent, newGameEvent, moveEvent } from '../events';
 import { $playground } from '../stores/playground';
+import { $gameStatus } from '../stores/gameStatus';
 
 describe('Game status tests', () => {
 	it('New game event', () => {
@@ -7,8 +8,11 @@ describe('Game status tests', () => {
 		newGameEvent(localStorage);
 
 		let playgroundStore = $playground.getState();
+		let gameStatus = $gameStatus.getState();
+		
 		expect(playgroundStore.length).toBe(4);
 		expect(playgroundStore[0].length).toBe(3);
+		expect(gameStatus).toBe('IN_PROGRESS')
 	});
 
 	it('Game over', () => {
@@ -19,9 +23,9 @@ describe('Game status tests', () => {
 		moveEvent(keyCode);
 
 		let playgroundStore = $playground.getState();
-		expect(playgroundStore).toEqual(localStorage.playground);
-	});
+		let gameStatus = $gameStatus.getState();
 
-	it.todo('Load game');
-	it.todo('Revert step');
+		expect(playgroundStore).toEqual(localStorage.playground);
+		expect(gameStatus).toBe('LOSE')
+	});
 });
