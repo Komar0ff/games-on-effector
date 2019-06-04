@@ -1,3 +1,3 @@
 import { $playground } from '../stores/playground';
 
-beforeEach(() => ($playground.setState([])));
+beforeEach(() => $playground.setState([]));
