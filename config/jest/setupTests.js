@@ -1,6 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { Response, Request, Headers, fetch } from 'whatwg-fetch';
 import { render, cleanup, fireEvent } from '@testing-library/react'
+import serializer from 'jest-emotion'
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;
@@ -13,6 +14,7 @@ global.render = render;
 global.fireEvent = fireEvent
 
 afterEach(cleanup)
+expect.addSnapshotSerializer(serializer)
 
 Object.keys(document.defaultView).forEach(property => {
   if (typeof global[property] === 'undefined') {
