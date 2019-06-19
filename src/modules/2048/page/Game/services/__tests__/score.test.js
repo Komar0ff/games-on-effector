@@ -12,9 +12,9 @@ describe('Score tests', () => {
 
 	it('Best score update', () => {
 		let scoreFirst = 1024;
-		scoreUpdateEvent(scoreFirst);
-
 		let scoreSecond = 16;
+
+		scoreUpdateEvent(scoreFirst);
 		scoreUpdateEvent(scoreSecond);
 
 		let store = $score.getState();

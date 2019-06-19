@@ -24,7 +24,7 @@ describe('With localStorage tests', () => {
 	});
 });
 
-it.todo('Without localstorage test')
+it.todo('Without localstorage test');
 
 describe('Move events', () => {
 	it('New block has been added', () => {
