@@ -24,6 +24,8 @@ describe('With localStorage tests', () => {
 	});
 });
 
+it.todo('Without localstorage test')
+
 describe('Move events', () => {
 	it('New block has been added', () => {
 		let keyCode = 37;
@@ -47,20 +49,9 @@ describe('Move events', () => {
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
-	it('Do not added the active block If the states is equal after moving', () => {
+	it('Do not added the active block if the states is equal after moving', () => {
 		let keyCode = 37;
 		let localStorage = { playground: [[8, 16, 0], [1024, 0, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
-
-		mountEvent(localStorage);
-		moveEvent(keyCode);
-
-		let playgroundStore = $playground.getState();
-		expect(playgroundStore).toEqual(localStorage.playground);
-	});
-
-	it('Game over', () => {
-		let keyCode = 37;
-		let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
 
 		mountEvent(localStorage);
 		moveEvent(keyCode);
