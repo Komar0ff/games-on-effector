@@ -8,9 +8,9 @@ describe('Helpers', () => {
 	it('Create random active blocks', () => {
 		let output = random(playgroundActiveBlocks, playgroundWidth, playgroundHeight);
 
-		expect(output.length).toBe(playgroundActiveBlocks);
 		expect(output[0].length).toBe(2); // two coordinates
-		expect(Number.isInteger(output[0][0])).toBeTruthy(); // coordinate must be number
+		expect(output.length).toBe(playgroundActiveBlocks);
+		expect(Number.isInteger(output[0][0])).toBeTruthy(); // coordinate must be integer number
 	});
 
 	it('Generating a playground', () => {
@@ -34,14 +34,14 @@ describe('Helpers', () => {
 		const secondState = [[0, 0, 8], [0, 1024, 2]];
 
 		let result = equal(firstState, secondState);
-		expect(result).toBe(false);
+		expect(result).toBeFalsy();
 	});
 
 	it('Array full', () => {
 		const state = [[1, 4, 4], [3, 4, 5]];
 
 		let result = full(state);
-		expect(result).toBe(true);
+		expect(result).toBeTruthy();
 	});
 
 	it('Scoring', () => {
@@ -55,7 +55,7 @@ describe('Helpers', () => {
 		const state = [[16, 0, 0], [16, 2048, 2]];
 
 		const result = winning(state);
-		expect(result).toBe(true);
+		expect(result).toBeTruthy();
 	});
 });
 
@@ -65,8 +65,8 @@ describe('Move tests', () => {
 		const newState = [[8, 0, 0, 0], [8, 16, 8, 0], [16, 8, 0, 0]];
 		const keyCode = 37;
 
-		let $ = moving(oldState, keyCode);
-		expect($).toEqual(newState);
+		let afterMoving = moving(oldState, keyCode);
+		expect(afterMoving).toEqual(newState);
 	});
 
 	it('Arrow right move event', () => {
@@ -74,8 +74,8 @@ describe('Move tests', () => {
 		const newState = [[0, 0, 0, 2], [0, 0, 0, 8], [0, 0, 8, 16]];
 		const keyCode = 39;
 
-		let $ = moving(oldState, keyCode);
-		expect($).toEqual(newState);
+		let afterMoving = moving(oldState, keyCode);
+		expect(afterMoving).toEqual(newState);
 	});
 
 	it('Arrow up move event', () => {
@@ -83,8 +83,8 @@ describe('Move tests', () => {
 		const newState = [[8, 8, 8, 16], [0, 0, 2, 0], [0, 0, 8, 0]];
 		const keyCode = 38;
 
-		let $ = moving(oldState, keyCode);
-		expect($).toEqual(newState);
+		let afterMoving = moving(oldState, keyCode);
+		expect(afterMoving).toEqual(newState);
 	});
 
 	it('Arrow down move event', () => {
@@ -92,7 +92,7 @@ describe('Move tests', () => {
 		const newState = [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]];
 		const keyCode = 40;
 
-		let $ = moving(oldState, keyCode);
-		expect($).toEqual(newState);
+		let afterMoving = moving(oldState, keyCode);
+		expect(afterMoving).toEqual(newState);
 	});
 });
