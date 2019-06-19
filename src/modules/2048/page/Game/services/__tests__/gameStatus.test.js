@@ -6,9 +6,9 @@ beforeEach(() => $gameStatus.setState(''));
 describe('Game status tests', () => {
 	let keyCode = 37;
 	it('Game in progress', () => {
-		newGameEvent({count: 2});
+		newGameEvent({ count: 2 });
 
-		let gameStatus = $gameStatus.getState()
+		let gameStatus = $gameStatus.getState();
 		expect(gameStatus).toBe('IN_PROGRESS');
 	});
 
