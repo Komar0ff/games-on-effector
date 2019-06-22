@@ -1,5 +1,5 @@
 import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
-import { helpersMock, movingMock } from '../__mocks__/helpers.mock.js';
+import { helpersMock } from '../__mocks__/helpers.mock.js';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -30,35 +30,38 @@ describe('Helpers', () => {
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
+	// prettier-ignore
 	it('Array equal', () => {
-		const result = equal(helpersMock.equalMock.firstState, helpersMock.equalMock.secondState);
-		expect(result).toBeFalsy();
+		expect(
+			equal(
+				[[0, 0, 8], [0, 1024, 0]], 
+				[[0, 0, 8], [0, 1024, 2]]
+			)
+		).toBeFalsy(); // not equal
 	});
 
 	it('Array full', () => {
-		const result = full(helpersMock.fullMock.state);
-		expect(result).toBeTruthy();
+		expect(full([[1, 4, 4], [3, 4, 5]])).toBeTruthy(); // array is full
+		expect(full([[1, 0, 4], [3, 4, 5]])).toBeFalsy(); // array is not full
 	});
 
 	it('Scoring', () => {
-		const result = scoring(helpersMock.scoringMock.state);
-		expect(result).toBe(2066);
+		expect(scoring([[1024, 0, 0], [16, 1024, 2]])).toBe(2066);
 	});
 
 	it('Is there a 2048?', () => {
-		const result = winning(helpersMock.winningMock.state);
-		expect(result).toBeTruthy();
+		expect(winning([[16, 0, 0], [16, 2048, 2]])).toBeTruthy();
 	});
 
 	it('Move left/right/up/down', () => {
-		let moveLeft = moving(movingMock.left.oldState, movingMock.left.keyCode);
-		let moveRight = moving(movingMock.right.oldState, movingMock.right.keyCode);
-		let moveUp = moving(movingMock.up.oldState, movingMock.up.keyCode);
-		let moveDown = moving(movingMock.down.oldState, movingMock.down.keyCode);
+		let moveLeft = moving(helpersMock.left.oldState, helpersMock.left.keyCode);
+		let moveRight = moving(helpersMock.right.oldState, helpersMock.right.keyCode);
+		let moveUp = moving(helpersMock.up.oldState, helpersMock.up.keyCode);
+		let moveDown = moving(helpersMock.down.oldState, helpersMock.down.keyCode);
 
-		expect(moveLeft).toEqual(movingMock.left.newState);
-		expect(moveRight).toEqual(movingMock.right.newState);
-		expect(moveUp).toEqual(movingMock.up.newState);
-		expect(moveDown).toEqual(movingMock.down.newState);
+		expect(moveLeft).toEqual(helpersMock.left.newState);
+		expect(moveRight).toEqual(helpersMock.right.newState);
+		expect(moveUp).toEqual(helpersMock.up.newState);
+		expect(moveDown).toEqual(helpersMock.down.newState);
 	});
 });
