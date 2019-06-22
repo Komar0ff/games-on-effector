@@ -1,5 +1,5 @@
 import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
-import {helpersMock, movingMock} from '../__mocks__/helpers.mock.js'
+import { helpersMock, movingMock } from '../__mocks__/helpers.mock.js';
 
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
@@ -60,5 +60,5 @@ describe('Helpers', () => {
 		expect(moveRight).toEqual(movingMock.right.newState);
 		expect(moveUp).toEqual(movingMock.up.newState);
 		expect(moveDown).toEqual(movingMock.down.newState);
-	})
+	});
 });

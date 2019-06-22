@@ -1,5 +1,6 @@
 import { $score } from '../stores/score';
 import { scoreUpdateEvent } from '../events';
+import '../__mocks__/score.mock.js';
 
 describe('Score tests', () => {
 	it('scoreUpdate', () => {

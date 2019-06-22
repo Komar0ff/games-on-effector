@@ -1,6 +1,6 @@
 import { mountEvent, moveEvent } from '../events';
 import { $playground } from '../stores/playground';
-import '../__mocks__/playground';
+import '../__mocks__/playground.mock.js';
 
 describe('With localStorage tests', () => {
 	it('Playground mounting with empty playground', () => {
