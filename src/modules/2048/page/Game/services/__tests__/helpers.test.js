@@ -97,22 +97,22 @@ describe('Helpers', () => {
 
 describe('Move tests', () => {
 	it('Arrow left move event', () => {
-		let afterMoving = moving(movingMock.left.oldState, movingMock.left.keyCode);
-		expect(afterMoving).toEqual(movingMock.left.newState);
+		let moveLeft = moving(movingMock.left.oldState, movingMock.left.keyCode);
+		expect(moveLeft).toEqual(movingMock.left.newState);
 	});
 
 	it('Arrow right move event', () => {
-		let afterMoving = moving(movingMock.right.oldState, movingMock.right.keyCode);
-		expect(afterMoving).toEqual(movingMock.right.newState);
+		let moveRight = moving(movingMock.right.oldState, movingMock.right.keyCode);
+		expect(moveRight).toEqual(movingMock.right.newState);
 	});
 
 	it('Arrow up move event', () => {
-		let afterMoving = moving(movingMock.up.oldState, movingMock.up.keyCode);
-		expect(afterMoving).toEqual(movingMock.up.newState);
+		let moveUp = moving(movingMock.up.oldState, movingMock.up.keyCode);
+		expect(moveUp).toEqual(movingMock.up.newState);
 	});
 
 	it('Arrow down move event', () => {
-		let afterMoving = moving(movingMock.down.oldState, movingMock.down.keyCode);
-		expect(afterMoving).toEqual(movingMock.down.newState);
+		let moveDown = moving(movingMock.down.oldState, movingMock.down.keyCode);
+		expect(moveDown).toEqual(movingMock.down.newState);
 	});
 });
