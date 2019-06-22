@@ -9,9 +9,15 @@ describe('Helpers', () => {
 	it('Create random active blocks', () => {
 		let output = random(playgroundActiveBlocks, playgroundWidth, playgroundHeight);
 
-		expect(output[0].length).toBe(2); // two coordinates
-		expect(output.length).toBe(playgroundActiveBlocks);
+		expect(output.length).toBe(playgroundActiveBlocks); // Length is equal to the number of active blocks
 		expect(Number.isInteger(output[0][0])).toBeTruthy(); // coordinate must be integer number
+
+		for (let i = 0; i < output.length; i++) {
+			expect(output[i].length).toBe(2); // two coordinates
+
+			expect(output[i][0] > playgroundWidth).toBeFalsy(); // X the coordinate should not be greater than the width
+			expect(output[i][1] > playgroundWidth).toBeFalsy(); // Y the coordinate should not be greater than the height
+		}
 	});
 
 	it('Generating a playground', () => {
@@ -26,7 +32,7 @@ describe('Helpers', () => {
 				if (generator[i][j] > 0) ++counterActiveBlock;
 			}
 		}
-
+		console.log('generator', generator);
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 

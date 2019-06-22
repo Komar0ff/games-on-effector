@@ -24,8 +24,8 @@ export const random = (count, width, height) => {
 	let output = [];
 
 	for (let i = 0; i < count; i++) {
-		let yСoordinate = Math.floor(Math.random() * height);
 		let xСoordinate = Math.floor(Math.random() * width);
+		let yСoordinate = Math.floor(Math.random() * height);
 
 		output.push([xСoordinate, yСoordinate]);
 	}
@@ -36,6 +36,7 @@ export const random = (count, width, height) => {
 export const generation = (count, width, height) => {
 	let result = [];
 	let randomizer = random(count, width, height);
+	console.log('randomizer', randomizer);
 
 	for (let i = 0; i < height; i++) {
 		result.push([]);
