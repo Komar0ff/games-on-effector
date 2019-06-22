@@ -1,5 +1,50 @@
 import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
 
+const helpersMock = {
+	equalMock: {
+		firstState: [[0, 0, 8], [0, 1024, 0]],
+		secondState: [[0, 0, 8], [0, 1024, 2]]
+	},
+
+	fullMock: {
+		state: [[1, 4, 4], [3, 4, 5]]
+	},
+
+	scoringMock: {
+		state: [[1024, 0, 0], [16, 1024, 2]]
+	},
+
+	winningMock: {
+		state: [[16, 0, 0], [16, 2048, 2]]
+	}
+};
+
+const movingMock = {
+	left: {
+		oldState: [[0, 0, 8, 0], [8, 16, 8, 0], [0, 8, 8, 8]],
+		newState: [[8, 0, 0, 0], [8, 16, 8, 0], [16, 8, 0, 0]],
+		keyCode: 37
+	},
+
+	up: {
+		oldState: [[8, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]],
+		newState: [[8, 8, 8, 16], [0, 0, 2, 0], [0, 0, 8, 0]],
+		keyCode: 38
+	},
+
+	right: {
+		oldState: [[2, 0, 0, 0], [8, 0, 0, 0], [0, 8, 8, 8]],
+		newState: [[0, 0, 0, 2], [0, 0, 0, 8], [0, 0, 8, 16]],
+		keyCode: 39
+	},
+
+	down: {
+		oldState: [[0, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]],
+		newState: [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]],
+		keyCode: 40
+	}
+};
+
 describe('Helpers', () => {
 	let playgroundActiveBlocks = 3;
 	let playgroundWidth = 3;
@@ -30,69 +75,44 @@ describe('Helpers', () => {
 	});
 
 	it('Array equal', () => {
-		const firstState = [[0, 0, 8], [0, 1024, 0]];
-		const secondState = [[0, 0, 8], [0, 1024, 2]];
-
-		let result = equal(firstState, secondState);
+		const result = equal(helpersMock.equalMock.firstState, helpersMock.equalMock.secondState);
 		expect(result).toBeFalsy();
 	});
 
 	it('Array full', () => {
-		const state = [[1, 4, 4], [3, 4, 5]];
-
-		let result = full(state);
+		const result = full(helpersMock.fullMock.state);
 		expect(result).toBeTruthy();
 	});
 
 	it('Scoring', () => {
-		const state = [[1024, 0, 0], [16, 1024, 2]];
-		const result = scoring(state);
-
+		const result = scoring(helpersMock.scoringMock.state);
 		expect(result).toBe(2066);
 	});
 
 	it('is there a 2048?', () => {
-		const state = [[16, 0, 0], [16, 2048, 2]];
-
-		const result = winning(state);
+		const result = winning(helpersMock.winningMock.state);
 		expect(result).toBeTruthy();
 	});
 });
 
 describe('Move tests', () => {
 	it('Arrow left move event', () => {
-		const oldState = [[0, 0, 8, 0], [8, 16, 8, 0], [0, 8, 8, 8]];
-		const newState = [[8, 0, 0, 0], [8, 16, 8, 0], [16, 8, 0, 0]];
-		const keyCode = 37;
-
-		let afterMoving = moving(oldState, keyCode);
-		expect(afterMoving).toEqual(newState);
+		let afterMoving = moving(movingMock.left.oldState, movingMock.left.keyCode);
+		expect(afterMoving).toEqual(movingMock.left.newState);
 	});
 
 	it('Arrow right move event', () => {
-		const oldState = [[2, 0, 0, 0], [8, 0, 0, 0], [0, 8, 8, 8]];
-		const newState = [[0, 0, 0, 2], [0, 0, 0, 8], [0, 0, 8, 16]];
-		const keyCode = 39;
-
-		let afterMoving = moving(oldState, keyCode);
-		expect(afterMoving).toEqual(newState);
+		let afterMoving = moving(movingMock.right.oldState, movingMock.right.keyCode);
+		expect(afterMoving).toEqual(movingMock.right.newState);
 	});
 
 	it('Arrow up move event', () => {
-		const oldState = [[8, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
-		const newState = [[8, 8, 8, 16], [0, 0, 2, 0], [0, 0, 8, 0]];
-		const keyCode = 38;
-
-		let afterMoving = moving(oldState, keyCode);
-		expect(afterMoving).toEqual(newState);
+		let afterMoving = moving(movingMock.up.oldState, movingMock.up.keyCode);
+		expect(afterMoving).toEqual(movingMock.up.newState);
 	});
 
 	it('Arrow down move event', () => {
-		const oldState = [[0, 0, 8, 8], [0, 0, 2, 0], [0, 8, 8, 8]];
-		const newState = [[0, 0, 8, 0], [0, 0, 2, 0], [0, 8, 8, 16]];
-		const keyCode = 40;
-
-		let afterMoving = moving(oldState, keyCode);
-		expect(afterMoving).toEqual(newState);
+		let afterMoving = moving(movingMock.down.oldState, movingMock.down.keyCode);
+		expect(afterMoving).toEqual(movingMock.down.newState);
 	});
 });
