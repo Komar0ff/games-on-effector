@@ -18,12 +18,12 @@ describe('Helpers', () => {
 			expect(output[i][0] > playgroundWidth).toBeFalsy(); // X the coordinate should not be greater than the width
 			expect(output[i][1] > playgroundWidth).toBeFalsy(); // Y the coordinate should not be greater than the height
 
-			let _arr = [...output];
-			delete _arr[i];
+			// let _arr = [...output];
+			// delete _arr[i];
 
-			_arr.map((value) => {
-				expect(value[0] === output[i][0] && value[1] === output[i][1]).toBeFalsy();
-			});
+			// _arr.map((value) => {
+			// 	expect(value[0] === output[i][0] && value[1] === output[i][1]).toBeFalsy();
+			// }); 
 		}
 	});
 
