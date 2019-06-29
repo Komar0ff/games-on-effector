@@ -53,6 +53,7 @@ export const generation = (count, width, height) => {
 export const winning = (state) =>
 	state.find((value) => value.find((subValue) => subValue === 2048)) ? true : false;
 
+// todo
 export const moving = (oldState, moveKey) => {
 	let newState = [...oldState];
 
