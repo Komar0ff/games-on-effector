@@ -2,10 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useStore } from 'effector-react';
 
-import { modalEvent } from './services/events';
-import { $savedGames, $modal } from './services/store';
-import { Card } from '../../molecules/Card';
+import { modalEvent, alertEvent } from './services/events';
+import { $savedGames, $modal, $alert } from './services/store';
+
 import { Modal } from './Modal';
+import { Alert } from './Alert';
+import { Card } from '../../molecules/Card';
 
 const Wrapper = styled.div``;
 const CardWrapper = styled.div``;
@@ -14,6 +16,7 @@ const ClearAll = styled.button``;
 export const SavedGames = (props) => {
 	const cards = useStore($savedGames);
 	const modalView = useStore($modal);
+	const alertView = useStore($alert);
 
 	return (
 		<Wrapper>
@@ -25,6 +28,7 @@ export const SavedGames = (props) => {
 			</CardWrapper>
 
 			{modalView ? <Modal /> : null}
+			{alertView ? <Alert /> : null}
 		</Wrapper>
 	);
 };
