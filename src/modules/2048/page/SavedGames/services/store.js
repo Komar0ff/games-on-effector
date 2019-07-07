@@ -1,6 +1,7 @@
-import { createStore } from 'effector';
-import { clearAll } from './events';
+import {createStore} from 'effector'
+import {modalEvent} from './events'
 
-export const $savedGames = createStore([]);
+export const $savedGames = createStore([])
+  .on(modalEvent, (store, payload) => payload === 'yes' ? [] : store)
 
-$savedGames.reset(clearAll);
+export const $modal = createStore(false).on(modalEvent, store => !store)

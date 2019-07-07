@@ -2,24 +2,29 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useStore } from 'effector-react';
 
-import { clearAll } from './services/events';
-import { $savedGames } from './services/store';
+import {	modalEvent } from './services/events';
+import { $savedGames, $modal } from './services/store';
 import { Card } from '../../molecules/Card';
+import {	Modal	} from './Modal'
 
 const Wrapper = styled.div``;
 const CardWrapper = styled.div``;
 const ClearAll = styled.button``;
 
 export const SavedGames = (props) => {
-	const store = useStore($savedGames);
+	const cards = useStore($savedGames);
+	const modalView = useStore($modal)
+	
 	return (
 		<Wrapper>
-			<ClearAll data-testid="clear-btn" onClick={() => clearAll()} />
+			<ClearAll data-testid="clear-btn" onClick={() => modalEvent()} />
 			<CardWrapper data-testid="card-wrapper">
-				{store.map((value, id) => (
+				{cards.map((value, id) => (
 					<Card key={id} data={value} />
 				))}
 			</CardWrapper>
+
+			{modalView ? <Modal /> : null}
 		</Wrapper>
 	);
 };

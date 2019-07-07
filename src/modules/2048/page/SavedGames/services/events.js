@@ -1,3 +1,3 @@
 import { createEvent } from 'effector';
 
-export const clearAll = createEvent('clear all cards');
+export const modalEvent = createEvent('open/close modal event');
