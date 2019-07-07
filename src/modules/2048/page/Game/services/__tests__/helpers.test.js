@@ -23,7 +23,7 @@ describe('Helpers', () => {
 
 			// _arr.map((value) => {
 			// 	expect(value[0] === output[i][0] && value[1] === output[i][1]).toBeFalsy();
-			// }); 
+			// });
 		}
 	});
 
