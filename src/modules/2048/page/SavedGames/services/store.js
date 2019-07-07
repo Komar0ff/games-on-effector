@@ -1,5 +1,5 @@
 import { createStore } from 'effector';
-import { modalEvent, alertEvent } from './events';
+import { modalEvent, alertEvent, removeCardEvent } from './events';
 
 export const $modal = createStore(false).on(modalEvent, (store) => !store);
 export const $alert = createStore(false);
@@ -9,4 +9,10 @@ $alert.on(alertEvent, (store) => true).watch(() => setTimeout(() => $alert.setSt
 export const $savedGames = createStore([]);
 $savedGames
 	.on(modalEvent, (store, payload) => (payload === 'yes' ? [] : store))
+	.on(removeCardEvent, (store, payload) => {
+		let _store = [...store];
+		_store.splice(payload, 1);
+
+		return _store;
+	})
 	.updates.watch(() => alertEvent());
