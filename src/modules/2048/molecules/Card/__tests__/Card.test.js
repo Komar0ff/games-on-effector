@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from '../index';
-import { render } from '@testing-library/react';
 
 const mockData = {
 	move: 5,
