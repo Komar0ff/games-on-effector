@@ -15,5 +15,12 @@ describe('Card tests', () => {
 		expect(parseInt(getByTestId('score').textContent)).toBe(mockData.score);
 	});
 
+	it('Remove handler', () => {
+		const mockEvent = jest.fn((id) => id);
+		const { getByTestId } = render(<Card id={1} data={mockData} onClick={(id) => mockEvent(id)} />);
+
+		fireEvent.click(getByTestId('card-btn'));
+		expect(mockEvent).toHaveBeenCalled();
+	});
 	it.todo('background playground');
 });
