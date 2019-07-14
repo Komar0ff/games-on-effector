@@ -7,6 +7,7 @@ import { modalEvent } from '../services/events';
 import '../__mocks__/savedGames.mock.js';
 
 beforeEach(() => $modal.setState(false));
+
 describe('Saved games tests', () => {
 	it('Сomplete delete', () => {
 		const { getByTestId } = render(<SavedGames />);

@@ -20,7 +20,9 @@ export const SavedGames = (props) => {
 
 	return (
 		<Wrapper>
-			<ClearAll data-testid="clear-btn" onClick={() => modalEvent()} />
+			<ClearAll data-testid="clear-btn" onClick={() => modalEvent()}>
+				Clear all
+			</ClearAll>
 			<CardWrapper data-testid="card-wrapper">
 				{cards.map((value, id) => (
 					<Card key={id} data={value} onClick={(id) => removeCardEvent(id)} />

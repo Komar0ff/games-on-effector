@@ -1,6 +1,6 @@
 import { $savedGames } from '../services/store';
 
-const mockData = [
+export const mockData = [
 	{
 		move: 5,
 		score: 500,
@@ -23,4 +23,4 @@ const mockData = [
 	}
 ];
 
-beforeEach(() => $savedGames.setState(mockData));
+// beforeEach(() => $savedGames.setState(mockData));
