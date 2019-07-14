@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Panel = styled.div``;
 const Move = styled.div``;
 const Score = styled.div``;
-const Button = styled.div`
+const Button = styled.button`
 	position: absolute;
 `;
 
@@ -26,6 +26,8 @@ export const Card = (props) => (
 			<Score data-testid="score">{props.data.score}</Score>
 		</Panel>
 
-		<Button data-testid="card-btn" onClick={() => props.onClick(props.id)} />
+		<Button data-testid="card-btn" onClick={() => props.onClick(props.id)}>
+			remove
+		</Button>
 	</Wrapper>
 );
