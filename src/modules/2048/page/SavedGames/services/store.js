@@ -1,6 +1,5 @@
 import { createStore } from 'effector';
 import { modalEvent, alertEvent, removeCardEvent } from './events';
-import { mockData } from '../__mocks__/savedGames.mock';
 
 export const $modal = createStore(false).on(modalEvent, (store) => !store);
 export const $alert = createStore(false);
