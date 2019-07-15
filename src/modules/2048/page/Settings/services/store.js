@@ -1,15 +1,16 @@
 import { createStore } from 'effector';
-import { widthEvent, heightEvent } from './events';
+import { widthEvent, heightEvent, playgroundUpdateEvent } from './events';
 
 export const $settings = createStore({ width: 0, height: 0 });
 
-$settings.on(widthEvent, (store, playground) => ({ ...store, width: playground }));
-$settings.on(heightEvent, (store, playground) => ({ ...store, height: playground }));
+$settings
+	.on(widthEvent, (store, playground) => ({ ...store, width: playground }))
+	.on(heightEvent, (store, playground) => ({ ...store, height: playground }))
+	.updates.watch((data) => playgroundUpdateEvent(data));
 
 export const $playground = createStore([]);
 
-$playground.on(heightEvent, (store, playground) => generation(2, 10, playground));
-$playground.on(widthEvent, (store, playground) => generation(2, playground, 10));
+$playground.on(playgroundUpdateEvent, (_, { width, height }) => generation(2, width, height));
 
 export const random = (count, width, height) => {
 	let output = [];
