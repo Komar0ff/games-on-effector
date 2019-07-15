@@ -23,4 +23,4 @@ export const mockData = [
 	}
 ];
 
-// beforeEach(() => $savedGames.setState(mockData));
+beforeEach(() => $savedGames.setState(mockData));
