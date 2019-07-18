@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { updatePath } from '../../routes';
 
 const Wrapper = styled('div')`
 	display: flex;
@@ -30,9 +31,9 @@ export const NavMenu = () => (
 	<Wrapper>
 		<Logo>2048</Logo>
 		<Navigation>
-			<a>Game</a>
-			<a>Saved games</a>
-			<a>Settings</a>
+			<a onClick={() => updatePath('Game')}>Game</a>
+			<a onClick={() => updatePath('SavedGames')}>Saved games</a>
+			<a onClick={() => updatePath('Settings')}>Settings</a>
 		</Navigation>
 	</Wrapper>
 );
