@@ -3,8 +3,8 @@ import { scoreUpdateEvent } from '../events';
 import '../__mocks__/score.mock.js';
 
 describe('Score tests', () => {
+	let score = 1024;
 	it('scoreUpdate', () => {
-		let score = 1024;
 		scoreUpdateEvent(score);
 
 		let store = $score.getState();
@@ -12,10 +12,9 @@ describe('Score tests', () => {
 	});
 
 	it('Best score update', () => {
-		let scoreFirst = 1024;
 		let scoreSecond = 16;
 
-		scoreUpdateEvent(scoreFirst);
+		scoreUpdateEvent(score);
 		scoreUpdateEvent(scoreSecond);
 
 		let store = $score.getState();

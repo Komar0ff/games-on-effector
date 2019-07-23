@@ -36,7 +36,6 @@ export const random = (count, width, height) => {
 export const generation = (count, width, height) => {
 	let result = [];
 	let randomizer = random(count, width, height);
-	console.log('randomizer', randomizer);
 
 	for (let i = 0; i < height; i++) {
 		result.push([]);

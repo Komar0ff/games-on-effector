@@ -39,7 +39,7 @@ describe('Helpers', () => {
 				if (generator[i][j] > 0) ++counterActiveBlock;
 			}
 		}
-		console.log('generator', generator);
+
 		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
 	});
 
