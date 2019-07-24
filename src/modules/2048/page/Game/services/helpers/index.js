@@ -16,6 +16,7 @@ export const scoring = (state) => {
 export const random = (count, width, height) => {
 	let output = [];
 
+	// TODO
 	for (let i = 0; i < count; i++) {
 		let xСoordinate = Math.floor(Math.random() * width);
 		let yСoordinate = Math.floor(Math.random() * height);
