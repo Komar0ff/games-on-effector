@@ -1,6 +1,8 @@
 export const full = (state) => state.every((rows) => rows.every(Boolean));
+
 export const equal = (firstState, secondState) =>
 	firstState.every((row, i) => row.every((cell, j) => cell === secondState[i][j]));
+
 export const scoring = (state) => {
 	let result = 0;
 
