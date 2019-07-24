@@ -54,45 +54,45 @@ export const winning = (state) =>
 	state.find((value) => value.find((subValue) => subValue === 2048)) ? true : false;
 
 // todo
-export const moving = (oldState, moveKey) => {
-	let newState = [...oldState];
+export const moving = (previousState, moveKey) => {
+	let newState = [...previousState];
 
-	if (moveKey === 37) {
-		for (let i = 0; i < newState.length; i++) {
-			let _ = [];
-			for (let j = 0; j < newState[i].length; j++) {
-				if (newState[i][j]) _.push(newState[i][j]);
-			}
-
-			if (_ || _.length > 1) {
-				for (let k = 0; k < _.length; k++) {
-					if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+	switch (moveKey) {
+		case 37:
+			for (let i = 0; i < newState.length; i++) {
+				let _ = [];
+				for (let j = 0; j < newState[i].length; j++) {
+					if (newState[i][j]) _.push(newState[i][j]);
 				}
-			}
-			_ = _.filter(Boolean);
 
-			newState[i] = _;
-			while (newState[i].length != oldState[i].length) newState[i].push(0);
-		}
-	}
-
-	if (moveKey === 39) {
-		for (let i = 0; i < newState.length; i++) {
-			let _ = [];
-			for (let j = 0; j < newState[i].length; j++) {
-				if (newState[i][j]) _.push(newState[i][j]);
-			}
-
-			if (_ || _.length > 1) {
-				for (let k = _.length - 1; k > 0; k--) {
-					if (_[k] == _[k - 1]) (_[k] += _[k - 1]), delete _[k - 1];
+				if (_ || _.length > 1) {
+					for (let k = 0; k < _.length; k++) {
+						if (_[k] == _[k + 1]) (_[k] += _[k + 1]), _.splice(k + 1, 1);
+					}
 				}
-			}
-			_ = _.filter(Boolean);
 
-			newState[i] = _;
-			while (newState[i].length != oldState[i].length) newState[i].unshift(0);
-		}
+				newState[i] = _;
+				while (newState[i].length != previousState[i].length) newState[i].push(0);
+			}
+			break;
+
+		case 39:
+			for (let i = 0; i < newState.length; i++) {
+				let _ = [];
+				for (let j = 0; j < newState[i].length; j++) {
+					if (newState[i][j]) _.push(newState[i][j]);
+				}
+
+				if (_ || _.length > 1) {
+					for (let k = _.length - 1; k > 0; k--) {
+						if (_[k] == _[k - 1]) (_[k] += _[k - 1]), _.splice(k + 1, 1);
+					}
+				}
+
+				newState[i] = _;
+				while (newState[i].length != previousState[i].length) newState[i].unshift(0);
+			}
+			break;
 	}
 
 	if (moveKey === 38) {
@@ -113,11 +113,9 @@ export const moving = (oldState, moveKey) => {
 
 						if (_ || _.length > 1) {
 							for (let k = 0; k < _.length; k++) {
-								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), _.splice(k + 1, 1);
 							}
 						}
-
-						_ = _.filter(Boolean);
 
 						for (let f = 0; f < newState.length; f++) {
 							if (!_[f]) _[f] = 0;
@@ -148,11 +146,9 @@ export const moving = (oldState, moveKey) => {
 
 						if (_ || _.length > 1) {
 							for (let k = 0; k < _.length; k++) {
-								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), delete _[k + 1];
+								if (_[k] == _[k + 1]) (_[k] += _[k + 1]), _.splice(k + 1, 1);
 							}
 						}
-
-						_ = _.filter(Boolean);
 
 						for (let f = newState.length - 1; f >= 0; f--) {
 							if (!_[f]) _[f] = 0;
