@@ -34,10 +34,21 @@ export const generation = (count, width, height) => {
 		result.push([]);
 		for (let j = 0; j < width; j++) {
 			result[i].push(0);
+			for (let k = 0; k < coordinates.length; k++) {
+				if (coordinates[k][1] === i && coordinates[k][0] === j) result[i][j] = 2;
+			}
 		}
 	}
 
-	coordinates.forEach((values) => (result[values[0]][values[1]] = 2));
+	// let result = []
+
+	// for(let i = 0; i < height; i++) {
+	//   result.push([])
+	//   for(let j = 0; j < width; j++) { result[i].push(0)}
+	// }
+
+	// coordinates.forEach((values) => result[values[0]][values[1]] = 2)
+
 	return result;
 };
 
