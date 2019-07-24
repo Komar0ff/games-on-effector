@@ -1,15 +1,6 @@
 export const full = (state) => state.every((rows) => rows.every(Boolean));
-export const equal = (firstState, secondState) => {
-	let equal = true;
-
-	for (let i = 0; i <= firstState.length - 1; i++) {
-		for (let j = 0; j <= firstState[i].length - 1; j++) {
-			if (firstState[i][j] != secondState[i][j]) equal = false;
-		}
-	}
-
-	return equal;
-};
+export const equal = (firstState, secondState) =>
+	firstState.every((row, i) => row.every((cell, j) => cell === secondState[i][j]));
 export const scoring = (state) => {
 	let result = 0;
 
