@@ -8,7 +8,7 @@ import {
 	gameWinEvent,
 	gameLoseEvent
 } from '../events';
-import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
 
 export const $playground = gameDomain.store([]);
 

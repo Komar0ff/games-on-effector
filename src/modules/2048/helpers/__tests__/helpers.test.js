@@ -1,4 +1,4 @@
-import { generation, random, equal, full, scoring, moving, winning } from '../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../index';
 import { helpersMock } from '../__mocks__/helpers.mock.js';
 
 describe('Helpers', () => {
