@@ -28,18 +28,16 @@ export const random = (count, width, height) => {
 
 export const generation = (count, width, height) => {
 	let result = [];
-	let randomizer = random(count, width, height);
+	let coordinates = random(count, width, height);
 
 	for (let i = 0; i < height; i++) {
 		result.push([]);
 		for (let j = 0; j < width; j++) {
 			result[i].push(0);
-			for (let k = 0; k < randomizer.length; k++) {
-				if (randomizer[k][1] === i && randomizer[k][0] === j) result[i][j] = 2;
-			}
 		}
 	}
 
+	coordinates.forEach((values) => (result[values[0]][values[1]] = 2));
 	return result;
 };
 
