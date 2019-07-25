@@ -29,20 +29,10 @@ $playground
 	.on(savedGameEvent, (state, payload) => {
 		let previous = JSON.parse(window.localStorage.getItem('savedGames'));
 
-		!!previous
+		previous
 			? window.localStorage.setItem('savedGames', JSON.stringify([state, ...previous]))
 			: window.localStorage.setItem('savedGames', JSON.stringify([state]));
 	})
-
-	// [
-	// 	[
-	// 		[ [Array], [Array] ]
-	// 	],
-	// 	[
-	// 		[ 8, 0, 0 ],
-	// 		[ 1024, 0, 0 ]
-	// 	]
-	// ]
 
 	.on(moveEvent, (state, payload) => {
 		let newState = moving(state, payload);
