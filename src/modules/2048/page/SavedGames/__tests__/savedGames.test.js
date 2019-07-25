@@ -2,13 +2,21 @@ import React from 'react';
 
 import { SavedGames } from '../index';
 import { $savedGames, $modal } from '../services/store';
-import { modalEvent } from '../services/events';
+import { modalEvent, mountEvent } from '../services/events';
 
 import '../__mocks__/savedGames.mock.js';
 
 beforeEach(() => $modal.setState(false));
 
 describe('Saved games tests', () => {
+	// it('Mounting', () => {
+	// 	window.localStorage.setItem('savedGames', [[[0, 0, 8], [0, 1024, 0]]])
+	// 	mountEvent()
+
+	// 	expect($savedGames.getState()).toEqual([[[0, 0, 8], [0, 1024, 0]]])
+
+	// })
+
 	it('Сomplete delete', () => {
 		const { getByTestId } = render(<SavedGames />);
 
@@ -27,7 +35,7 @@ describe('Saved games tests', () => {
 });
 
 describe('Modal tests', () => {
-	it.todo('Snapshot');
+	it.todo('Snapshot'); // after complete design
 
 	it('Open/closed modal', () => {
 		const { getByTestId } = render(<SavedGames />);
