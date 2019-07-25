@@ -4,8 +4,9 @@ import { $playground } from '../stores/playground';
 describe('With localStorage tests', () => {
 	beforeEach(
 		() => (
-			mountEvent({ playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }), // mount localStorage imitation
-			window.localStorage.removeItem('savedGames')
+			$playground.setState([]),
+			window.localStorage.removeItem('savedGames'),
+			mountEvent({ playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }) // mount localStorage imitation
 		)
 	);
 
