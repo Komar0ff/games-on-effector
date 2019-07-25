@@ -27,6 +27,7 @@ $playground
 	)
 
 	.on(savedGameEvent, (state, payload) => {
+		// TODO redundancy test
 		let previous = JSON.parse(window.localStorage.getItem('savedGames'));
 
 		previous
