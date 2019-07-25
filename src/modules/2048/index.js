@@ -11,6 +11,7 @@ import { Settings } from './page/Settings';
 export const TwoThousand = () => {
 	const routing = useStore($routing);
 
+	// It's a temporary solution. We have to solve the routing issue.
 	const routes = {
 		Game: <Game />,
 		SavedGames: <SavedGames />,
@@ -20,7 +21,7 @@ export const TwoThousand = () => {
 	return (
 		<>
 			<NavMenu />
-			{routes[routing]} // It's a temporary solution. We have to solve the routing issue.
+			{routes[routing]}
 		</>
 	);
 };
