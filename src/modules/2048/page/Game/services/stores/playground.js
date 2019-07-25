@@ -6,7 +6,8 @@ import {
 	scoreUpdateEvent,
 	gameStartEvent,
 	gameWinEvent,
-	gameLoseEvent
+	gameLoseEvent,
+	savedGameEvent
 } from '../events';
 import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
 
@@ -24,6 +25,24 @@ $playground
 		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
 		(_, payload) => (gameStartEvent(), payload)
 	)
+
+	.on(savedGameEvent, (state, payload) => {
+		let previous = JSON.parse(window.localStorage.getItem('savedGames'));
+
+		!!previous
+			? window.localStorage.setItem('savedGames', JSON.stringify([state, ...previous]))
+			: window.localStorage.setItem('savedGames', JSON.stringify([state]));
+	})
+
+	// [
+	// 	[
+	// 		[ [Array], [Array] ]
+	// 	],
+	// 	[
+	// 		[ 8, 0, 0 ],
+	// 		[ 1024, 0, 0 ]
+	// 	]
+	// ]
 
 	.on(moveEvent, (state, payload) => {
 		let newState = moving(state, payload);

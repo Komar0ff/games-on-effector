@@ -1,30 +1,35 @@
-import { mountEvent, moveEvent } from '../events';
+import { mountEvent, moveEvent, savedGameEvent } from '../events';
 import { $playground } from '../stores/playground';
-import '../__mocks__/playground.mock.js';
 
 describe('With localStorage tests', () => {
-	it('Playground mounting with empty playground', () => {
-		let localStorage = { playground: [], count: 2, width: 3, height: 4 }; //localStorage imitation
-
-		mountEvent(localStorage);
-
-		let playgroundStore = $playground.getState(); // storage state after mounting
-
-		expect(playgroundStore.length).toBe(4);
-		expect(playgroundStore[0].length).toBe(3);
-	});
+	beforeEach(
+		() => (
+			mountEvent({ playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }), // mount localStorage imitation
+			window.localStorage.removeItem('savedGames')
+		)
+	);
 
 	it('Playground mounting with playground', () => {
-		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
-		mountEvent(localStorage);
-
 		let playgroundStore = $playground.getState(); // storage state after mounting
+
 		expect(playgroundStore.length).toBe(2);
 		expect(playgroundStore[0].length).toBe(3);
 	});
-});
 
-it.todo('Without localstorage test');
+	it('Games saving', () => {
+		savedGameEvent();
+		let playgroundFirstSave = JSON.parse(window.localStorage.getItem('savedGames'));
+		console.log('playgroundFirstSave', playgroundFirstSave);
+		expect(playgroundFirstSave).toEqual([[[0, 0, 8], [0, 1024, 0]]]);
+
+		$playground.setState([[8, 0, 0], [1024, 0, 0]]); // change after move event imitation
+		savedGameEvent();
+
+		let playgroundSecondSave = JSON.parse(window.localStorage.getItem('savedGames'));
+		console.log('playgroundSecondSave', playgroundSecondSave);
+		expect(playgroundSecondSave).toEqual([[[8, 0, 0], [1024, 0, 0]], [[0, 0, 8], [0, 1024, 0]]]);
+	});
+});
 
 describe('Move events', () => {
 	it('New block has been added', () => {

@@ -10,7 +10,7 @@ import { $playground } from './services/stores/playground';
 import { $gameStatus } from './services/stores/gameStatus';
 import { $score } from './services/stores/score';
 
-import { mountEvent, newGameEvent, moveEvent } from './services/events';
+import { mountEvent, moveEvent, newGameEvent, savedGameEvent } from './services/events';
 
 const Wrapper = styled('div')`
 	min-width: 80%;
@@ -32,7 +32,14 @@ export const Game = () => {
 	};
 
 	const handleClick = (id) => {
-		if (!id) newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
+		switch (id) {
+			case 0:
+				newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
+				break;
+			case 1:
+				savedGameEvent();
+				break;
+		}
 	};
 
 	return (
