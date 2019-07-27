@@ -4,30 +4,32 @@ import { SavedGames } from '../index';
 import { $savedGames, $modal } from '../services/store';
 import { modalEvent, mountEvent } from '../services/events';
 
-import '../__mocks__/savedGames.mock.js';
+import { mockData } from '../__mocks__/savedGames.mock.js';
 
-beforeEach(() => $modal.setState(false));
+beforeEach(
+	() => (
+		window.localStorage.setItem('savedGames', JSON.stringify(mockData)), $modal.setState(false)
+	)
+);
 
 describe('Saved games tests', () => {
-	// it('Mounting', () => {
-	// 	window.localStorage.setItem('savedGames', [[[0, 0, 8], [0, 1024, 0]]])
-	// 	mountEvent()
-
-	// 	expect($savedGames.getState()).toEqual([[[0, 0, 8], [0, 1024, 0]]])
-
-	// })
+	it('Mounting', () => {
+		const { getByTestId } = render(<SavedGames />);
+		expect(getByTestId('card-wrapper').children.length).toBe(4);
+	});
 
 	it('Сomplete delete', () => {
 		const { getByTestId } = render(<SavedGames />);
-
-		expect(getByTestId('card-wrapper').children.length).toBe(4); // checking the number of cards
+		$savedGames.setState(mockData); // todo: dry
 
 		modalEvent('yes'); // modal change event
 		expect(getByTestId('card-wrapper').children.length).toBe(0);
+		expect(window.localStorage.getItem('savedGames')).toBeFalsy();
 	});
 
 	it('Dont delete', () => {
 		const { getByTestId } = render(<SavedGames />);
+		$savedGames.setState(mockData);
 
 		modalEvent('no'); // modal change event
 		expect(getByTestId('card-wrapper').children.length).toBe(4);
