@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
 import { useStore } from 'effector-react';
 
-import { modalEvent, removeCardEvent, mountEvent } from './services/events';
+import { modalEvent, removeCardEvent, mountEvent, startingSavedEvent } from './services/events';
 import { $savedGames, $modal, $alert } from './services/store';
 
 import { Modal } from './Modal';
@@ -29,7 +29,13 @@ export const SavedGames = (props) => {
 			</ClearAll>
 			<CardWrapper data-testid="card-wrapper">
 				{cards.map((value, id) => (
-					<Card key={id} data={value} onClick={(id) => removeCardEvent(id)} />
+					<Card
+						id={id}
+						key={id}
+						data={value}
+						onClick={(id) => startingSavedEvent(id)}
+						onRemove={(id) => removeCardEvent(id)}
+					/>
 				))}
 			</CardWrapper>
 

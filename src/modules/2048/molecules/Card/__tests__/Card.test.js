@@ -17,10 +17,23 @@ describe('Card tests', () => {
 
 	it('Remove handler', () => {
 		const mockEvent = jest.fn((id) => id);
-		const { getByTestId } = render(<Card id={1} data={mockData} onClick={(id) => mockEvent(id)} />);
+		const { getByTestId } = render(
+			<Card id={1} data={mockData} onClick={(id) => null} onRemove={(id) => mockEvent(id)} />
+		);
 
 		fireEvent.click(getByTestId('card-btn'));
 		expect(mockEvent).toHaveBeenCalled();
 	});
+
+	it('onClick handler', () => {
+		const mockEvent = jest.fn(() => null);
+		const { getByTestId } = render(
+			<Card id={1} data={mockData} onClick={(id) => mockEvent(id)} onRemove={(id) => null} />
+		);
+
+		fireEvent.click(getByTestId('wrapper-card'));
+		expect(mockEvent).toHaveBeenCalled();
+	});
+
 	it.todo('background playground');
 });

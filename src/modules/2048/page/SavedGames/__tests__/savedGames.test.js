@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SavedGames } from '../index';
 import { $savedGames, $modal } from '../services/store';
-import { modalEvent, mountEvent } from '../services/events';
+import { modalEvent, startingSavedEvent } from '../services/events';
 
 import { mockData } from '../__mocks__/savedGames.mock.js';
 
@@ -34,11 +34,11 @@ describe('Saved games tests', () => {
 		modalEvent('no'); // modal change event
 		expect(getByTestId('card-wrapper').children.length).toBe(4);
 	});
+
+	it.todo('Launch saving game');
 });
 
 describe('Modal tests', () => {
-	it.todo('Snapshot'); // after complete design
-
 	it('Open/closed modal', () => {
 		const { getByTestId } = render(<SavedGames />);
 
