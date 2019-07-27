@@ -11,6 +11,9 @@ import {
 } from '../events';
 import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
 
+export const $moveCount = gameDomain.store(0);
+$moveCount.on(scoreUpdateEvent, (state) => ++state).reset(newGameEvent);
+
 export const $playground = gameDomain.store([]);
 
 $playground
@@ -29,6 +32,12 @@ $playground
 	.on(savedGameEvent, (state, payload) => {
 		// TODO redundancy test
 		let previous = JSON.parse(window.localStorage.getItem('savedGames'));
+
+		// [{
+		// 	move: 10,
+		// 	score: 1500,
+		// 	playground: [[0, 8, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+		// 	}]
 
 		previous
 			? window.localStorage.setItem('savedGames', JSON.stringify([state, ...previous]))

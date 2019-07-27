@@ -1,5 +1,5 @@
-import { mountEvent, moveEvent, savedGameEvent } from '../events';
-import { $playground } from '../stores/playground';
+import { mountEvent, moveEvent, savedGameEvent, scoreUpdateEvent } from '../events';
+import { $playground, $moveCount } from '../stores/playground';
 
 describe('With localStorage tests', () => {
 	beforeEach(
@@ -64,6 +64,15 @@ describe('Move events', () => {
 
 		let playgroundStore = $playground.getState();
 		expect(playgroundStore).toEqual(localStorage.playground);
+	});
+
+	it('Move count', () => {
+		$moveCount.setState(0);
+
+		scoreUpdateEvent(); // If the score are being updated, then the step has been made successfully
+		scoreUpdateEvent();
+
+		expect($moveCount.getState()).toBe(2);
 	});
 
 	it.todo('Load game');
