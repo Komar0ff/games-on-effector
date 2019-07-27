@@ -1,5 +1,5 @@
 import { mountEvent, moveEvent, savedGameEvent, scoreUpdateEvent } from '../events';
-import { $playground, $moveCount } from '../stores/playground';
+import { $playground, $moveCount, $gameSaved } from '../stores/playground';
 
 describe('With localStorage tests', () => {
 	beforeEach(
@@ -19,16 +19,34 @@ describe('With localStorage tests', () => {
 
 	it('Games saving', () => {
 		savedGameEvent();
+		console.log($gameSaved.getState());
+
 		let playgroundFirstSave = JSON.parse(window.localStorage.getItem('savedGames'));
 		console.log('playgroundFirstSave', playgroundFirstSave);
-		expect(playgroundFirstSave).toEqual([[[0, 0, 8], [0, 1024, 0]]]);
+		expect(playgroundFirstSave).toEqual([
+			{
+				move: 0,
+				score: 0,
+				playground: [[0, 0, 8], [0, 1024, 0]]
+			}
+		]);
 
 		$playground.setState([[8, 0, 0], [1024, 0, 0]]); // change after move event imitation
 		savedGameEvent();
 
 		let playgroundSecondSave = JSON.parse(window.localStorage.getItem('savedGames'));
-		console.log('playgroundSecondSave', playgroundSecondSave);
-		expect(playgroundSecondSave).toEqual([[[8, 0, 0], [1024, 0, 0]], [[0, 0, 8], [0, 1024, 0]]]);
+		expect(playgroundSecondSave).toEqual([
+			{
+				move: 0,
+				score: 0,
+				playground: [[8, 0, 0], [1024, 0, 0]]
+			},
+			{
+				move: 0,
+				score: 0,
+				playground: [[0, 0, 8], [0, 1024, 0]]
+			}
+		]);
 	});
 });
 

@@ -1,3 +1,4 @@
+import { combine } from 'effector';
 import { gameDomain } from '../domain';
 import {
 	mountEvent,
@@ -9,6 +10,8 @@ import {
 	gameLoseEvent,
 	savedGameEvent
 } from '../events';
+import { $score } from '../stores/score';
+
 import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
 
 export const $moveCount = gameDomain.store(0);
@@ -28,21 +31,6 @@ $playground
 		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
 		(_, payload) => (gameStartEvent(), payload)
 	)
-
-	.on(savedGameEvent, (state, payload) => {
-		// TODO redundancy test
-		let previous = JSON.parse(window.localStorage.getItem('savedGames'));
-
-		// [{
-		// 	move: 10,
-		// 	score: 1500,
-		// 	playground: [[0, 8, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-		// 	}]
-
-		previous
-			? window.localStorage.setItem('savedGames', JSON.stringify([state, ...previous]))
-			: window.localStorage.setItem('savedGames', JSON.stringify([state]));
-	})
 
 	.on(moveEvent, (state, payload) => {
 		let newState = moving(state, payload);
@@ -69,3 +57,23 @@ $playground
 			return newState;
 		} else gameWinEvent();
 	});
+
+export const $gameSaved = combine(
+	$moveCount,
+	$score,
+	$playground,
+	(move, { score }, playground) => ({
+		move: move,
+		score: score,
+		playground: playground
+	})
+);
+
+$gameSaved.on(savedGameEvent, (state, payload) => {
+	// TODO redundancy test
+	let previous = JSON.parse(window.localStorage.getItem('savedGames'));
+
+	previous
+		? window.localStorage.setItem('savedGames', JSON.stringify([state, ...previous]))
+		: window.localStorage.setItem('savedGames', JSON.stringify([state]));
+});
