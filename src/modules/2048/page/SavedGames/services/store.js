@@ -1,5 +1,7 @@
 import { createStore } from 'effector';
-import { mountEvent, modalEvent, alertEvent, removeCardEvent } from './events';
+import { mountEvent, modalEvent, alertEvent, removeCardEvent, startingSavedEvent } from './events';
+
+import { updatePath } from '../../../routes/';
 
 export const $modal = createStore(false).on(modalEvent, (store) => !store);
 export const $alert = createStore(false);
@@ -16,5 +18,9 @@ $savedGames
 			return [];
 		}
 	})
-	.on(removeCardEvent, (store, payload) => [...store].splice(payload, 1))
+	.on(removeCardEvent, (state, payload) => [...state].splice(payload, 1))
+	.on(startingSavedEvent, (state, payload) => {
+		window.localStorage.setItem('playground', JSON.stringify(state[payload].playground));
+		updatePath('Game');
+	})
 	.updates.watch(() => alertEvent());
