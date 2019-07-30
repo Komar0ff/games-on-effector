@@ -25,6 +25,8 @@ export const Game = () => {
 	useLayoutEffect(() => {
 		mountEvent({
 			playground: JSON.parse(window.localStorage.getItem('playground')),
+
+			// default settings. TODO: add the ability to make changes
 			count: 8,
 			width: 5,
 			height: 5
