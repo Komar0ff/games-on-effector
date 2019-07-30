@@ -8,6 +8,7 @@ export const moveEvent = gameDomain.event('move on playground');
 
 //score
 export const scoreUpdateEvent = gameDomain.event('update score and best score');
+export const scoreCleanEvent = gameDomain.event('clear score');
 
 // game status
 export const gameStartEvent = gameDomain.event('game in progress');

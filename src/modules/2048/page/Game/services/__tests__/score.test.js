@@ -1,14 +1,15 @@
 import { $score } from '../stores/score';
-import { scoreUpdateEvent } from '../events';
+import { scoreUpdateEvent, scoreCleanEvent } from '../events';
 import '../__mocks__/score.mock.js';
 
 describe('Score tests', () => {
 	let score = 1024;
-	it('scoreUpdate', () => {
+	it('Update and clean score', () => {
 		scoreUpdateEvent(score);
+		expect($score.getState()).toEqual({ score: 1024, bestScore: 1024 });
 
-		let store = $score.getState();
-		expect(store).toEqual({ score: 1024, bestScore: 1024 });
+		scoreCleanEvent(); // like when the new game started
+		expect($score.getState()).toEqual({ score: 0, bestScore: 1024 });
 	});
 
 	it('Best score update', () => {
@@ -19,5 +20,6 @@ describe('Score tests', () => {
 
 		let store = $score.getState();
 		expect(store).toEqual({ score: 16, bestScore: 1024 });
+		expect(parseInt(window.localStorage.getItem('bestScore'))).toBe(1024); // TODO: check excessive recalculation
 	});
 });

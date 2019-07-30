@@ -8,7 +8,8 @@ import {
 	gameStartEvent,
 	gameWinEvent,
 	gameLoseEvent,
-	savedGameEvent
+	savedGameEvent,
+	scoreCleanEvent
 } from '../events';
 import { $score } from '../stores/score';
 
@@ -29,7 +30,7 @@ $playground
 
 	.on(
 		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
-		(_, payload) => (gameStartEvent(), payload)
+		(_, payload) => (gameStartEvent(), scoreCleanEvent(), payload)
 	)
 
 	.on(moveEvent, (state, payload) => {
