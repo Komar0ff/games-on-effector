@@ -23,7 +23,12 @@ export const Game = () => {
 	const gameStatus = useStore($gameStatus);
 
 	useLayoutEffect(() => {
-		mountEvent({ playground: [], count: 8, width: 5, height: 5 });
+		mountEvent({
+			playground: JSON.parse(window.localStorage.getItem('playground')),
+			count: 8,
+			width: 5,
+			height: 5
+		});
 		document.addEventListener('keydown', handleMove);
 	}, []);
 

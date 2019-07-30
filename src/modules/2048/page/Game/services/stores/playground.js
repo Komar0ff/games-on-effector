@@ -57,7 +57,10 @@ $playground
 
 			return newState;
 		} else gameWinEvent();
-	});
+	})
+	.updates.watch((playground) =>
+		window.localStorage.setItem('playground', JSON.stringify(playground))
+	);
 
 export const $gameSaved = combine(
 	$moveCount,
