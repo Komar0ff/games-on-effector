@@ -8,7 +8,9 @@ describe('Settings tests', () => {
 	it('Change width and height playground', () => {
 		widthEvent(5);
 		heightEvent(2);
+
 		expect($settings.getState()).toEqual({ width: 5, height: 2 });
+		expect(JSON.parse(window.localStorage.getItem('settings'))).toEqual({ width: 5, height: 2 });
 	});
 
 	it('Generate playground when change width or height', () => {

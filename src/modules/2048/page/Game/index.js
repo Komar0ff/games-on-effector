@@ -21,15 +21,16 @@ export const Game = () => {
 	const playgroundStore = useStore($playground);
 	const score = useStore($score);
 	const gameStatus = useStore($gameStatus);
+	const settings = JSON.parse(window.localStorage.getItem('settings'));
 
 	useLayoutEffect(() => {
+		console.log('settings', settings);
 		mountEvent({
-			playground: JSON.parse(window.localStorage.getItem('playground')),
+			playground: JSON.parse(window.localStorage.getItem('playground')) || [],
 
-			// default settings. TODO: add the ability to make changes
-			count: 8,
-			width: 5,
-			height: 5
+			count: 2,
+			width: settings ? settings.width : 5,
+			height: settings ? settings.height : 5
 		});
 		document.addEventListener('keydown', handleMove);
 	}, []);
@@ -41,7 +42,12 @@ export const Game = () => {
 	const handleClick = (id) => {
 		switch (id) {
 			case 0:
-				newGameEvent({ playground: [], count: 3, width: 5, height: 5 });
+				newGameEvent({
+					playground: [],
+					count: 3,
+					width: settings ? settings.width : 5,
+					height: settings ? settings.height : 5
+				});
 				break;
 			case 1:
 				savedGameEvent();
