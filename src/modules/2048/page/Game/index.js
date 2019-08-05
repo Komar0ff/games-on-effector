@@ -24,7 +24,6 @@ export const Game = () => {
 	const settings = JSON.parse(window.localStorage.getItem('settings'));
 
 	useLayoutEffect(() => {
-		console.log('settings', settings);
 		mountEvent({
 			playground: JSON.parse(window.localStorage.getItem('playground')) || [],
 

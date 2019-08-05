@@ -20,32 +20,36 @@ describe('Saved games tests', () => {
 
 	it('Сomplete delete', () => {
 		const { getByTestId } = render(<SavedGames />);
-		$savedGames.setState(mockData); // todo: dry
 
-		modalEvent('yes'); // modal change event
+		act(() => {
+			modalEvent('yes');
+		}); // modal change event
 		expect(getByTestId('card-wrapper').children.length).toBe(0);
 		expect(window.localStorage.getItem('savedGames')).toBeFalsy();
 	});
 
 	it('Dont delete', () => {
 		const { getByTestId } = render(<SavedGames />);
-		$savedGames.setState(mockData);
 
-		modalEvent('no'); // modal change event
+		act(() => {
+			modalEvent('no');
+		}); // modal change event
 		expect(getByTestId('card-wrapper').children.length).toBe(4);
 	});
-
-	it.todo('Launch saving game');
 });
 
 describe('Modal tests', () => {
 	it('Open/closed modal', () => {
 		const { getByTestId } = render(<SavedGames />);
 
-		fireEvent.click(getByTestId('clear-btn'));
+		act(() => {
+			fireEvent.click(getByTestId('clear-btn'));
+		});
 		expect($modal.getState()).toBeTruthy();
 
-		modalEvent(); // whether it's a 'yes' or a 'no'
+		act(() => {
+			modalEvent();
+		}); // whether it's a 'yes' or a 'no'
 		expect($modal.getState()).toBeFalsy();
 	});
 });

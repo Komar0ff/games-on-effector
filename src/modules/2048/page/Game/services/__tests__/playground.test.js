@@ -19,10 +19,8 @@ describe('With localStorage tests', () => {
 
 	it('Games saving', () => {
 		savedGameEvent();
-		console.log($gameSaved.getState());
 
 		let playgroundFirstSave = JSON.parse(window.localStorage.getItem('savedGames'));
-		console.log('playgroundFirstSave', playgroundFirstSave);
 		expect(playgroundFirstSave).toEqual([
 			{
 				move: 0,

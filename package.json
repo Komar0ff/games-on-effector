@@ -14,7 +14,7 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Komar0ff/games-on-react/issues"
+		"url": "https://github.com/Komar0ff/games-on-effector/issues"
 	},
 	"dependencies": {
 		"effector": "20.1.1",
