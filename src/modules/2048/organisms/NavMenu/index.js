@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 import { updatePath } from '../../routes';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -10,11 +10,11 @@ const Wrapper = styled('div')`
 	border-bottom: 1px solid grey;
 `;
 
-const Logo = styled('h1')`
+const Logo = styled.h1`
 	font-family: sans-serif;
 `;
 
-const Navigation = styled('div')`
+const Navigation = styled.div`
 	display: flex;
 	justify-content: space-between;
 

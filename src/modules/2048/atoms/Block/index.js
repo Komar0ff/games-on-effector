@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 
 const colorScheme = {
 	backgroundColor: '#ccc',
@@ -19,7 +19,7 @@ const colorScheme = {
 	16384: '#4CAF50'
 };
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;

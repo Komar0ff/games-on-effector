@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 import { useStore } from 'effector-react';
 
 import { Modal } from '../../molecules/Modal';
@@ -12,7 +12,7 @@ import { $score } from './services/stores/score';
 
 import { mountEvent, moveEvent, newGameEvent, savedGameEvent } from './services/events';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	min-width: 80%;
 	margin: auto;
 `;

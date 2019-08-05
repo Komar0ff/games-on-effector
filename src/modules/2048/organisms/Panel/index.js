@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 
 import { Control } from '../../molecules/Control';
 import { Score } from '../../molecules/Score';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 `;

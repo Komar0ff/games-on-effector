@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 import { useStore } from 'effector-react';
 
 import { modalEvent, removeCardEvent, mountEvent, startingSavedEvent } from './services/events';

@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 50%;

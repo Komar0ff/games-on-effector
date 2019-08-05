@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 import { Button } from '../../atoms/Button';
 
 const data = [

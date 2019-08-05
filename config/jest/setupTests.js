@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { Response, Request, Headers, fetch } from 'whatwg-fetch';
-import { render, cleanup, fireEvent } from '@testing-library/react'
-import serializer from 'jest-emotion'
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import { reactSerializer } from 'linaria-jest';
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;
@@ -11,14 +11,14 @@ global.Request = Request;
 global.Headers = Headers;
 global.fetch = fetch;
 global.render = render;
-global.fireEvent = fireEvent
+global.fireEvent = fireEvent;
 
-afterEach(cleanup)
-expect.addSnapshotSerializer(serializer)
+afterEach(cleanup);
+expect.addSnapshotSerializer(reactSerializer);
 
-Object.keys(document.defaultView).forEach(property => {
-  if (typeof global[property] === 'undefined') {
-    exposedProperties.push(property);
-    global[property] = document.defaultView[property];
-  }
+Object.keys(document.defaultView).forEach((property) => {
+	if (typeof global[property] === 'undefined') {
+		exposedProperties.push(property);
+		global[property] = document.defaultView[property];
+	}
 });

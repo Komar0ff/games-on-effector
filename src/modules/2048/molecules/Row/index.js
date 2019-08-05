@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 
 import { Block } from '../../atoms/Block';
 
-const Wrapper = styled('div')`
+const Wrapper = styled.div`
 	display: flex;
 	background-color: #9e9e9e;
 	justify-content: center;

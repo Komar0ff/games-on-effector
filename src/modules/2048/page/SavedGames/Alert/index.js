@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from '@emotion/styled';
+import { styled } from 'linaria/react';
 
 const Wrapper = styled.div``;
 
