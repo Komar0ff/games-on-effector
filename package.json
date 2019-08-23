@@ -6,7 +6,13 @@
 		"type": "git",
 		"url": "https://github.com/Komar0ff/games-on-react"
 	},
-	"keywords": [],
+	"keywords": [
+		"games",
+		"game",
+		"react",
+		"svelte",
+		"effector"
+	],
 	"author": {
 		"name": "Komar0ff",
 		"email": "binary.reptile@gmail.com",
