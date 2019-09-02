@@ -23,8 +23,8 @@
 		"url": "https://github.com/Komar0ff/games-on-effector/issues"
 	},
 	"dependencies": {
-		"effector": "20.1.2",
-		"effector-react": "20.2.2",
+		"effector": "20.2.1",
+		"effector-react": "20.3.0",
 		"linaria": "1.4.0-alpha.1",
 		"linaria-jest": "^0.0.4",
 		"react": "^16.9.0",
@@ -50,7 +50,7 @@
 		"fast-async": "^6.3.8",
 		"file-loader": "^4.2.0",
 		"html-webpack-plugin": "^3.2.0",
-		"husky": "^3.0.4",
+		"husky": "^3.0.5",
 		"jest": "^24.9.0",
 		"jsdom": "^15.1.1",
 		"prettier": "^1.18.2",
@@ -58,11 +58,11 @@
 		"style-loader": "^1.0.0",
 		"terser-webpack-plugin": "^1.4.1",
 		"url-loader": "^2.1.0",
-		"webpack": "4.39.2",
+		"webpack": "4.39.3",
 		"webpack-bundle-analyzer": "^3.3.2",
 		"webpack-cli": "^3.3.7",
 		"webpack-dev-server": "3.8.0",
-		"webpack-merge": "^4.2.1",
+		"webpack-merge": "^4.2.2",
 		"whatwg-fetch": "^3.0.0"
 	},
 	"scripts": {
