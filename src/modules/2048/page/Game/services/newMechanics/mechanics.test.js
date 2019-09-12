@@ -1,10 +1,4 @@
-import {
-	indexDecrease,
-	findSameBlocksAndMerge,
-	moveToFreeSpace,
-	subsetFormation,
-	subsetIntegration
-} from './mechanics.js';
+import IndexDecrease from './mechanics.js';
 
 it('Понижение индекса', () => {
 	const xOffsetArray = [
@@ -15,6 +9,21 @@ it('Понижение индекса', () => {
 		{ x: 2, y: 2, value: 8 },
 		{ x: 2, y: 0, value: 8 }
 	];
+
+	const indexDecreaseX = new IndexDecrease(xOffsetArray, 'x');
+	expect(
+		indexDecreaseX
+			.subsetFormation()
+			.findSameBlocksAndMerge()
+			.moveToFreeSpace()
+			.subsetIntegration()
+	).toEqual([
+		{ x: 0, y: 1, value: 2 },
+		{ x: 1, y: 1, value: 4 },
+		{ x: 0, y: 2, value: 16 },
+		{ x: 1, y: 2, value: 8 },
+		{ x: 0, y: 0, value: 8 }
+	]);
 });
 
 it('формирование подмножеств', () => {
@@ -27,7 +36,9 @@ it('формирование подмножеств', () => {
 		{ x: 2, y: 0, value: 8 }
 	];
 
-	expect(subsetFormation(xOffsetArray, 'x')).toEqual([
+	const indexDecreaseX = new IndexDecrease(xOffsetArray, 'x');
+
+	expect(indexDecreaseX.subsetFormation().data).toEqual([
 		[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 		[{ x: 1, y: 2, value: 8 }, { x: 2, y: 2, value: 8 }, { x: 4, y: 2, value: 8 }],
 		[{ x: 2, y: 0, value: 8 }]
@@ -42,7 +53,9 @@ it('формирование подмножеств', () => {
 		{ x: 2, y: 0, value: 8 }
 	];
 
-	expect(subsetFormation(yOffsetArray, 'y')).toEqual([
+	const indexDecreaseY = new IndexDecrease(yOffsetArray, 'y');
+
+	expect(indexDecreaseY.subsetFormation().data).toEqual([
 		[{ x: 0, y: 1, value: 2 }],
 		[{ x: 3, y: 1, value: 4 }],
 		[{ x: 4, y: 2, value: 8 }],
@@ -58,7 +71,9 @@ it('Поиск и мердж одинаковых блоков', () => {
 		[{ x: 2, y: 0, value: 8 }]
 	];
 
-	expect(findSameBlocksAndMerge(xOffsetArray, 'x')).toEqual([
+	const indexDecreaseX = new IndexDecrease(xOffsetArray, 'x');
+
+	expect(indexDecreaseX.findSameBlocksAndMerge().data).toEqual([
 		[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 		[{ x: 1, y: 2, value: 16 }, { x: 4, y: 2, value: 8 }],
 		[{ x: 2, y: 0, value: 8 }]
@@ -72,7 +87,9 @@ it('Перемещение на пустое пространство', () => {
 		[{ x: 2, y: 0, value: 8 }]
 	];
 
-	expect(moveToFreeSpace(array, 'x')).toEqual([
+	const indexDecrease = new IndexDecrease(array, 'x');
+
+	expect(indexDecrease.moveToFreeSpace().data).toEqual([
 		[{ x: 0, y: 1, value: 2 }, { x: 1, y: 1, value: 4 }],
 		[{ x: 0, y: 2, value: 16 }, { x: 1, y: 2, value: 8 }],
 		[{ x: 0, y: 0, value: 8 }]
@@ -86,7 +103,9 @@ it('Объединение подмножеств в один массив', () 
 		[{ x: 2, y: 0, value: 8 }]
 	];
 
-	expect(subsetIntegration(array)).toEqual([
+	const indexDecrease = new IndexDecrease(array, 'x');
+
+	expect(indexDecrease.subsetIntegration()).toEqual([
 		{ x: 0, y: 1, value: 2 },
 		{ x: 3, y: 1, value: 4 },
 		{ x: 1, y: 2, value: 16 },

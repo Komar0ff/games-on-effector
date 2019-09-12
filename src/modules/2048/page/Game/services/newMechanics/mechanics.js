@@ -1,75 +1,62 @@
-export const indexDecrease = (array, coordinate) => {
-	let _array = [...array];
+export default class IndexDecrease {
+	constructor(data, coordinate) {
+		this.data = data;
+		this.coordinate = coordinate;
+	}
 
-	_array = subsetFormation(_array, coordinate);
-	findSameBlocksAndMerge(_array, coordinate);
-	moveToFreeSpace(_array, coordinate);
-	subsetIntegration(_array);
+	subsetFormation() {
+		let subsets = [];
+		let uniqueSecondCoordinate = new Set();
+		const searchCoordinate = this.coordinate === 'x' ? 'y' : 'x';
 
-	return _array;
+		for (let i = 0; i < this.data.length; i++) {
+			uniqueSecondCoordinate.add(this.data[i][searchCoordinate]);
+		}
 
-	/* array
-      .subsetFormation(array, coordinate)
-      .findSameBlocksAndMerge()
-      .moveToFreeSpace()
-      .subsetIntegration()
-  */
-};
+		for (let value of uniqueSecondCoordinate) {
+			subsets.push(
+				this.data
+					.sort((a, b) => a[this.coordinate] - b[this.coordinate])
+					.filter((subValue) => subValue[searchCoordinate] === value)
+			);
+		}
 
-export const findSameBlocksAndMerge = (array) => {
-	for (let i = 0; i < array.length; i++) {
-		for (let j = 0; j < array[i].length - 1; j++) {
-			if (array[i][j].value === array[i][j + 1].value) {
-				array[i][j].value *= 2;
-				array[i].splice(j + 1, 1);
-				break;
+		this.data = subsets;
+		return this;
+	}
+
+	findSameBlocksAndMerge() {
+		for (let i = 0; i < this.data.length; i++) {
+			for (let j = 0; j < this.data[i].length - 1; j++) {
+				if (this.data[i][j].value === this.data[i][j + 1].value) {
+					this.data[i][j].value *= 2;
+					this.data[i].splice(j + 1, 1);
+					break;
+				}
 			}
 		}
+
+		return this;
 	}
 
-	return array;
-};
-
-export const moveToFreeSpace = (array, coordinate) => {
-	for (let i = 0; i < array.length; i++) {
-		for (let j = 0; j < array[i].length; j++) {
-			array[i][j][coordinate] = j;
+	moveToFreeSpace() {
+		for (let i = 0; i < this.data.length; i++) {
+			for (let j = 0; j < this.data[i].length; j++) {
+				this.data[i][j][this.coordinate] = j;
+			}
 		}
+
+		return this;
 	}
 
-	console.log(array);
-	return array;
-};
-
-export const subsetFormation = (array, coordinate) => {
-	let subsets = [];
-	let uniqueSecondCoordinate = new Set();
-	const searchCoordinate = coordinate === 'x' ? 'y' : 'x';
-
-	for (let i = 0; i < array.length; i++) {
-		uniqueSecondCoordinate.add(array[i][searchCoordinate]);
-	}
-
-	for (let value of uniqueSecondCoordinate) {
-		subsets.push(
-			array
-				.sort((a, b) => a[coordinate] - b[coordinate])
-				.filter((subValue) => subValue[searchCoordinate] === value)
-		);
-	}
-
-	console.log(subsets);
-	return subsets;
-};
-
-export const subsetIntegration = (array) => {
-	let newArray = [];
-
-	for (let i = 0; i < array.length; i++) {
-		for (let j = 0; j < array[i].length; j++) {
-			newArray.push(array[i][j]);
+	subsetIntegration() {
+		let newArray = [];
+		for (let i = 0; i < this.data.length; i++) {
+			for (let j = 0; j < this.data[i].length; j++) {
+				newArray.push(this.data[i][j]);
+			}
 		}
-	}
 
-	return newArray;
-};
+		return newArray;
+	}
+}
