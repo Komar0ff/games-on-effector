@@ -1,6 +1,6 @@
-import IndexDecrease from './mechanics.js';
+import IndexDecrease from '../index';
 
-it('Понижение индекса', () => {
+it('Index decrease', () => {
 	const xOffsetArray = [
 		{ x: 0, y: 1, value: 2 },
 		{ x: 3, y: 1, value: 4 },
@@ -26,7 +26,7 @@ it('Понижение индекса', () => {
 	]);
 });
 
-it('формирование подмножеств', () => {
+it('Subset formation', () => {
 	const xOffsetArray = [
 		{ x: 0, y: 1, value: 2 },
 		{ x: 3, y: 1, value: 4 },
@@ -64,7 +64,7 @@ it('формирование подмножеств', () => {
 	]);
 });
 
-it('Поиск и мердж одинаковых блоков', () => {
+it('Search and merge the same blocks', () => {
 	const xOffsetArray = [
 		[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 		[{ x: 1, y: 2, value: 8 }, { x: 3, y: 2, value: 8 }, { x: 4, y: 2, value: 8 }],
@@ -80,7 +80,7 @@ it('Поиск и мердж одинаковых блоков', () => {
 	]);
 });
 
-it('Перемещение на пустое пространство', () => {
+it('Moving to an empty space', () => {
 	const array = [
 		[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 		[{ x: 1, y: 2, value: 16 }, { x: 4, y: 2, value: 8 }],
@@ -96,7 +96,7 @@ it('Перемещение на пустое пространство', () => {
 	]);
 });
 
-it('Объединение подмножеств в один массив', () => {
+it('Combining subsets into a single array', () => {
 	const array = [
 		[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 		[{ x: 1, y: 2, value: 16 }, { x: 4, y: 2, value: 8 }],
