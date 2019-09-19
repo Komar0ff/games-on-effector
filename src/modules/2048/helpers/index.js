@@ -1,3 +1,33 @@
+export const tileGeneration = (count, width, height) => {
+	let output = [];
+
+	for (let i = 0; i < count; i++) {
+		let xСoordinate = Math.floor(Math.random() * width);
+		let yСoordinate = Math.floor(Math.random() * height);
+
+		output.push({
+			x: xСoordinate,
+			y: yСoordinate,
+			value: 2
+		});
+	}
+
+	return output;
+};
+
+export const cellsGeneration = (width, height) => {
+	let result = [];
+
+	for (let i = 0; i < height; i++) {
+		result.push([]);
+		for (let j = 0; j < width; j++) {
+			result[i].push(0);
+		}
+	}
+
+	return result;
+};
+
 export const full = (state) => state.every((rows) => rows.every(Boolean));
 
 export const equal = (firstState, secondState) =>
