@@ -3,12 +3,10 @@ import {
 	equal,
 	full,
 	scoring,
-	moving,
 	winning,
 	tileGeneration,
 	cellsGeneration
 } from '../index';
-import { helpersMock } from '../__mocks__/helpers.mock.js';
 
 it('Tile generation', () => {
 	expect(tileGeneration(4, 10, 10).length).toBe(4);
@@ -16,7 +14,6 @@ it('Tile generation', () => {
 });
 
 it('Cells generation', () => {
-	// array of arrays? really needed?
 	expect(cellsGeneration(10, 10).length).toBe(10);
 	expect(cellsGeneration(10, 10)[5].length).toBe(10);
 });
@@ -52,17 +49,5 @@ describe.skip('Helpers', () => {
 
 	it('Is there a 2048?', () => {
 		expect(winning([[16, 0, 0], [16, 2048, 2]])).toBeTruthy();
-	});
-
-	it('Move left/right/up/down', () => {
-		let moveLeft = moving(helpersMock.left.oldState, helpersMock.left.keyCode);
-		let moveRight = moving(helpersMock.right.oldState, helpersMock.right.keyCode);
-		let moveUp = moving(helpersMock.up.oldState, helpersMock.up.keyCode);
-		let moveDown = moving(helpersMock.down.oldState, helpersMock.down.keyCode);
-
-		expect(moveLeft).toEqual(helpersMock.left.newState);
-		expect(moveRight).toEqual(helpersMock.right.newState);
-		expect(moveUp).toEqual(helpersMock.up.newState);
-		expect(moveDown).toEqual(helpersMock.down.newState);
 	});
 });
