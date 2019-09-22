@@ -20,13 +20,18 @@ const colorScheme = {
 };
 
 const Wrapper = styled.div`
+	position: absolute;
+	top: ${(props) => (props.coordinate ? `${props.coordinate.y * 120 + 10}px` : '10px')};
+	left: ${(props) => (props.coordinate ? `${props.coordinate.x * 110}px` : '5px')};
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	width: 100px;
 	height: 100px;
-	border-radius: 5px;
 	margin: 5px;
+	border-radius: 5px;
 
 	color: white;
 	background-color: ${(props) => colorScheme[`${props.block}`]};
@@ -35,8 +40,12 @@ const Wrapper = styled.div`
 	font-family: sans-serif;
 `;
 
-export const Block = (props) => (
-	<Wrapper block={props.number ? `${props.number}` : 'backgroundColor'} data-testid="block">
+export const TileBlock = (props) => (
+	<Wrapper
+		block={props.number ? `${props.number}` : 'backgroundColor'}
+		coordinate={props.coordinate}
+		data-testid="block"
+	>
 		<span>{props.number || ''}</span>
 	</Wrapper>
 );
