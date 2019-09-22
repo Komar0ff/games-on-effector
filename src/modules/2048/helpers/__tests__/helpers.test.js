@@ -1,14 +1,12 @@
 import {
 	generation,
-	random,
 	equal,
 	full,
 	scoring,
 	moving,
 	winning,
 	tileGeneration,
-	cellsGeneration,
-	newGeneration
+	cellsGeneration
 } from '../index';
 import { helpersMock } from '../__mocks__/helpers.mock.js';
 
