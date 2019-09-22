@@ -25,7 +25,7 @@ export const Game = () => {
 
 	useLayoutEffect(() => {
 		mountEvent({
-			playground: JSON.parse(window.localStorage.getItem('playground')) || [],
+			playground: JSON.parse(window.localStorage.getItem('playground')) || null,
 
 			count: 2,
 			width: settings ? settings.width : 5,
@@ -42,7 +42,7 @@ export const Game = () => {
 		switch (id) {
 			case 0:
 				newGameEvent({
-					playground: [],
+					playground: null,
 					count: 3,
 					width: settings ? settings.width : 5,
 					height: settings ? settings.height : 5

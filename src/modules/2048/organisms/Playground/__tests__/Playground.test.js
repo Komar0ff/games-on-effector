@@ -4,8 +4,13 @@ import { render } from '@testing-library/react';
 
 describe('Playground tests', () => {
 	it('render playground', () => {
-		const { container, debug, getByTestId, getAllByTestId } = render(
-			<Playground data={[[0, 8, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]} />
+		const { getAllByTestId } = render(
+			<Playground
+				data={{
+					tiles: [],
+					cells: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+				}}
+			/>
 		);
 
 		const playgroundRows = getAllByTestId('row');

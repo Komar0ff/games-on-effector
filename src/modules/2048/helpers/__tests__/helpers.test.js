@@ -1,7 +1,16 @@
-import { generation, random, equal, full, scoring, moving, winning } from '../index';
+import {
+	generation,
+	random,
+	equal,
+	full,
+	scoring,
+	moving,
+	winning,
+	tileGeneration,
+	cellsGeneration,
+	newGeneration
+} from '../index';
 import { helpersMock } from '../__mocks__/helpers.mock.js';
-
-import { tileGeneration, cellsGeneration } from '../index';
 
 it('Tile generation', () => {
 	expect(tileGeneration(4, 10, 10).length).toBe(4);
@@ -14,30 +23,15 @@ it('Cells generation', () => {
 	expect(cellsGeneration(10, 10)[5].length).toBe(10);
 });
 
-describe('Helpers', () => {
+it('new generation', () => {
+	expect(newGeneration(2, 10, 10).cells.length).toBe(10);
+	expect(newGeneration(2, 10, 10).tiles.length).toBe(2);
+});
+
+describe.skip('Helpers', () => {
 	let playgroundActiveBlocks = 3;
 	let playgroundWidth = 3;
 	let playgroundHeight = 4;
-
-	it('Create random active blocks', () => {
-		let output = random(playgroundActiveBlocks, playgroundWidth, playgroundHeight);
-
-		expect(output.length).toBe(playgroundActiveBlocks); // Length is equal to the number of active blocks
-		expect(Number.isInteger(output[0][0])).toBeTruthy(); // coordinate must be integer number
-
-		for (let i = 0; i < playgroundActiveBlocks; i++) {
-			expect(output[i].length).toBe(2); // only two coordinates.
-
-			expect(output[i][0] > playgroundWidth).toBeFalsy(); // X the coordinate should not be greater than the width
-			expect(output[i][1] > playgroundWidth).toBeFalsy(); // Y the coordinate should not be greater than the height
-			// let _arr = [...output];
-			// delete _arr[i];
-
-			// _arr.map((value) => {
-			// 	expect(value[0] === output[i][0] && value[1] === output[i][1]).toBeFalsy();
-			// });
-		}
-	});
 
 	it('Generating a playground', () => {
 		let generator = generation(playgroundActiveBlocks, playgroundWidth, playgroundHeight);

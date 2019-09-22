@@ -57,6 +57,16 @@ export const random = (count, width, height) => {
 	return output;
 };
 
+export const newGeneration = (count, width, height) => {
+	let result = {};
+
+	result.cells = cellsGeneration(width, height);
+	result.tiles = tileGeneration(count, width, height);
+
+	return result;
+};
+
+// deprecated
 export const generation = (count, width, height) => {
 	let result = [];
 	let coordinates = random(count, width, height);
@@ -70,15 +80,6 @@ export const generation = (count, width, height) => {
 			}
 		}
 	}
-
-	// let result = []
-
-	// for(let i = 0; i < height; i++) {
-	//   result.push([])
-	//   for(let j = 0; j < width; j++) { result[i].push(0)}
-	// }
-
-	// coordinates.forEach((values) => result[values[0]][values[1]] = 2)
 
 	return result;
 };

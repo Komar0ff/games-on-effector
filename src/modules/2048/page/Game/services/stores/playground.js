@@ -13,23 +13,35 @@ import {
 } from '../events';
 import { $score } from '../stores/score';
 
-import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
+import {
+	newGeneration,
+	generation,
+	random,
+	equal,
+	full,
+	scoring,
+	moving,
+	winning
+} from '../../../../helpers';
 
 export const $moveCount = gameDomain.store(0);
 $moveCount.on(scoreUpdateEvent, (state) => ++state).reset(newGameEvent);
 
-export const $playground = gameDomain.store([]);
+export const $playground = gameDomain.store({
+	tiles: [],
+	cells: []
+});
 
 $playground
 	.on(
-		mountEvent.map(({ playground, count, width, height }) =>
-			playground.length ? playground : generation(count, width, height)
+		mountEvent.map(
+			({ playground, count, width, height }) => playground || newGeneration(count, width, height)
 		),
 		(_, payload) => payload
 	)
 
 	.on(
-		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
+		newGameEvent.map(({ count, width, height }) => newGeneration(count, width, height)),
 		(_, payload) => (gameStartEvent(), scoreCleanEvent(), payload)
 	)
 
@@ -73,7 +85,7 @@ export const $gameSaved = combine(
 	})
 );
 
-$gameSaved.on(savedGameEvent, (state, payload) => {
+$gameSaved.on(savedGameEvent, (state) => {
 	// TODO redundancy test
 	let previous = JSON.parse(window.localStorage.getItem('savedGames'));
 

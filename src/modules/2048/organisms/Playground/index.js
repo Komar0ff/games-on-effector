@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 export const Playground = (props) => (
 	<Wrapper>
-		{props.data.map((value, id) => (
+		{props.data.cells.map((value, id) => (
 			<Row key={id} data={value} />
 		))}
 	</Wrapper>
