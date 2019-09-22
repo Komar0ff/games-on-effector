@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 	height: 100px;
 	border-radius: 5px;
 	margin: 5px;
+	margin-left: ${(props) => (props.coordinate ? `${props.coordinate.x * 100}px` : '5px')};
 
 	color: white;
 	background-color: ${(props) => colorScheme[`${props.block}`]};
@@ -36,7 +37,12 @@ const Wrapper = styled.div`
 `;
 
 export const Block = (props) => (
-	<Wrapper block={props.number ? `${props.number}` : 'backgroundColor'} data-testid="block">
+	<Wrapper
+		block={props.number ? `${props.number}` : 'backgroundColor'}
+		coordinate={props.coordinate}
+		data-testid="block"
+	>
+		{console.log('kjk', props.coordinate)}
 		<span>{props.number || ''}</span>
 	</Wrapper>
 );

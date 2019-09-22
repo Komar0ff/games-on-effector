@@ -1,8 +1,10 @@
 import React from 'react';
 import { styled } from 'linaria/react';
 import { Row } from '../../molecules/Row';
+import { Tiles } from '../../molecules/Tiles';
 
 const Wrapper = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -15,5 +17,7 @@ export const Playground = (props) => (
 		{props.data.cells.map((value, id) => (
 			<Row key={id} data={value} />
 		))}
+
+		<Tiles data={props.data.tiles} />
 	</Wrapper>
 );
