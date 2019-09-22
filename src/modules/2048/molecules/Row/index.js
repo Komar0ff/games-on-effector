@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from 'linaria/react';
-
-import { Block } from '../../atoms/Block';
+import { Cell } from '../../atoms/Cell';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -12,7 +11,7 @@ const Wrapper = styled.div`
 export const Row = (props) => (
 	<Wrapper data-testid="row">
 		{props.data.map((value, id) => (
-			<Block key={id} number={value} />
+			<Cell key={id} number={value} />
 		))}
 	</Wrapper>
 );
