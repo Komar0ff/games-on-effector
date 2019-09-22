@@ -23,31 +23,15 @@ it('Cells generation', () => {
 	expect(cellsGeneration(10, 10)[5].length).toBe(10);
 });
 
-it('new generation', () => {
-	expect(newGeneration(2, 10, 10).cells.length).toBe(10);
-	expect(newGeneration(2, 10, 10).tiles.length).toBe(2);
+it('Generating a playground', () => {
+	expect(generation(2, 10, 10).cells.length).toBe(10);
+	expect(generation(2, 10, 10).tiles.length).toBe(2);
 });
 
 describe.skip('Helpers', () => {
 	let playgroundActiveBlocks = 3;
 	let playgroundWidth = 3;
 	let playgroundHeight = 4;
-
-	it('Generating a playground', () => {
-		let generator = generation(playgroundActiveBlocks, playgroundWidth, playgroundHeight);
-
-		expect(generator.length).toBe(playgroundHeight);
-		expect(generator[0].length).toBe(playgroundWidth);
-
-		let counterActiveBlock = 0;
-		for (let i = 0; i < playgroundHeight; i++) {
-			for (let j = 0; j < playgroundWidth; j++) {
-				if (generator[i][j] > 0) ++counterActiveBlock;
-			}
-		}
-
-		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
-	});
 
 	// prettier-ignore
 	it('Array equal', () => {

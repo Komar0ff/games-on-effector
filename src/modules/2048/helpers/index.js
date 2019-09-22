@@ -57,29 +57,11 @@ export const random = (count, width, height) => {
 	return output;
 };
 
-export const newGeneration = (count, width, height) => {
+export const generation = (count, width, height) => {
 	let result = {};
 
 	result.cells = cellsGeneration(width, height);
 	result.tiles = tileGeneration(count, width, height);
-
-	return result;
-};
-
-// deprecated
-export const generation = (count, width, height) => {
-	let result = [];
-	let coordinates = random(count, width, height);
-
-	for (let i = 0; i < height; i++) {
-		result.push([]);
-		for (let j = 0; j < width; j++) {
-			result[i].push(0);
-			for (let k = 0; k < coordinates.length; k++) {
-				if (coordinates[k][1] === i && coordinates[k][0] === j) result[i][j] = 2;
-			}
-		}
-	}
 
 	return result;
 };

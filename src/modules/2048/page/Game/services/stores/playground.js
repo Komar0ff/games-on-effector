@@ -13,16 +13,7 @@ import {
 } from '../events';
 import { $score } from '../stores/score';
 
-import {
-	newGeneration,
-	generation,
-	random,
-	equal,
-	full,
-	scoring,
-	moving,
-	winning
-} from '../../../../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
 
 export const $moveCount = gameDomain.store(0);
 $moveCount.on(scoreUpdateEvent, (state) => ++state).reset(newGameEvent);
@@ -35,13 +26,13 @@ export const $playground = gameDomain.store({
 $playground
 	.on(
 		mountEvent.map(
-			({ playground, count, width, height }) => playground || newGeneration(count, width, height)
+			({ playground, count, width, height }) => playground || generation(count, width, height)
 		),
 		(_, payload) => payload
 	)
 
 	.on(
-		newGameEvent.map(({ count, width, height }) => newGeneration(count, width, height)),
+		newGameEvent.map(({ count, width, height }) => generation(count, width, height)),
 		(_, payload) => (gameStartEvent(), scoreCleanEvent(), payload)
 	)
 
