@@ -17,8 +17,4 @@ const Wrapper = styled.div`
 	font-family: sans-serif;
 `;
 
-export const Cell = (props) => (
-	<Wrapper data-testid="block">
-		<span>{props.number || ''}</span>
-	</Wrapper>
-);
+export const Cell = (props) => <Wrapper data-testid="block" />;

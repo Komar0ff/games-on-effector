@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'linaria/react';
 import { Row } from '../../molecules/Row';
-import { TileBlock } from '../../atoms/TileBlock';
+import { Tile } from '../../atoms/Tile';
 
 const Wrapper = styled.div`
 	position: relative;
@@ -19,7 +19,7 @@ export const Playground = (props) => (
 		))}
 
 		{props.data.tiles.map((tile, id) => (
-			<TileBlock key={id} number={tile.value} coordinate={{ x: tile.x, y: tile.y }} />
+			<Tile key={id} number={tile.value} coordinate={{ x: tile.x, y: tile.y }} />
 		))}
 	</Wrapper>
 );

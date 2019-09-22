@@ -40,12 +40,12 @@ const Wrapper = styled.div`
 	font-family: sans-serif;
 `;
 
-export const TileBlock = (props) => (
+export const Tile = (props) => (
 	<Wrapper
 		block={props.number ? `${props.number}` : 'backgroundColor'}
 		coordinate={props.coordinate}
 		data-testid="block"
 	>
-		<span>{props.number || ''}</span>
+		<span>{props.number}</span>
 	</Wrapper>
 );
