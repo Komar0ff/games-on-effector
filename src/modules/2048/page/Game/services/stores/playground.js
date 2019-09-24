@@ -1,5 +1,6 @@
 import { combine } from 'effector';
 import { gameDomain } from '../domain';
+import { IndexDecrease, IndexIncrease } from '../mechanics';
 import {
 	mountEvent,
 	newGameEvent,
@@ -37,29 +38,28 @@ $playground
 	)
 
 	.on(moveEvent, (state, payload) => {
-		let newState = moving(state, payload);
-		let win = winning(newState);
+		let result;
+		let vector;
 
-		if (!win) {
-			let flag = true;
-			let fullFlag = full(newState);
-			let equalFlag = equal(state, newState);
+		// switch slow
+		// TODO: add exception catch
+		if (payload == 37) {
+			result = new IndexDecrease(state.tiles, 'x');
+		} else if (payload == 38) {
+			result = new IndexDecrease(state.tiles, 'y');
+		} else if (payload == 39) {
+			result = new IndexIncrease(state.tiles, 'x');
+			vector = state.width;
+		} else if (payload == 40) {
+			result = new IndexIncrease(state.tiles, 'y');
+			vector = state.height;
+		}
 
-			if (!equalFlag) {
-				while (flag) {
-					let newActiveBlock = random(1, newState.length, newState[0].length);
-
-					!newState[newActiveBlock[0][0]][newActiveBlock[0][1]]
-						? ((newState[newActiveBlock[0][0]][newActiveBlock[0][1]] = 2), (flag = false))
-						: null;
-				}
-			}
-
-			scoreUpdateEvent(scoring(newState));
-			equalFlag && fullFlag ? gameLoseEvent() : null;
-
-			return newState;
-		} else gameWinEvent();
+		return result
+			.subsetFormation()
+			.findSameBlocksAndMerge()
+			.moveToFreeSpace(vector)
+			.subsetIntegration();
 	})
 	.updates.watch((playground) =>
 		window.localStorage.setItem('playground', JSON.stringify(playground))

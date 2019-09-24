@@ -17,10 +17,13 @@ describe('With localStorage tests', () => {
 			}),
 			window.localStorage.removeItem('savedGames'),
 			mountEvent({
-				playground: { tiles: [], cells: [[0, 0, 0], [0, 0, 0]] },
-				count: 2,
-				width: 3,
-				height: 2
+				playground: {
+					tiles: [],
+					cells: [[0, 0, 0], [0, 0, 0]],
+					count: 2,
+					width: 3,
+					height: 2
+				}
 			}) // mount localStorage imitation
 		)
 	);
@@ -42,7 +45,10 @@ describe('With localStorage tests', () => {
 				score: 0,
 				playground: {
 					tiles: [],
-					cells: [[0, 0, 0], [0, 0, 0]]
+					cells: [[0, 0, 0], [0, 0, 0]],
+					count: 2,
+					width: 3,
+					height: 2
 				}
 			}
 		]);
@@ -66,48 +72,76 @@ describe('With localStorage tests', () => {
 	});
 });
 
-describe.skip('Move events', () => {
-	it('New block has been added', () => {
-		let keyCode = 37;
-		let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
-
-		mountEvent(localStorage);
-		moveEvent(keyCode);
-
-		let playgroundStore = $playground.getState();
-		let playgroundHeight = localStorage.height;
-		let playgroundWidth = localStorage.width;
-		let playgroundActiveBlocks = localStorage.count + 1;
-
-		let counterActiveBlock = 0;
-		for (let i = 0; i < playgroundHeight; i++) {
-			for (let j = 0; j < playgroundWidth; j++) {
-				if (playgroundStore[i][j]) ++counterActiveBlock;
+describe('Move events', () => {
+	it('Move up/left', () => {
+		let localStorage = {
+			playground: {
+				tiles: [{ x: 0, y: 1, value: 2 }, { x: 0, y: 3, value: 2 }],
+				cells: [
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0]
+				],
+				count: 2,
+				width: 5,
+				height: 5
 			}
-		}
-
-		expect(counterActiveBlock).toBe(playgroundActiveBlocks);
-	});
-
-	it('Do not added the active block if the states is equal after moving', () => {
-		let keyCode = 37;
-		let localStorage = { playground: [[8, 16, 0], [1024, 0, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
+		};
 
 		mountEvent(localStorage);
-		moveEvent(keyCode);
+		moveEvent(38);
 
-		let playgroundStore = $playground.getState();
-		expect(playgroundStore).toEqual(localStorage.playground);
+		expect($playground.getState()).toEqual([{ x: 0, y: 0, value: 4 }]);
 	});
 
-	it('Move count', () => {
-		$moveCount.setState(0);
+	it('Move down/right', () => {
+		let localStorage = {
+			playground: {
+				tiles: [{ x: 0, y: 1, value: 2 }, { x: 0, y: 3, value: 2 }],
+				cells: [
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0]
+				],
+				count: 2,
+				width: 5,
+				height: 5
+			}
+		};
 
-		scoreUpdateEvent(); // If the score are being updated, then the step has been made successfully
-		scoreUpdateEvent();
+		mountEvent(localStorage);
+		moveEvent(40);
 
-		expect($moveCount.getState()).toBe(2);
+		expect($playground.getState()).toEqual([{ x: 0, y: 5, value: 4 }]);
 	});
+
+	//deprecated
+
+	// it('New block has been added', () => {
+	// 	let keyCode = 37;
+	// 	let localStorage = { playground: [[0, 0, 8], [0, 1024, 0]], count: 2, width: 3, height: 2 }; //localStorage imitation
+
+	// 	mountEvent(localStorage);
+	// 	moveEvent(keyCode);
+
+	// 	let playgroundStore = $playground.getState();
+	// 	let playgroundHeight = localStorage.height;
+	// 	let playgroundWidth = localStorage.width;
+	// 	let playgroundActiveBlocks = localStorage.count + 1;
+
+	// 	let counterActiveBlock = 0;
+	// 	for (let i = 0; i < playgroundHeight; i++) {
+	// 		for (let j = 0; j < playgroundWidth; j++) {
+	// 			if (playgroundStore[i][j]) ++counterActiveBlock;
+	// 		}
+	// 	}
+
+	// 	expect(counterActiveBlock).toBe(playgroundActiveBlocks);
+	// });
 
 	it.todo('Load game');
 	it.todo('Revert step');

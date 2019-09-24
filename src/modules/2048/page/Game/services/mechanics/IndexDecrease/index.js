@@ -1,6 +1,6 @@
 export default class IndexDecrease {
-	constructor(data, coordinate) {
-		this.data = data;
+	constructor(tiles, coordinate) {
+		this.tiles = tiles;
 		this.coordinate = coordinate;
 	}
 
@@ -9,28 +9,28 @@ export default class IndexDecrease {
 		let uniqueSecondCoordinate = new Set();
 		const searchCoordinate = this.coordinate === 'x' ? 'y' : 'x';
 
-		for (let i = 0; i < this.data.length; i++) {
-			uniqueSecondCoordinate.add(this.data[i][searchCoordinate]);
+		for (let i = 0; i < this.tiles.length; i++) {
+			uniqueSecondCoordinate.add(this.tiles[i][searchCoordinate]);
 		}
 
 		for (let value of uniqueSecondCoordinate) {
 			subsets.push(
-				this.data
+				this.tiles
 					.sort((a, b) => a[this.coordinate] - b[this.coordinate])
 					.filter((subValue) => subValue[searchCoordinate] === value)
 			);
 		}
 
-		this.data = subsets;
+		this.tiles = subsets;
 		return this;
 	}
 
 	findSameBlocksAndMerge() {
-		for (let i = 0; i < this.data.length; i++) {
-			for (let j = 0; j < this.data[i].length - 1; j++) {
-				if (this.data[i][j].value === this.data[i][j + 1].value) {
-					this.data[i][j].value *= 2;
-					this.data[i].splice(j + 1, 1);
+		for (let i = 0; i < this.tiles.length; i++) {
+			for (let j = 0; j < this.tiles[i].length - 1; j++) {
+				if (this.tiles[i][j].value === this.tiles[i][j + 1].value) {
+					this.tiles[i][j].value *= 2;
+					this.tiles[i].splice(j + 1, 1);
 					break;
 				}
 			}
@@ -40,9 +40,9 @@ export default class IndexDecrease {
 	}
 
 	moveToFreeSpace() {
-		for (let i = 0; i < this.data.length; i++) {
-			for (let j = 0; j < this.data[i].length; j++) {
-				this.data[i][j][this.coordinate] = j;
+		for (let i = 0; i < this.tiles.length; i++) {
+			for (let j = 0; j < this.tiles[i].length; j++) {
+				this.tiles[i][j][this.coordinate] = j;
 			}
 		}
 
@@ -51,12 +51,13 @@ export default class IndexDecrease {
 
 	subsetIntegration() {
 		let newArray = [];
-		for (let i = 0; i < this.data.length; i++) {
-			for (let j = 0; j < this.data[i].length; j++) {
-				newArray.push(this.data[i][j]);
+		for (let i = 0; i < this.tiles.length; i++) {
+			for (let j = 0; j < this.tiles[i].length; j++) {
+				newArray.push(this.tiles[i][j]);
 			}
 		}
 
+		// TODO: the behavior is confusing.
 		return newArray;
 	}
 }
