@@ -55,7 +55,7 @@ $playground
 			vector = state.height;
 		}
 
-		return result
+		result
 			.subsetFormation()
 			.findSameBlocksAndMerge()
 			.moveToFreeSpace(vector)
