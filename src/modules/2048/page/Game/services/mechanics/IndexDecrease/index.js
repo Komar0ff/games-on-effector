@@ -50,14 +50,27 @@ export default class IndexDecrease {
 	}
 
 	subsetIntegration() {
-		let newArray = [];
+		let flat = [];
 		for (let i = 0; i < this.tiles.length; i++) {
 			for (let j = 0; j < this.tiles[i].length; j++) {
-				newArray.push(this.tiles[i][j]);
+				flat.push(this.tiles[i][j]);
 			}
 		}
 
-		// TODO: the behavior is confusing.
-		return newArray;
+		this.tiles = flat;
+		return this;
+	}
+
+	tileGeneration(width, height) {
+		let xСoordinate = Math.floor(Math.random() * width);
+		let yСoordinate = Math.floor(Math.random() * height);
+
+		this.tiles.push({
+			x: xСoordinate,
+			y: yСoordinate,
+			value: 2
+		});
+
+		return this.tiles;
 	}
 }

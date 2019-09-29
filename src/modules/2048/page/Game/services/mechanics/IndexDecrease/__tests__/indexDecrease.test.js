@@ -16,7 +16,7 @@ it('Index decrease', () => {
 			.subsetFormation()
 			.findSameBlocksAndMerge()
 			.moveToFreeSpace()
-			.subsetIntegration()
+			.subsetIntegration().tiles
 	).toEqual([
 		{ x: 0, y: 1, value: 2 },
 		{ x: 1, y: 1, value: 4 },
@@ -105,11 +105,26 @@ it('Combining subsets into a single array', () => {
 
 	const indexDecrease = new IndexDecrease(array, 'x');
 
-	expect(indexDecrease.subsetIntegration()).toEqual([
+	expect(indexDecrease.subsetIntegration().tiles).toEqual([
 		{ x: 0, y: 1, value: 2 },
 		{ x: 3, y: 1, value: 4 },
 		{ x: 1, y: 2, value: 16 },
 		{ x: 4, y: 2, value: 8 },
 		{ x: 2, y: 0, value: 8 }
 	]);
+});
+
+it('Add new tile', () => {
+	const indexDecrease = new IndexDecrease(
+		[
+			{ x: 0, y: 1, value: 2 },
+			{ x: 3, y: 1, value: 4 },
+			{ x: 1, y: 2, value: 16 },
+			{ x: 4, y: 2, value: 8 },
+			{ x: 2, y: 0, value: 8 }
+		],
+		'x'
+	);
+
+	expect(indexDecrease.tileGeneration(5, 5).length).toBe(6);
 });

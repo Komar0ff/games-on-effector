@@ -41,7 +41,7 @@ describe('Index increase tests', () => {
 		];
 	});
 
-	it('General', () => {
+	it('Basic move without adding a new tile', () => {
 		const indexIncreaseX = new IndexIncrease(xOffsetArray, 'x');
 
 		expect(
@@ -49,7 +49,7 @@ describe('Index increase tests', () => {
 				.subsetFormation()
 				.findSameBlocksAndMerge()
 				.moveToFreeSpace(proportions.width)
-				.subsetIntegration()
+				.subsetIntegration().tiles
 		).toEqual([
 			{ x: 9, y: 1, value: 2 },
 			{ x: 10, y: 1, value: 4 },
@@ -61,14 +61,14 @@ describe('Index increase tests', () => {
 
 	it('Subset formation', () => {
 		const indexIncreaseX = new IndexIncrease(xOffsetArray, 'x');
-		expect(indexIncreaseX.subsetFormation().data).toEqual([
+		expect(indexIncreaseX.subsetFormation().tiles).toEqual([
 			[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 			[{ x: 1, y: 2, value: 8 }, { x: 2, y: 2, value: 8 }, { x: 4, y: 2, value: 8 }],
 			[{ x: 2, y: 0, value: 8 }]
 		]);
 
 		const indexIncreaseY = new IndexIncrease(yOffsetArray, 'y');
-		expect(indexIncreaseY.subsetFormation().data).toEqual([
+		expect(indexIncreaseY.subsetFormation().tiles).toEqual([
 			[{ x: 0, y: 1, value: 2 }],
 			[{ x: 3, y: 1, value: 4 }],
 			[{ x: 4, y: 2, value: 8 }],
@@ -79,7 +79,7 @@ describe('Index increase tests', () => {
 
 	it('Search and merge the same blocks', () => {
 		const indexIncreaseX = new IndexIncrease(xOffsetArraySubset, 'x');
-		expect(indexIncreaseX.findSameBlocksAndMerge().data).toEqual([
+		expect(indexIncreaseX.findSameBlocksAndMerge().tiles).toEqual([
 			[{ x: 0, y: 1, value: 2 }, { x: 3, y: 1, value: 4 }],
 			[{ x: 1, y: 2, value: 8 }, { x: 4, y: 2, value: 16 }],
 			[{ x: 2, y: 0, value: 8 }]
@@ -89,7 +89,7 @@ describe('Index increase tests', () => {
 	it('Moving to an empty space', () => {
 		const indexIncrease = new IndexIncrease(xOffsetArraySubsetAfterMerge, 'x');
 
-		expect(indexIncrease.moveToFreeSpace(proportions.width).data).toEqual([
+		expect(indexIncrease.moveToFreeSpace(proportions.width).tiles).toEqual([
 			[{ x: 9, y: 1, value: 2 }, { x: 10, y: 1, value: 4 }],
 			[{ x: 9, y: 2, value: 16 }, { x: 10, y: 2, value: 8 }],
 			[{ x: 10, y: 0, value: 8 }]
@@ -98,12 +98,27 @@ describe('Index increase tests', () => {
 
 	it('Combining subsets into a single array', () => {
 		const indexIncrease = new IndexIncrease(xOffsetArraySubsetAfterMerge, 'x');
-		expect(indexIncrease.subsetIntegration()).toEqual([
+		expect(indexIncrease.subsetIntegration().tiles).toEqual([
 			{ x: 0, y: 1, value: 2 },
 			{ x: 3, y: 1, value: 4 },
 			{ x: 1, y: 2, value: 16 },
 			{ x: 4, y: 2, value: 8 },
 			{ x: 2, y: 0, value: 8 }
 		]);
+	});
+
+	it('Add new tile', () => {
+		const indexIncrease = new IndexIncrease(
+			[
+				{ x: 0, y: 1, value: 2 },
+				{ x: 3, y: 1, value: 4 },
+				{ x: 1, y: 2, value: 16 },
+				{ x: 4, y: 2, value: 8 },
+				{ x: 2, y: 0, value: 8 }
+			],
+			'x'
+		);
+
+		expect(indexIncrease.tileGeneration(5, 5).length).toBe(6);
 	});
 });

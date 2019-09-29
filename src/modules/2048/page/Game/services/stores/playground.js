@@ -59,7 +59,10 @@ $playground
 			.subsetFormation()
 			.findSameBlocksAndMerge()
 			.moveToFreeSpace(vector)
-			.subsetIntegration();
+			.subsetIntegration()
+			.tileGeneration(state.width, state.height);
+
+		return result.tiles;
 	})
 	.updates.watch((playground) =>
 		window.localStorage.setItem('playground', JSON.stringify(playground))
