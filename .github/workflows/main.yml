@@ -1,0 +1,55 @@
+name: CI
+on: push
+
+jobs:
+  setupnpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: install
+        run: npm i
+      - name: Check
+        run: ls -al
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v1
+        with:
+          name: npm
+          path: node_modules
+  testf:
+    needs: setupnpm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download app build artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: npm
+          path: node_modules
+      - name: check test1
+        run: ls -al
+  tests:
+    needs: testf
+    if: github.actor != 'dialog-bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download app build artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: npm
+          path: node_modules
+      - name: check test2
+        run: ls -al
+  testT:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download app build artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: npm
+          path: node_modules
+      - name: check test3
+        run: ls -al
