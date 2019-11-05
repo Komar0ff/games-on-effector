@@ -2,54 +2,24 @@ name: CI
 on: push
 
 jobs:
-  setupnpm:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
       - name: install
         run: npm i
-      - name: Check
-        run: ls -al
-      - name: Upload coverage results
-        uses: actions/upload-artifact@v1
+      - name: Cache node modules
+        uses: actions/cache@v1
         with:
-          name: npm
           path: node_modules
-  testf:
-    needs: setupnpm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-${{ env.cache-name }}
+  build:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Download app build artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: npm
-          path: node_modules
-      - name: check test1
-        run: ls -al
-  tests:
-    needs: testf
-    if: github.actor != 'dialog-bot'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Download app build artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: npm
-          path: node_modules
-      - name: check test2
-        run: ls -al
-  testT:
-    needs: tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Download app build artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: npm
-          path: node_modules
-      - name: check test3
-        run: ls -al
+      - name: build
+        run: npm build
