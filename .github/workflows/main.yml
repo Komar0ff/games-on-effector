@@ -12,8 +12,6 @@ jobs:
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ env.cache-name }}
       - name: install
         run: npm i
 
@@ -26,7 +24,5 @@ jobs:
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ env.cache-name }}
       - name: build
         run: npm run build
