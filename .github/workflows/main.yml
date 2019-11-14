@@ -24,6 +24,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/cache@v1
         with:
-          restore-keys: npm-${{ env.cache-name }}
+          path: node_modules
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ env.cache-name }}
       - name: build
         run: npm run build
