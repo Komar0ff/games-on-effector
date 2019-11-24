@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { SavedGames } from '../index';
-import { $savedGames, $modal } from '../services/store';
-import { modalEvent, startingSavedEvent } from '../services/events';
+import { $savedGames, $modal } from '../stores';
+import { modalEvent, startingSavedEvent } from '../events';
 
 import { mockData } from '../__mocks__/savedGames.mock.js';
 

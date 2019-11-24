@@ -2,11 +2,11 @@ import React, { useLayoutEffect } from 'react';
 import { styled } from 'linaria/react';
 import { useStore } from 'effector-react';
 
-import { modalEvent, removeCardEvent, mountEvent, startingSavedEvent } from './services/events';
-import { $savedGames, $modal, $alert } from './services/store';
+import { modalEvent, removeCardEvent, mountEvent, startingSavedEvent } from './events';
+import { $savedGames, $modal, $alert } from './stores';
 
-import { Modal } from './Modal';
-import { Alert } from './Alert';
+import { Modal } from './components/Modal';
+import { Alert } from './components/Alert';
 import { Card } from '../../molecules/Card';
 
 const Wrapper = styled.div``;

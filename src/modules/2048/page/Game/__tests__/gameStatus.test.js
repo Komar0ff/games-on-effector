@@ -13,7 +13,15 @@ describe.skip('Game status tests', () => {
 	});
 
 	it('Game over', () => {
-		let localStorage = { playground: [[2, 4, 8], [2, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+		let localStorage = {
+			playground: [
+				[2, 4, 8],
+				[2, 1024, 4]
+			],
+			count: 2,
+			width: 3,
+			height: 2
+		}; //localStorage imitation
 
 		mountEvent(localStorage);
 		moveEvent(keyCode);
@@ -26,7 +34,15 @@ describe.skip('Game status tests', () => {
 	});
 
 	it('Game win', () => {
-		let localStorage = { playground: [[2, 4, 8], [1024, 1024, 4]], count: 2, width: 3, height: 2 }; //localStorage imitation
+		let localStorage = {
+			playground: [
+				[2, 4, 8],
+				[1024, 1024, 4]
+			],
+			count: 2,
+			width: 3,
+			height: 2
+		}; //localStorage imitation
 
 		mountEvent(localStorage);
 		moveEvent(keyCode);

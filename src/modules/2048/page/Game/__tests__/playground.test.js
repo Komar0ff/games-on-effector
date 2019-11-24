@@ -19,7 +19,10 @@ describe.skip('With localStorage tests', () => {
 			mountEvent({
 				playground: {
 					tiles: [],
-					cells: [[0, 0, 0], [0, 0, 0]],
+					cells: [
+						[0, 0, 0],
+						[0, 0, 0]
+					],
 					count: 2,
 					width: 3,
 					height: 2
@@ -45,7 +48,10 @@ describe.skip('With localStorage tests', () => {
 				score: 0,
 				playground: {
 					tiles: [],
-					cells: [[0, 0, 0], [0, 0, 0]],
+					cells: [
+						[0, 0, 0],
+						[0, 0, 0]
+					],
 					count: 2,
 					width: 3,
 					height: 2
@@ -59,7 +65,10 @@ describe('Move events', () => {
 	it('Move up/left', () => {
 		let localStorage = {
 			playground: {
-				tiles: [{ x: 0, y: 1, value: 2 }, { x: 0, y: 3, value: 2 }],
+				tiles: [
+					{ x: 0, y: 1, value: 2 },
+					{ x: 0, y: 3, value: 2 }
+				],
 				cells: [
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
@@ -82,7 +91,10 @@ describe('Move events', () => {
 	it('Move down/right', () => {
 		let localStorage = {
 			playground: {
-				tiles: [{ x: 0, y: 1, value: 2 }, { x: 0, y: 3, value: 2 }],
+				tiles: [
+					{ x: 0, y: 1, value: 2 },
+					{ x: 0, y: 3, value: 2 }
+				],
 				cells: [
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],

@@ -6,11 +6,11 @@ import { Modal } from '../../molecules/Modal';
 import { Panel } from '../../organisms/Panel';
 import { Playground } from '../../organisms/Playground';
 
-import { $playground } from './services/stores/playground';
-import { $gameStatus } from './services/stores/gameStatus';
-import { $score } from './services/stores/score';
+import { $playground } from './stores/playground';
+import { $gameStatus } from './stores/gameStatus';
+import { $score } from './stores/score';
 
-import { mountEvent, moveEvent, newGameEvent, savedGameEvent } from './services/events';
+import { mountEvent, moveEvent, newGameEvent, savedGameEvent } from './events';
 
 const Wrapper = styled.div`
 	min-width: 80%;

@@ -1,5 +1,5 @@
 import { createStore } from 'effector';
-import { widthEvent, heightEvent, playgroundUpdateEvent } from './events';
+import { widthEvent, heightEvent, playgroundUpdateEvent } from '../events';
 import { random, generation } from '../../../helpers';
 
 export const $settings = createStore({ width: 0, height: 0 });

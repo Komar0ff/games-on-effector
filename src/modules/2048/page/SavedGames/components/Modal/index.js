@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { styled } from 'linaria/react';
 
-import { modalEvent } from '../services/events';
+import { modalEvent } from '../../events';
 
 const Wrapper = styled.div``;
 const Button = styled.button``;

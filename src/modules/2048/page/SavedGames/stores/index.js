@@ -1,7 +1,7 @@
 import { createStore } from 'effector';
-import { mountEvent, modalEvent, alertEvent, removeCardEvent, startingSavedEvent } from './events';
+import { mountEvent, modalEvent, alertEvent, removeCardEvent, startingSavedEvent } from '../events';
 
-import { updatePath } from '../../../routes/';
+import { updatePath } from '../../../routes';
 
 export const $modal = createStore(false).on(modalEvent, (store) => !store);
 export const $alert = createStore(false);
