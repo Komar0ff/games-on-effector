@@ -1,4 +1,4 @@
-import { $savedGames } from '../store';
+import { $savedGames } from '../stores';
 
 export const mockData = [
 	{
