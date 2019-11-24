@@ -1,6 +1,6 @@
 import React from 'react';
-import { widthEvent, heightEvent, playgroundUpdateEvent } from '../services/events';
-import { $settings, $playground } from '../services/store';
+import { widthEvent, heightEvent, playgroundUpdateEvent } from '../events';
+import { $settings, $playground } from '../stores';
 
 beforeEach(
 	() => (

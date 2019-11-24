@@ -12,9 +12,9 @@ import {
 	savedGameEvent,
 	scoreCleanEvent
 } from '../events';
-import { $score } from '../stores/score';
+import { $score } from './score';
 
-import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
+import { generation, random, equal, full, scoring, moving, winning } from '../../../helpers';
 
 export const $moveCount = gameDomain.store(0);
 $moveCount.on(scoreUpdateEvent, (state) => ++state).reset(newGameEvent);
@@ -54,6 +54,8 @@ $playground
 			result = new IndexIncrease(state.tiles, 'y');
 			vector = state.height;
 		}
+
+		console.log(state);
 
 		result
 			.subsetFormation()

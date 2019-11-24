@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStore } from 'effector-react';
 
-import { $settings, $playground } from './services/store';
-import { widthEvent, heightEvent } from './services/events';
+import { $settings, $playground } from './stores';
+import { widthEvent, heightEvent } from './events';
 
 import { Playground } from '../../organisms/Playground';
 
