@@ -8,10 +8,12 @@ const Wrapper = styled.div`
 	padding-top: 10px;
 `;
 
-export const Row = (props) => (
-	<Wrapper data-testid="row">
-		{props.data.map((value, id) => (
-			<Cell key={id} number={value} />
-		))}
-	</Wrapper>
-);
+export function Row(props) {
+	return (
+		<Wrapper data-testid="row">
+			{props.data.map((value, id) => (
+				<Cell key={id} number={value} />
+			))}
+		</Wrapper>
+	);
+}

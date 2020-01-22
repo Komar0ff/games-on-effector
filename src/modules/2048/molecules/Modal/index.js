@@ -4,7 +4,7 @@ import { styled } from 'linaria/react';
 
 const Wrapper = styled.div``;
 
-export const Modal = (props) => {
+export function Modal(props) {
 	return ReactDOM.createPortal(
 		<div>
 			<Wrapper data-testid="modal-wrapper">
@@ -14,4 +14,4 @@ export const Modal = (props) => {
 		</div>,
 		document.body
 	);
-};
+}

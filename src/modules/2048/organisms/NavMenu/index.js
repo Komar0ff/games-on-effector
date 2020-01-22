@@ -27,13 +27,15 @@ const Navigation = styled.div`
 	}
 `;
 
-export const NavMenu = () => (
-	<Wrapper>
-		<Logo>2048</Logo>
-		<Navigation>
-			<a onClick={() => updatePath('Game')}>Game</a>
-			<a onClick={() => updatePath('SavedGames')}>Saved games</a>
-			<a onClick={() => updatePath('Settings')}>Settings</a>
-		</Navigation>
-	</Wrapper>
-);
+export function NavMenu() {
+	return (
+		<Wrapper>
+			<Logo>2048</Logo>
+			<Navigation>
+				<a onClick={() => updatePath('Game')}>Game</a>
+				<a onClick={() => updatePath('SavedGames')}>Saved games</a>
+				<a onClick={() => updatePath('Settings')}>Settings</a>
+			</Navigation>
+		</Wrapper>
+	);
+}

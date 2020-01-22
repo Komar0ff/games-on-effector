@@ -17,4 +17,6 @@ const Wrapper = styled.div`
 	font-family: sans-serif;
 `;
 
-export const Cell = (props) => <Wrapper data-testid="block" />;
+export function Cell(props) {
+	return <Wrapper data-testid="block" />;
+}

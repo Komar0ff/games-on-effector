@@ -9,9 +9,11 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 `;
 
-export const Panel = (props) => (
-	<Wrapper>
-		<Control onClick={(id) => props.onClick(id)} />
-		<Score data={props.data} />
-	</Wrapper>
-);
+export function Panel(props) {
+	return (
+		<Wrapper>
+			<Control onClick={(id) => props.onClick(id)} />
+			<Score data={props.data} />
+		</Wrapper>
+	);
+}

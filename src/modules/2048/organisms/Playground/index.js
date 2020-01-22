@@ -12,14 +12,16 @@ const Wrapper = styled.div`
 	margin-top: 50px;
 `;
 
-export const Playground = (props) => (
-	<Wrapper>
-		{props.data.cells.map((value, id) => (
-			<Row key={id} data={value} />
-		))}
+export function Playground(props) {
+	return (
+		<Wrapper>
+			{props.data.cells.map((value, id) => (
+				<Row key={id} data={value} />
+			))}
 
-		{props.data.tiles.map((tile, id) => (
-			<Tile key={id} number={tile.value} coordinate={{ x: tile.x, y: tile.y }} />
-		))}
-	</Wrapper>
-);
+			{props.data.tiles.map((tile, id) => (
+				<Tile key={id} number={tile.value} coordinate={{ x: tile.x, y: tile.y }} />
+			))}
+		</Wrapper>
+	);
+}
