@@ -2,9 +2,9 @@ import React, { useLayoutEffect } from 'react';
 import { styled } from 'linaria/react';
 import { useStore } from 'effector-react';
 
-import { Modal } from '../../molecules/Modal';
-import { Panel } from '../../organisms/Panel';
-import { Playground } from '../../organisms/Playground';
+import { Modal } from '../../components/Modal';
+import { Panel } from '../../components/Panel';
+import { Playground } from '../../components/Playground';
 
 import { $playground } from './stores/playground';
 import { $gameStatus } from './stores/gameStatus';

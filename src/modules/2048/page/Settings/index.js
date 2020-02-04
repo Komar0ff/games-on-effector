@@ -4,7 +4,7 @@ import { useStore } from 'effector-react';
 import { $settings, $playground } from './stores';
 import { widthEvent, heightEvent } from './events';
 
-import { Playground } from '../../organisms/Playground';
+import { Playground } from '../../components/Playground';
 
 export const Settings = () => {
 	const playground = useStore($playground);

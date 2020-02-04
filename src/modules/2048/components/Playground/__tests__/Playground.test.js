@@ -8,7 +8,11 @@ describe('Playground tests', () => {
 			<Playground
 				data={{
 					tiles: [],
-					cells: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+					cells: [
+						[0, 0, 0, 0],
+						[0, 0, 0, 0],
+						[0, 0, 0, 0]
+					]
 				}}
 			/>
 		);

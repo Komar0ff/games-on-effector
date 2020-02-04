@@ -7,7 +7,7 @@ import { $savedGames, $modal, $alert } from './stores';
 
 import { Modal } from './components/Modal';
 import { Alert } from './components/Alert';
-import { Card } from '../../molecules/Card';
+import { Card } from '../../components/Card';
 
 const Wrapper = styled.div``;
 const CardWrapper = styled.div``;
