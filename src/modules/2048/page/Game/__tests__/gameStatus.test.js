@@ -2,6 +2,12 @@ import { mountEvent, newGameEvent, moveEvent } from '../events';
 import { $playground } from '../stores/playground';
 import { $gameStatus } from '../stores/gameStatus';
 
+/**
+ * > Game in progress
+ * > Game over
+ * > Game win
+ */
+
 beforeEach(() => $gameStatus.setState(''));
 describe.skip('Game status tests', () => {
 	let keyCode = 37;

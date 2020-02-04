@@ -8,7 +8,7 @@ beforeEach(
 	)
 );
 
-describe('Settings tests', () => {
+describe.skip('Settings tests', () => {
 	it('Change width and height playground', () => {
 		widthEvent(5);
 		heightEvent(2);

@@ -1,6 +1,14 @@
 import { mountEvent, moveEvent, savedGameEvent, scoreUpdateEvent } from '../events';
 import { $playground, $moveCount, $gameSaved } from '../stores/playground';
 
+/**
+ * > Playground mounting with playground
+ * > Games saving
+ * > All move events
+ * > Load game
+ * > Revert step(?)
+ */
+
 it.skip('Mount', () => {
 	mountEvent({ count: 2, width: 10, height: 10 });
 

@@ -2,7 +2,12 @@ import { $score } from '../stores/score';
 import { scoreUpdateEvent, scoreCleanEvent } from '../events';
 import '../__mocks__/score.mock.js';
 
-describe('Score tests', () => {
+/**
+ * > Update and clean score
+ * > Best score update
+ */
+
+describe.skip('Score tests', () => {
 	let score = 1024;
 	it('Update and clean score', () => {
 		scoreUpdateEvent(score);
