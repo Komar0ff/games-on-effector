@@ -1,30 +1,54 @@
 import { createApi } from 'effector';
 
 import { gameDomain } from '../../domain';
-import { IndexDecrease, IndexIncrease } from '../mechanics';
+import { IndexDecrease, IndexIncrease } from '../../mechanics';
 
-import { generation, random, equal, full, scoring, moving, winning } from '../../../../helpers';
+import { generation } from '../../../../helpers';
 
-const $playground = gameDomain.store({
+export const $playground = gameDomain.store({
 	tiles: [],
 	cells: [],
+	width: 5,
+	height: 5,
 	moveCount: 0
 });
 
 export const playgroundApi = createApi($playground, {
-	mount: (_, { playground, count, width, height }) =>
-		playground || generation(count, width, height),
-	newGame: (_, { count, width, height }) => {
-		// ?
-	},
-	moveLeft: () => new IndexDecrease(state.tiles, 'x'),
-	moveRight: () => new IndexDecrease(state.tiles, 'y'),
-	moveUp: () => new IndexIncrease(state.tiles, 'x'),
-	moveDown: () => new IndexIncrease(state.tiles, 'y'),
+	mount: (_, { playground, count, width, height }) => ({
+		...(playground || generation(count, width, height)),
+		width: width - 1,
+		height: height - 1
+	}),
+	moveLeft: (state) => ({ ...state, tiles: decrease(state, 'x') }),
+	moveRight: (state) => ({ ...state, tiles: increase(state, 'x') }),
+	moveUp: (state) => ({ ...state, tiles: decrease(state, 'y') }),
+	moveDown: (state) => ({ ...state, tiles: increase(state, 'y') }),
 	updateSettings: () => {}
 });
 
-/**
- * разобраться с newGame (проблема с эвентами скора)
- * мехника
- */
+function decrease(state, coordinate) {
+	let result = new IndexDecrease(state.tiles, coordinate);
+
+	result
+		.subsetFormation()
+		.findSameBlocksAndMerge()
+		.moveToFreeSpace()
+		.subsetIntegration()
+		.tileGeneration(state.width, state.height);
+
+	return result.tiles;
+}
+
+function increase(state, coordinate) {
+	let result = new IndexIncrease(state.tiles, coordinate);
+	let vector = coordinate === 'x' ? state.width : state.height;
+
+	result
+		.subsetFormation()
+		.findSameBlocksAndMerge()
+		.moveToFreeSpace(vector)
+		.subsetIntegration()
+		.tileGeneration(state.width, state.height);
+
+	return result.tiles;
+}

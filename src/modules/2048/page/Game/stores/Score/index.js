@@ -1,7 +1,7 @@
 import { createApi } from 'effector';
 import { gameDomain } from '../../domain';
 
-const $score = gameDomain({
+export const $score = gameDomain.store({
 	score: 0,
 	bestScore: window.localStorage.getItem('bestScore') || 0
 });
