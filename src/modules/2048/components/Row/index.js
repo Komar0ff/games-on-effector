@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from 'linaria/react';
-import { Cell } from '../../atoms/Cell';
+import { Cell } from '../Cell';
 
 const Wrapper = styled.div`
 	display: flex;

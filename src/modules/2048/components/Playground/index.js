@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'linaria/react';
-import { Row } from '../../molecules/Row';
-import { Tile } from '../../atoms/Tile';
+import { Row } from '../Row';
+import { Tile } from '../Tile';
 
 const Wrapper = styled.div`
 	position: relative;

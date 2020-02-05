@@ -2,7 +2,7 @@ import React from 'react';
 import { useStore } from 'effector-react';
 
 import { $routing } from './routes';
-import { NavMenu } from './organisms/NavMenu';
+import { NavMenu } from './components/NavMenu';
 
 import { Game } from './page/Game';
 import { SavedGames } from './page/SavedGames';

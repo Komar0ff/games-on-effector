@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styled } from 'linaria/react';
-import { Button } from '../../atoms/Button';
+import { Button } from '../Button';
 
 const data = [
 	{ id: 0, text: 'New game' },

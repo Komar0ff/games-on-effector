@@ -1,8 +1,8 @@
 import React from 'react';
 import { styled } from 'linaria/react';
 
-import { Control } from '../../molecules/Control';
-import { Score } from '../../molecules/Score';
+import { Control } from '../Control';
+import { Score } from '../Score';
 
 const Wrapper = styled.div`
 	display: flex;
