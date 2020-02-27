@@ -400,6 +400,14 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-optional-chaining" "^7.8.0"
 
+"@babel/plugin-proposal-pipeline-operator@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-pipeline-operator/-/plugin-proposal-pipeline-operator-7.8.3.tgz#c3569228e7466f91bfff7f1c1ae18fb5d36b3097"
+  integrity sha512-Z0qV3aUYoLUAnVLdfLTlz/GJYfcrbX7Mhrp897Twik29wQseAFAAXQ4TPvN1oswVBHdN74sLPIn9HVfTXtjuQA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.3"
+    "@babel/plugin-syntax-pipeline-operator" "^7.8.3"
+
 "@babel/plugin-proposal-unicode-property-regex@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.8.3.tgz#b646c3adea5f98800c9ab45105ac34d06cd4a47f"
@@ -477,6 +485,13 @@
   integrity sha512-KoK9ErH1MBlCPxV0VANkXW2/dw4vlbGDrFgz8bmUsBGYkFRcbRwMh6cIJubdPrkxRwuGdtCk0v/wPTKbQgBjkg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
+
+"@babel/plugin-syntax-pipeline-operator@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-pipeline-operator/-/plugin-syntax-pipeline-operator-7.8.3.tgz#945d9f13958408e2b1048f6ebe03f370d390aaca"
+  integrity sha512-GhiBvlXZLWeP+MjKaEv33KmiR/QMCv4iCwz1AuuAp7pHxBvOxxyQmIPukh+N/py6PRLYG10bvRCNeenG34QbDA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.3"
 
 "@babel/plugin-syntax-top-level-await@^7.8.3":
   version "7.8.3"
