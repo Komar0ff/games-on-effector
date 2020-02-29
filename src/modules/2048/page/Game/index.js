@@ -10,7 +10,7 @@ import { $playground } from './stores/Playground/';
 import { $status } from './stores/Status/';
 import { $score } from './stores/Score/';
 
-// import { $gameState } from './stores'
+import { saveGame } from './stores';
 
 import { playgroundApi } from './stores/Playground/';
 import { statusApi } from './stores/Status/';
@@ -39,7 +39,6 @@ export const Game = () => {
 	}, []);
 
 	const handleMove = ({ keyCode }) => {
-		console.log('key', keyCode);
 		if (keyCode == 37) {
 			playgroundApi.moveLeft();
 		} else if (keyCode == 38) {
@@ -51,25 +50,24 @@ export const Game = () => {
 		}
 	};
 
-	// const handleClick = (id) => {
-	// 	switch (id) {
-	// 		case 0:
-	// 			newGameEvent({
-	// 				playground: null,
-	// 				count: 3,
-	// 				width: settings ? settings.width : 5,
-	// 				height: settings ? settings.height : 5
-	// 			});
-	// 			break;
-	// 		case 1:
-	// 			savedGameEvent();
-	// 			break;
-	// 	}
-	// };
+	const handleClick = (id) => {
+		switch (id) {
+			case 0:
+				playgroundApi.newGame({
+					playground: null,
+					count: 3,
+					width: settings ? settings.width : 5,
+					height: settings ? settings.height : 5
+				});
+			case 1: {
+				saveGame();
+			}
+		}
+	};
 
 	return (
 		<Wrapper>
-			<Panel data={score} />
+			<Panel data={score} onClick={(id) => handleClick(id)} />
 			<Playground data={playgroundStore} />
 			{/* {gameStatus == 'WIN' gameStatus == 'LOSE' ? (
 				<Modal status={gameStatus} score={score.score} />

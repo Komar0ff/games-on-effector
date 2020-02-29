@@ -13,12 +13,17 @@ export const $playground = gameDomain.store({
 	moveCount: 0
 });
 
+$playground.updates.watch((playground) =>
+	window.localStorage.setItem('playground', JSON.stringify(playground))
+);
+
 export const playgroundApi = createApi($playground, {
 	mount: (_, { playground, count, width, height }) => ({
 		...(playground || generation(count, width, height)),
 		width: width - 1,
 		height: height - 1
 	}),
+	newGame: (_, { count, width, height }) => generation(count, width, height),
 	moveLeft: (state) => ({ ...state, tiles: decrease(state, 'x') }),
 	moveRight: (state) => ({ ...state, tiles: increase(state, 'x') }),
 	moveUp: (state) => ({ ...state, tiles: decrease(state, 'y') }),
