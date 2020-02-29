@@ -13,7 +13,6 @@ import { $score } from './stores/Score/';
 // import { $gameState } from './stores'
 
 import { playgroundApi } from './stores/Playground/';
-import { scoreApi } from './stores/Score/';
 import { statusApi } from './stores/Status/';
 
 const Wrapper = styled.div`
