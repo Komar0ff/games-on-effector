@@ -4,7 +4,7 @@ import { $playground } from '../Playground/';
 
 export const $score = gameDomain.store({
 	score: 0,
-	bestScore: window.localStorage.getItem('bestScore') || 0
+	bestScore: window.localStorage.getItem('bestScore') || 0,
 });
 
 $score.on($playground, (state, { tiles }) => {
@@ -12,7 +12,7 @@ $score.on($playground, (state, { tiles }) => {
 
 	return {
 		score: newScore,
-		bestScore: newScore > state.bestScore ? newScore : state.bestScore
+		bestScore: newScore > state.bestScore ? newScore : state.bestScore,
 	};
 });
 

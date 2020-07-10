@@ -8,7 +8,7 @@ export const tileGeneration = (count, width, height) => {
 		output.push({
 			x: xСoordinate,
 			y: yСoordinate,
-			value: 2
+			value: 2,
 		});
 	}
 

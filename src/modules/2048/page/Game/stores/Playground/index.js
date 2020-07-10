@@ -1,8 +1,6 @@
 import { createApi } from 'effector';
 
 import { gameDomain } from '../../domain';
-import { IndexDecrease, IndexIncrease } from '../../mechanics';
-
 import { generation } from '../../../../helpers';
 
 export const $playground = gameDomain.store({
@@ -10,7 +8,7 @@ export const $playground = gameDomain.store({
 	cells: [],
 	width: 5,
 	height: 5,
-	moveCount: 0
+	moveCount: 0,
 });
 
 $playground.updates.watch((playground) =>
@@ -21,14 +19,14 @@ export const playgroundApi = createApi($playground, {
 	mount: (_, { playground, count, width, height }) => ({
 		...(playground || generation(count, width, height)),
 		width: width - 1,
-		height: height - 1
+		height: height - 1,
 	}),
 	newGame: (_, { count, width, height }) => generation(count, width, height),
 	moveLeft: (state) => ({ ...state, tiles: decrease(state, 'x') }),
 	moveRight: (state) => ({ ...state, tiles: increase(state, 'x') }),
 	moveUp: (state) => ({ ...state, tiles: decrease(state, 'y') }),
 	moveDown: (state) => ({ ...state, tiles: increase(state, 'y') }),
-	updateSettings: () => {}
+	updateSettings: () => {},
 });
 
 function decrease(state, coordinate) {
@@ -101,7 +99,7 @@ export function tileGeneration(tiles, { width, height }) {
 			_tiles.push({
 				x: xСoordinate,
 				y: yСoordinate,
-				value: 2
+				value: 2,
 			});
 
 			return _tiles;

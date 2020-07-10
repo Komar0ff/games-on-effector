@@ -7,8 +7,8 @@ export const mockData = [
 		playground: [
 			[0, 8, 0, 0],
 			[0, 0, 0, 0],
-			[0, 0, 0, 0]
-		]
+			[0, 0, 0, 0],
+		],
 	},
 	{
 		move: 2,
@@ -16,8 +16,8 @@ export const mockData = [
 		playground: [
 			[0, 8, 0, 0],
 			[0, 0, 0, 0],
-			[0, 0, 0, 0]
-		]
+			[0, 0, 0, 0],
+		],
 	},
 	{
 		move: 3,
@@ -25,8 +25,8 @@ export const mockData = [
 		playground: [
 			[0, 8, 0, 0],
 			[0, 0, 0, 0],
-			[0, 0, 0, 0]
-		]
+			[0, 0, 0, 0],
+		],
 	},
 	{
 		move: 10,
@@ -34,7 +34,7 @@ export const mockData = [
 		playground: [
 			[0, 8, 0, 0],
 			[0, 0, 0, 0],
-			[0, 0, 0, 0]
-		]
-	}
+			[0, 0, 0, 0],
+		],
+	},
 ];

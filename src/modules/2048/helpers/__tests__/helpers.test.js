@@ -5,7 +5,7 @@ import {
 	scoring,
 	winning,
 	tileGeneration,
-	cellsGeneration
+	cellsGeneration,
 } from '../index';
 
 it('Tile generation', () => {
@@ -39,15 +39,35 @@ describe.skip('Helpers', () => {
 	});
 
 	it('Array full', () => {
-		expect(full([[1, 4, 4], [3, 4, 5]])).toBeTruthy(); // array is full
-		expect(full([[1, 0, 4], [3, 4, 5]])).toBeFalsy(); // array is not full
+		expect(
+			full([
+				[1, 4, 4],
+				[3, 4, 5],
+			])
+		).toBeTruthy(); // array is full
+		expect(
+			full([
+				[1, 0, 4],
+				[3, 4, 5],
+			])
+		).toBeFalsy(); // array is not full
 	});
 
 	it('Scoring', () => {
-		expect(scoring([[1024, 0, 0], [16, 1024, 2]])).toBe(2066);
+		expect(
+			scoring([
+				[1024, 0, 0],
+				[16, 1024, 2],
+			])
+		).toBe(2066);
 	});
 
 	it('Is there a 2048?', () => {
-		expect(winning([[16, 0, 0], [16, 2048, 2]])).toBeTruthy();
+		expect(
+			winning([
+				[16, 0, 0],
+				[16, 2048, 2],
+			])
+		).toBeTruthy();
 	});
 });

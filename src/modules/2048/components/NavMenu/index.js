@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	border-bottom: 1px solid grey;
+	border-bottom: 2px solid black;
 `;
 
 const Logo = styled.h1`

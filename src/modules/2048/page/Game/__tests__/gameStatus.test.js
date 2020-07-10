@@ -22,11 +22,11 @@ describe.skip('Game status tests', () => {
 		let localStorage = {
 			playground: [
 				[2, 4, 8],
-				[2, 1024, 4]
+				[2, 1024, 4],
 			],
 			count: 2,
 			width: 3,
-			height: 2
+			height: 2,
 		}; //localStorage imitation
 
 		mountEvent(localStorage);
@@ -43,11 +43,11 @@ describe.skip('Game status tests', () => {
 		let localStorage = {
 			playground: [
 				[2, 4, 8],
-				[1024, 1024, 4]
+				[1024, 1024, 4],
 			],
 			count: 2,
 			width: 3,
-			height: 2
+			height: 2,
 		}; //localStorage imitation
 
 		mountEvent(localStorage);

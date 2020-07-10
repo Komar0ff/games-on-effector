@@ -16,7 +16,7 @@ const colorScheme = {
 	2048: '#FF9800',
 	4096: '#FF5722',
 	8192: '#8BC34A',
-	16384: '#4CAF50'
+	16384: '#4CAF50',
 };
 
 const Wrapper = styled.div`

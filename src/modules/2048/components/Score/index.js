@@ -11,8 +11,9 @@ const ScoreArea = styled('div')`
 	padding: 20px;
 	margin: 10px;
 
-	border: 1px solid grey;
-	border-radius: 5px;
+	border: 1px solid black;
+	border-radius: 10px;
+	box-shadow: 2px 2px 1px black;
 `;
 
 export function Score(props) {

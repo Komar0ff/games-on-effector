@@ -10,7 +10,7 @@ export const $gameState = combine(
 	(status, { score }, playground) => ({
 		status: status,
 		score: score,
-		playground: playground
+		playground: playground,
 	})
 );
 

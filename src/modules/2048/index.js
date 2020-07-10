@@ -15,13 +15,14 @@ export const TwoThousand = () => {
 	const routes = {
 		Game: <Game />,
 		SavedGames: <SavedGames />,
-		Settings: <Settings />
+		Settings: <Settings />,
 	};
 
 	return (
 		<>
 			<NavMenu />
-			{routes[routing]}
+			<Game />
+			{/* {routes[routing]} */}
 		</>
 	);
 };

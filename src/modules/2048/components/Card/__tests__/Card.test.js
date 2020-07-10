@@ -7,8 +7,8 @@ const mockData = {
 	playground: [
 		[0, 8, 0, 0],
 		[0, 0, 0, 0],
-		[0, 0, 0, 0]
-	]
+		[0, 0, 0, 0],
+	],
 };
 
 describe('Card tests', () => {

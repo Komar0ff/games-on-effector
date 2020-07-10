@@ -33,7 +33,7 @@ export const Game = () => {
 
 			count: 2,
 			width: settings ? settings.width : 5,
-			height: settings ? settings.height : 5
+			height: settings ? settings.height : 5,
 		});
 		document.addEventListener('keydown', handleMove);
 	}, []);
@@ -57,7 +57,7 @@ export const Game = () => {
 					playground: null,
 					count: 3,
 					width: settings ? settings.width : 5,
-					height: settings ? settings.height : 5
+					height: settings ? settings.height : 5,
 				});
 			case 1: {
 				saveGame();

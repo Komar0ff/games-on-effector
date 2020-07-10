@@ -5,7 +5,7 @@ import { Button } from '../Button';
 const data = [
 	{ id: 0, text: 'New game' },
 	{ id: 1, text: 'Save game' },
-	{ id: 2, text: 'Revert step' }
+	{ id: 2, text: 'Revert step' },
 ];
 
 const Wrapper = styled('div')``;

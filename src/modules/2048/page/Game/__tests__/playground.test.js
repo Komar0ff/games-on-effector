@@ -21,7 +21,7 @@ describe.skip('With localStorage tests', () => {
 		() => (
 			$playground.setState({
 				tiles: [],
-				cells: []
+				cells: [],
 			}),
 			window.localStorage.removeItem('savedGames'),
 			mountEvent({
@@ -29,12 +29,12 @@ describe.skip('With localStorage tests', () => {
 					tiles: [],
 					cells: [
 						[0, 0, 0],
-						[0, 0, 0]
+						[0, 0, 0],
 					],
 					count: 2,
 					width: 3,
-					height: 2
-				}
+					height: 2,
+				},
 			}) // mount localStorage imitation
 		)
 	);
@@ -58,13 +58,13 @@ describe.skip('With localStorage tests', () => {
 					tiles: [],
 					cells: [
 						[0, 0, 0],
-						[0, 0, 0]
+						[0, 0, 0],
 					],
 					count: 2,
 					width: 3,
-					height: 2
-				}
-			}
+					height: 2,
+				},
+			},
 		]);
 	});
 });
@@ -75,19 +75,19 @@ describe('Move events', () => {
 			playground: {
 				tiles: [
 					{ x: 0, y: 1, value: 2 },
-					{ x: 0, y: 3, value: 2 }
+					{ x: 0, y: 3, value: 2 },
 				],
 				cells: [
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0]
+					[0, 0, 0, 0, 0],
 				],
 				count: 2,
 				width: 5,
-				height: 5
-			}
+				height: 5,
+			},
 		};
 
 		mountEvent(localStorage);
@@ -101,19 +101,19 @@ describe('Move events', () => {
 			playground: {
 				tiles: [
 					{ x: 0, y: 1, value: 2 },
-					{ x: 0, y: 3, value: 2 }
+					{ x: 0, y: 3, value: 2 },
 				],
 				cells: [
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0]
+					[0, 0, 0, 0, 0],
 				],
 				count: 2,
 				width: 5,
-				height: 5
-			}
+				height: 5,
+			},
 		};
 
 		mountEvent(localStorage);
