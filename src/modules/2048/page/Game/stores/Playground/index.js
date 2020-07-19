@@ -5,7 +5,6 @@ import { generation } from '../../../../helpers';
 
 import {
 	subsetFormation,
-	subsetIntegration,
 	tileGeneration,
 	decreseMoveToFreeSpace,
 	decreseFindSameBlocksAndMerge,
@@ -47,7 +46,7 @@ function decrease(state, coordinate) {
 		|> ((_) => subsetFormation(_, coordinate))
 		|> decreaseFindSameBlocksAndMerge
 		|> ((_) => decreaseMoveToFreeSpace(_, coordinate))
-		|> subsetIntegration
+		|> ((_) => _.flat())
 		|> ((_) => tileGeneration(_, state))
 	);
 }
@@ -60,7 +59,7 @@ function increase(state, coordinate) {
 		|> ((_) => subsetFormation(_, coordinate))
 		|> increaseFindSameBlocksAndMerge
 		|> ((_) => increaseMoveToFreeSpace(_, vector, coordinate))
-		|> subsetIntegration
+		|> ((_) => _.flat())
 		|> ((_) => tileGeneration(_, state))
 	);
 }
