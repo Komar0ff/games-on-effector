@@ -21,36 +21,29 @@ export function subsetFormation(tiles, coordinate) {
 	return subsets;
 }
 
-export function subsetIntegration(tiles) {
-	let flat = [];
-	for (let i = 0; i < tiles.length; i++) {
-		for (let j = 0; j < tiles[i].length; j++) {
-			flat.push(tiles[i][j]);
-		}
-	}
-
-	return flat;
+export function objectComparison(tiles, obj2) {
+	return tiles.find((obj1) => JSON.stringify(obj1) === JSON.stringify(obj2));
 }
 
 export function tileGeneration(tiles, { width, height }) {
-	let target = true;
+	let result = [];
+	let tilesCoordinateOnly = tiles.map((v) => ({ x: v.x, y: v.y }));
 	let _tiles = [...tiles];
-	while (target) {
-		let xСoordinate = Math.floor(Math.random() * width);
-		let yСoordinate = Math.floor(Math.random() * height);
 
-		target = _tiles.find((tile) => tile.x === xСoordinate && tile.y === yСoordinate);
-
-		if (!target) {
-			_tiles.push({
-				x: xСoordinate,
-				y: yСoordinate,
-				value: 2,
-			});
-
-			return _tiles;
+	for (let i = 0; i < width; i++) {
+		for (let j = 0; j < height; j++) {
+			!objectComparison(tilesCoordinateOnly, { x: i, y: j })
+				? result.push({ x: i, y: j, value: 2 })
+				: null;
 		}
 	}
+
+	if (result.length) {
+		let target = Math.floor(Math.random() * Math.floor(result.length));
+		_tiles.push(result[target]);
+	}
+
+	return _tiles;
 }
 
 // ------------- IndexDecrease
