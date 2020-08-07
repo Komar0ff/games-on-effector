@@ -62,7 +62,7 @@ function increase(state, coordinate) {
 	return (
 		state.tiles
 		|> ((_) => subsetFormation(_, coordinate))
-		|> mergeBlocks('increase')
+		|> ((_) => mergeBlocks(_, 'increase'))
 		|> ((_) => increaseMoveToFreeSpace(_, vector, coordinate))
 		|> ((_) => _.flat())
 		|> ((_) => tileGeneration(_, state))

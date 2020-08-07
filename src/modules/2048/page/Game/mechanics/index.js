@@ -50,7 +50,7 @@ export function mergeBlocks(tiles, vector) {
 	let _tiles = [...tiles];
 	if (vector === 'increase') {
 		for (let i = 0; i < _tiles.length; i++) {
-			for (let j = _tiles[i].length - 1; j > 0; j++) {
+			for (let j = _tiles[i].length - 1; j > 0; j--) {
 				if (_tiles[i][j].value === _tiles[i][j - 1].value) {
 					_tiles[i][j].value *= 2;
 					_tiles[i].splice(j - 1, 1);
