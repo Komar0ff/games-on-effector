@@ -47,7 +47,7 @@ describe('tileGeneration', () => {
 });
 
 describe('objectComparison', () => {
-	it('should not return true coz equal', () => {
+	it("shouldn't return true coz not found", () => {
 		expect(
 			objectComparison(
 				[
@@ -59,7 +59,7 @@ describe('objectComparison', () => {
 		).toBeFalsy();
 	});
 
-	it('should return true coz equal', () => {
+	it('should return true coz found', () => {
 		expect(
 			objectComparison(
 				[
@@ -73,47 +73,70 @@ describe('objectComparison', () => {
 });
 
 describe('mergeBlocks', () => {
-	// Move up
-	it('decrease', () => {
-		let inputTiles = [
-			[{ x: 0, y: 2, value: 4 }],
-			[
-				{ x: 2, y: 0, value: 2 },
-				{ x: 2, y: 1, value: 2 },
-				{ x: 2, y: 2, value: 8 },
-			],
-		];
+	describe('> decrease move', () => {
+		it('should change after move', () => {
+			let inputTiles = [
+				[{ x: 0, y: 2, value: 4 }],
+				[
+					{ x: 2, y: 0, value: 2 },
+					{ x: 2, y: 1, value: 2 },
+					{ x: 2, y: 2, value: 8 },
+				],
+			];
 
-		let outputTiles = [
-			[{ x: 0, y: 2, value: 4 }],
-			[
-				{ x: 2, y: 0, value: 4 },
-				{ x: 2, y: 2, value: 8 },
-			],
-		];
+			let outputTiles = [
+				[{ x: 0, y: 2, value: 4 }],
+				[
+					{ x: 2, y: 0, value: 4 },
+					{ x: 2, y: 2, value: 8 },
+				],
+			];
 
-		expect(mergeBlocks(inputTiles)).toEqual(outputTiles);
+			expect(mergeBlocks(inputTiles)).toEqual(outputTiles);
+		});
+
+		it("shouldn't change after move", () => {
+			let tiles = [
+				[
+					{ x: 0, y: 0, value: 2 },
+					{ x: 1, y: 0, value: 16 },
+					{ x: 2, y: 0, value: 8 },
+				],
+			];
+			expect(mergeBlocks(tiles)).toEqual(tiles);
+		});
 	});
 
-	//Move down
-	it('increase', () => {
-		let inputTiles = [
-			[
-				{ x: 2, y: 0, value: 8 },
-				{ x: 2, y: 1, value: 2 },
-				{ x: 2, y: 2, value: 2 },
-				{ x: 2, y: 3, value: 2 },
-			],
-		];
+	describe('> increase move', () => {
+		it("shouldn't change after move", () => {
+			let tiles = [
+				[
+					{ x: 0, y: 0, value: 2 },
+					{ x: 1, y: 0, value: 16 },
+					{ x: 2, y: 0, value: 8 },
+				],
+			];
+			expect(mergeBlocks(tiles, 'increase')).toEqual(tiles);
+		});
+		it('should change after move', () => {
+			let inputTiles = [
+				[
+					{ x: 0, y: 0, value: 2 },
+					{ x: 1, y: 0, value: 2 },
+					{ x: 2, y: 0, value: 2 },
+					{ x: 3, y: 0, value: 8 },
+				],
+			];
 
-		let outputTiles = [
-			[
-				{ x: 2, y: 0, value: 8 },
-				{ x: 2, y: 1, value: 2 },
-				{ x: 2, y: 3, value: 4 },
-			],
-		];
+			let outputTiles = [
+				[
+					{ x: 0, y: 0, value: 2 },
+					{ x: 2, y: 0, value: 4 },
+					{ x: 3, y: 0, value: 8 },
+				],
+			];
 
-		expect(mergeBlocks(inputTiles, 'increase')).toEqual(outputTiles);
+			expect(mergeBlocks(inputTiles, 'increase')).toEqual(outputTiles);
+		});
 	});
 });
