@@ -67,7 +67,10 @@ export const Game = () => {
 
 	return (
 		<Wrapper>
+			{/*
+        
 			<Panel data={score} onClick={(id) => handleClick(id)} />
+      */}
 			<Playground data={playgroundStore} />
 			{/* {gameStatus == 'WIN' gameStatus == 'LOSE' ? (
 				<Modal status={gameStatus} score={score.score} />

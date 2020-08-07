@@ -46,32 +46,42 @@ export function tileGeneration(tiles, { width, height }) {
 	return _tiles;
 }
 
-// ------------- IndexDecrease
-
-export function decreaseMoveToFreeSpace(tiles, coordinate) {
+export function mergeBlocks(tiles, vector) {
 	let _tiles = [...tiles];
-
-	for (let i = 0; i < tiles.length; i++) {
-		for (let j = 0; j < tiles[i].length; j++) {
-			tiles[i][j][coordinate] = j;
+	if (vector === 'increase') {
+		for (let i = 0; i < _tiles.length; i++) {
+			for (let j = _tiles[i].length - 1; j > 0; j++) {
+				if (_tiles[i][j].value === _tiles[i][j - 1].value) {
+					_tiles[i][j].value *= 2;
+					_tiles[i].splice(j - 1, 1);
+					break;
+				}
+			}
+		}
+	} else {
+		for (let i = 0; i < _tiles.length; i++) {
+			for (let j = 0; j < _tiles[i].length - 1; j++) {
+				if (_tiles[i][j].value === _tiles[i][j + 1].value) {
+					_tiles[i][j].value *= 2;
+					_tiles[i].splice(j + 1, 1);
+					break;
+				}
+			}
 		}
 	}
 
 	return _tiles;
 }
 
-export function decreaseFindSameBlocksAndMerge(tiles) {
+// ------------- IndexDecrease
+
+export function decreaseMoveToFreeSpace(tiles, coordinate) {
 	let _tiles = [...tiles];
-	for (let i = 0; i < _tiles.length; i++) {
-		for (let j = 0; j < _tiles[i].length - 1; j++) {
-			if (_tiles[i][j].value === _tiles[i][j + 1].value) {
-				_tiles[i][j].value *= 2;
-				_tiles[i].splice(j + 1, 1);
-				break;
-			}
+	for (let i = 0; i < tiles.length; i++) {
+		for (let j = 0; j < tiles[i].length; j++) {
+			_tiles[i][j][coordinate] = j;
 		}
 	}
-
 	return _tiles;
 }
 
@@ -84,21 +94,6 @@ export function increaseMoveToFreeSpace(tiles, size, coordinate) {
 		for (let j = _tiles[i].length - 1; j >= 0; j--) {
 			_tiles[i][j][coordinate] = _size;
 			--_size;
-		}
-	}
-
-	return _tiles;
-}
-
-export function increaseFindSameBlocksAndMerge(tiles) {
-	let _tiles = [...tiles];
-	for (let i = 0; i < _tiles.length; i++) {
-		for (let j = 0; j < _tiles[i].length - 1; j++) {
-			if (_tiles[i][j].value === _tiles[i][j + 1].value) {
-				_tiles[i][j].value *= 2;
-				_tiles[i].splice(j + 1, 1);
-				break;
-			}
 		}
 	}
 

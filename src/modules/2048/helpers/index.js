@@ -59,7 +59,6 @@ export const random = (count, width, height) => {
 
 export const generation = (count, width, height) => {
 	let result = {};
-
 	result.cells = cellsGeneration(width, height);
 	result.tiles = tileGeneration(count, width, height);
 

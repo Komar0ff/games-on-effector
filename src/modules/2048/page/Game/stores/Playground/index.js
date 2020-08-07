@@ -7,10 +7,9 @@ import {
 	subsetFormation,
 	tileGeneration,
 	decreseMoveToFreeSpace,
-	decreseFindSameBlocksAndMerge,
 	increaseMoveToFreeSpace,
 	increaseFindSameBlocksAndMerge,
-	decreaseFindSameBlocksAndMerge,
+	mergeBlocks,
 	decreaseMoveToFreeSpace,
 } from '../../mechanics';
 
@@ -40,11 +39,17 @@ export const playgroundApi = createApi($playground, {
 	updateSettings: () => {},
 });
 
+/*
+ * split
+ * mergeBlocks
+ * flat
+ * addTile
+ * */
 function decrease(state, coordinate) {
 	return (
 		state.tiles
 		|> ((_) => subsetFormation(_, coordinate))
-		|> decreaseFindSameBlocksAndMerge
+		|> mergeBlocks
 		|> ((_) => decreaseMoveToFreeSpace(_, coordinate))
 		|> ((_) => _.flat())
 		|> ((_) => tileGeneration(_, state))
@@ -57,7 +62,7 @@ function increase(state, coordinate) {
 	return (
 		state.tiles
 		|> ((_) => subsetFormation(_, coordinate))
-		|> increaseFindSameBlocksAndMerge
+		|> mergeBlocks('increase')
 		|> ((_) => increaseMoveToFreeSpace(_, vector, coordinate))
 		|> ((_) => _.flat())
 		|> ((_) => tileGeneration(_, state))

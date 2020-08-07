@@ -1,10 +1,9 @@
 import {
 	subsetFormation,
 	tileGeneration,
-	decreseMoveToFreeSpace,
-	decreseFindSameBlocksAndMerge,
+	decreaseMoveToFreeSpace,
+	mergeBlocks,
 	increaseMoveToFreeSpace,
-	increaseFindSameBlocksAndMerge,
 	objectComparison,
 } from '../index';
 
@@ -70,5 +69,51 @@ describe('objectComparison', () => {
 				{ x: 1, y: 2 }
 			)
 		).toBeTruthy();
+	});
+});
+
+describe('mergeBlocks', () => {
+	// Move up
+	it('decrease', () => {
+		let inputTiles = [
+			[{ x: 0, y: 2, value: 4 }],
+			[
+				{ x: 2, y: 0, value: 2 },
+				{ x: 2, y: 1, value: 2 },
+				{ x: 2, y: 2, value: 8 },
+			],
+		];
+
+		let outputTiles = [
+			[{ x: 0, y: 2, value: 4 }],
+			[
+				{ x: 2, y: 0, value: 4 },
+				{ x: 2, y: 2, value: 8 },
+			],
+		];
+
+		expect(mergeBlocks(inputTiles)).toEqual(outputTiles);
+	});
+
+	//Move down
+	it('increase', () => {
+		let inputTiles = [
+			[
+				{ x: 2, y: 0, value: 8 },
+				{ x: 2, y: 1, value: 2 },
+				{ x: 2, y: 2, value: 2 },
+				{ x: 2, y: 3, value: 2 },
+			],
+		];
+
+		let outputTiles = [
+			[
+				{ x: 2, y: 0, value: 8 },
+				{ x: 2, y: 1, value: 2 },
+				{ x: 2, y: 3, value: 4 },
+			],
+		];
+
+		expect(mergeBlocks(inputTiles, 'increase')).toEqual(outputTiles);
 	});
 });
