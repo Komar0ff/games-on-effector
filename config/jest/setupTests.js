@@ -1,7 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { Response, Request, Headers, fetch } from 'whatwg-fetch';
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
-import { reactSerializer } from 'linaria-jest';
 
 const exposedProperties = ['window', 'navigator', 'document'];
 const { document } = new JSDOM('').window;

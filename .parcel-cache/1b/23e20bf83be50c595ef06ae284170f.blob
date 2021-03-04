@@ -1,0 +1,24 @@
+"use strict";
+
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+  var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+  var _react = require("react");
+
+  var _reactDom = _interopRequireDefault(require("react-dom"));
+
+  var rootElement = document.getElementById('root');
+
+  _reactDom["default"].render( /*#__PURE__*/React.createElement(_react.StrictMode, null, "test"), rootElement);
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

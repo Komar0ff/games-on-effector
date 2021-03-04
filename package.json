@@ -28,7 +28,8 @@
 		"effector": "21.7.5",
 		"effector-react": "21.2.1",
 		"react": "^17.0.1",
-		"react-dom": "^17.0.1"
+		"react-dom": "^17.0.1",
+		"react-hot-loader": "^4.13.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.12.10",
@@ -40,7 +41,10 @@
 		"@babel/preset-env": "^7.12.11",
 		"@babel/preset-react": "^7.12.10",
 		"@babel/runtime": "^7.12.5",
+		"@hot-loader/react-dom": "^17.0.1+4.13.0",
 		"@testing-library/react": "^11.2.5",
+		"@types/react": "^17.0.2",
+		"@types/react-dom": "^17.0.1",
 		"babel-jest": "^26.6.3",
 		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "^3.0.0",
@@ -52,10 +56,12 @@
 		"husky": "^4.3.8",
 		"jest": "^26.6.3",
 		"jsdom": "^16.4.0",
+		"parcel": "^2.0.0-beta.1",
 		"prettier": "^2.2.1",
 		"pretty-quick": "^3.1.0",
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^5.1.1",
+		"ts-loader": "^8.0.17",
 		"url-loader": "^4.1.1",
 		"webpack": "5.19.0",
 		"webpack-bundle-analyzer": "^4.4.0",
@@ -65,8 +71,9 @@
 		"whatwg-fetch": "^3.5.0"
 	},
 	"scripts": {
-		"dev": "webpack-dev-server --hot --progress --color --config config/webpack.dev.config.js",
-		"build": "webpack --mode production --progress --color --config config/webpack.prod.config.js",
+		"dev": "parcel index.html",
+		"build-dev": "webpack --mode development",
+		"build-prod": "webpack --mode production",
 		"format": "prettier --write \"src/**/*.js\"",
 		"test": "jest --watch",
 		"deploy": "yarn build && now ./build"

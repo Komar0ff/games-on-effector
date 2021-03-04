@@ -1,15 +1,12 @@
 {
-  "presets": [
-    ["@babel/preset-env", {"loose": true,}],
-     "@babel/preset-react",
-     "linaria/babel"
-  ],
-  
-  "plugins": [
-    "@babel/plugin-syntax-dynamic-import",
+	"presets": [["@babel/preset-env", { "loose": true }], "@babel/preset-react"],
+
+	"plugins": [
+		"react-hot-loader/babel",
+		"@babel/plugin-syntax-dynamic-import",
 		["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
-    "@babel/plugin-proposal-class-properties", 
-    "@babel/plugin-transform-runtime", 
-    ["module:fast-async", { "spec": true }]
-  ]
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-transform-runtime",
+		["module:fast-async", { "spec": true }]
+	]
 }
